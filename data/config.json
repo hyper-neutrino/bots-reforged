@@ -1,15 +1,6 @@
 {
-  "discord-tokens": {
-    "toplane" : "NzQzNTU0OTAxNzcwMjQwMDY2.XzWXdw.j9LCb1aiFMgqmzJ5ti-jrRP2PVo",
-    "jungler" : "NzQzNTczNzg0NDc2NTE2NDUy.XzWpDQ.uPEzrQEA8ligdFbLSsCuvsSQGAc",
-    "midlane" : "NzQzNTczNTE3NDMzNTY5NDIx.XzWozQ.18iLdSfXwgEUhojEIZIEgnyavI0",
-    "botlane" : "NzQxMDExMjYzNzY4ODg3Mzc3.XyxWhA.Wss6ZQABb0ZaKzZKxe0wJ7O-x4A",
-    "support" : "NzQzNDY4NjczMTcxNDU2MTUy.XzVHKA.iFxl4lCSBabl5JrD9bp-IuJWnF8",
-    "summoner": "NzQ0MDAwNTUxMTM3NzA2MDc1.Xzc2gg.TWHLiQf4SQ0WM17ByHm-4DGT8DM"
-  },
-  "global-arguments": {
-    "sudo": [242101077061664779]
-  },
+  "discord-tokens": "Nzc0MDAxMzk3Mjk3NDQ2OTQz.X6Ra-Q.3_O6fxq2lUAyFcYflb5J8a4N2c0",
+  "sudo": [242101077061664779],
   "reddit": {
     "client-id": "LxcHGR9NtiqU8A",
     "client-secret": "eRloXkchTRddkF03iZLD8vg1Pxo",
