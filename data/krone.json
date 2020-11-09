@@ -1,0 +1,33 @@
+{
+  "talents": {
+    "megumin-mega-explosion": {
+      "name": "Megumin's Mega-Explosion!",
+      "trigger": "normal",
+      "targeting": {
+        "self": 1,
+        "ally": 0,
+        "enemy": 0,
+        "unit": 1,
+        "unit-range": 10,
+        "area": 0,
+        "range": 0
+      },
+      "effects": {
+        "enemy": {
+          "damage": {
+            "fire": [":", "max-hp", 2],
+            "impact": [":", "max-hp", 2]
+          }
+        },
+        "self": {
+          "damage": {
+            "fire": [":", "max-hp", 10],
+            "psychic": [":", "max-hp", 5]
+          }
+        }
+      },
+      "charges": {},
+      "description": "Unleash a massive explosion around yourself, dealing 50% of enemies' maximum HP as fire damage and 50% as impact damage. The explosion is so powerful that you also take 10% of your maximum HP as fire damage and 20% as psychic damage."
+    }
+  }
+}

@@ -1,5 +1,7 @@
 # Private Data
 config.json
+data.pickle
+data.pickle.lock
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
