@@ -16,8 +16,11 @@ class DiscordClient(discord.Client):
     print("Ready!")
     await announce("Hello o/ I am now ready!")
   
-  def command(self, section, match, syntax, description):
-    return lambda func: self.commands.append((section, match, syntax, description, func)) or func
+  def command(self, section, match, syntax, description, prefix = True):
+    if prefix and isinstance(match, list):
+      return lambda func: self.commands.append((section, [("pls", "please")] + match, "please " + syntax, description, func)) or func
+    else:
+      return lambda func: self.commands.append((section, match, syntax, description, func)) or func
   
   async def on_message(self, message):
     if message.guild:
@@ -35,9 +38,9 @@ class DiscordClient(discord.Client):
     for _, match, _, _, func in self.commands:
       try:
         if isinstance(match, list):
-          matched = command and command[0] in ["pls", "please"]
+          matched = command
           if matched:
-            for m, c in zip(match, command[1:]):
+            for m, c in zip(match, command):
               if m == c or m == "?" or type(m) in (list, tuple, set) and c in m:
                 continue
               if m == "...":
@@ -45,9 +48,9 @@ class DiscordClient(discord.Client):
                 break
               matched = False
               break
-            if len(command) - 1 > len(match) and "..." not in match:
+            if len(command) > len(match) and "..." not in match:
               matched = False
-            if len(command) - 1 < len(match) and not (len(command) == len(match) and match and match[-1] == "..."):
+            if len(command) < len(match) and not (len(command) + 1 == len(match) and match and match[-1] == "..."):
               matched = False
         else:
           matched = match(message.content)
@@ -71,9 +74,9 @@ class DiscordClient(discord.Client):
 client = DiscordClient()
 
 async def announce(*args, **kwargs):
-  for gid, cid in (await get_data("announcement_channels", default = set())):
+  for cid in await get_data("announcement_channels", default = set()):
     try:
-      await client.get_guild(gid).get_channel(cid).send(*args, **kwargs)
+      await client.get_channel(cid).send(*args, **kwargs)
     except:
       pass
 
@@ -115,6 +118,8 @@ async def send(message, *args, **kwargs):
   if "reaction" in kwargs:
     if type(kwargs["reaction"]) == list:
       reaction_list = kwargs["reaction"]
+    elif kwargs["reaction"] == "":
+      reaction_list = []
     else:
       reaction_list = [kwargs["reaction"]]
   else:

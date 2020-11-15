@@ -1,4 +1,4 @@
-import asyncio, datetime, discord, random, re, requests, time, traceback
+import asyncio, datetime, discord, json, random, re, requests, time, traceback
 
 from aioconsole import ainput
 
@@ -15,7 +15,7 @@ async def command_help(command, message):
     if section == "" or ((section == "RPG Commands") ^ (len(command) == 3)): continue
     if section not in sections:
       sections[section] = []
-    sections[section].append(f"`pls {syntax}` - {description}")
+    sections[section].append(f"`{syntax}` - {description}")
   
   embed = discord.Embed(
     title = "Help - Commands",
@@ -31,20 +31,30 @@ async def command_help(command, message):
   await channel.send(embed = embed)
   await send(message, "Sent the command list to your DMs!")
 
-@client.command("General Commands", ["subscribe"], "subscribe", "announce updates to this channel")
-async def command_subscribe(command, message):
-  await mod_data("announcement_channels", lambda x: x | {(message.guild.id, message.channel.id)}, default = set())
-  await send(message, "Subscribed to status updates here!")
-
-@client.command("General Commands", ["unsubscribe"], "unsubscribe", "stop announcing updates to this channel")
-async def command_unsubscribe(command, message):
-  await mod_data("announcement_channels", lambda x: x - {(message.guild.id, message.channel.id)}, default = set())
-  await send(message, "Unsubscribed from status updates here!")
-
 @client.command("General Commands", ["ping"], "ping", "check your ping")
 async def command_ping(command, message):
   ping = int((time.time() - (message.created_at - datetime.datetime(1970, 1, 1)) / datetime.timedelta(seconds = 1)) * 1000)
   await send(message, f"Pong! ({ping} ms)", reaction = "🏓")
+
+@client.command("Channel Type Commands", ["subscribe"], "subscribe", "announce updates to this channel")
+async def command_subscribe(command, message):
+  await mod_data("announcement_channels", lambda x: x | {message.channel.id}, default = set())
+  await send(message, "Subscribed to status updates here!")
+
+@client.command("Channel Type Commands", ["unsubscribe"], "unsubscribe", "stop announcing updates to this channel")
+async def command_unsubscribe(command, message):
+  await mod_data("announcement_channels", lambda x: x - {message.channel.id}, default = set())
+  await send(message, "Unsubscribed from status updates here!")
+
+@client.command("Channel Type Commands", ["watch", ("osu")], "watch osu", "watch osu! updates here")
+async def command_watch(command, message):
+  await mod_data("watch_channels", command[2], lambda x: x | {message.channel.id}, default = set())
+  await send(message, "Now watching " + {"osu": "osu!"}[command[2]] + " updates in this channel!")
+
+@client.command("Channel Type Commands", ["unwatch", ("osu")], "unwatch osu", "stop watching osu! updates here")
+async def command_watch(command, message):
+  await mod_data("watch_channels", command[2], lambda x: x - {message.channel.id}, default = set())
+  await send(message, "No longer watching " + {"osu": "osu!"}[command[2]] + " updates in this channel!")
 
 words = None
 wordmap = {}
@@ -430,7 +440,8 @@ async def command_osu_details(command, message):
       if command[2] == "summary":
         await send(message, embed = discord.Embed(title = f"osu! player summary: {user['username']}", description = f"Level {user['level']}\nPP: {user['pp_raw']}\nRank: #{user['pp_rank']} (#{user['pp_country_rank']})\nAccuracy: {user['accuracy']}", color = client.color).set_thumbnail(url = f"http://s.ppy.sh/a/{user['user_id']}"))
       else:
-        await send(message, "Identified osu! player, but this feature is not implemented yet.", reaction = "x")
+        await send(message, "Identified osu! player, but this feature is not implemented yet. Here are the details:")
+        await send(message, "```" + str(user)[:1990] + "```")
   else:
     await send(message, f"Failed to fetch from osu! API: status code {rv.status_code}!", reaction = "x")
 
@@ -572,5 +583,6 @@ async def command_identify(command, message):
 
 @client.command("", re.compile(r"\b[hH]?[eE][hH][eE]\b").search, "", "")
 async def command_ehe_te_nandayo(command, message):
-  if message.author != client.user:
+  if message.author != client.user and time.time() - await get_data("ehe", message.author.id, default = 0) > 30:
     await send(message, "**ehe te nandayo!?**", reaction = "?")
+    await set_data("ehe", message.author.id, time.time())

@@ -1,4 +1,4 @@
-from rpg import *
+from commands import *
 
 async def direct():
   await ainput()
@@ -48,5 +48,19 @@ async def direct():
           except:
             print("Sending failed, for some reason. Try again.")
 
+async def osu_watch():
+  return
+  asyncio.sleep(10)
+  while True:
+    for channel in await get_data("watch_channels", "osu", default = set()):
+      for member in channel.members:
+        if await has_data("external", "osu", member):
+          await channel.send("Tracking osu! player " + member.display_name + " in this channel.")
+    asyncio.sleep(10)
+
 loop = asyncio.get_event_loop()
-loop.run_until_complete(asyncio.gather(client.start(config["discord-token"]), direct()))
+loop.run_until_complete(asyncio.gather(
+  client.start(config["discord-token"]),
+  direct(),
+  osu_watch()
+))

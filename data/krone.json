@@ -1,17 +1,38 @@
 {
   "talents": {
+    "battle-resilience": {
+      "name": "Battle Resilience",
+      "trigger": "turn",
+      "condition": 1,
+      "syntax": [],
+      "effects": {
+        "self": {
+          "healing": 10
+        }
+      },
+      "charges": -1,
+      "description": "Your battle resilience heals you at the start of your turn."
+    },
+    "instant-heal": {
+      "name": "Instant Heal",
+      "trigger": "instant",
+      "condition": 1,
+      "syntax": [
+        [["team", "target"]]
+      ],
+      "effects": {
+        "target": {
+          "healing": [":", "missing-hp", 2]
+        }
+      },
+      "charges": 1,
+      "description": "You instantly restore half of an ally's health (including yourself)."
+    },
     "megumin-mega-explosion": {
       "name": "Megumin's Mega-Explosion!",
       "trigger": "normal",
-      "targeting": {
-        "self": 1,
-        "ally": 0,
-        "enemy": 0,
-        "unit": 1,
-        "unit-range": 10,
-        "area": 0,
-        "range": 0
-      },
+      "condition": 1,
+      "syntax": [],
       "effects": {
         "enemy": {
           "damage": {
@@ -26,8 +47,8 @@
           }
         }
       },
-      "charges": {},
-      "description": "Unleash a massive explosion around yourself, dealing 50% of enemies' maximum HP as fire damage and 50% as impact damage. The explosion is so powerful that you also take 10% of your maximum HP as fire damage and 20% as psychic damage."
+      "charges": 1,
+      "description": "Unleash a massive explosion around yourself, dealing fire and impact damage to enemies. The explosion is so powerful that you also take some fire and psychic damage."
     }
   }
 }

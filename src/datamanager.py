@@ -14,11 +14,13 @@ with open("data/config.json", "r") as f:
   config = json.load(f)
 
 async def get_data(*query, default = None, set_if_missing = False):
+  if current_data is None:
+    load_data()
   item = current_data
   if len(query) == 0:
     return item
   for q in query[:-1]:
-    if q not in item:
+    if item.get(q) is None:
       if set_if_missing:
         item[q] = {}
       else:
