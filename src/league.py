@@ -1,10 +1,11 @@
-import datetime, discord, requests, traceback
+import datetime, discord, edit_distance, requests, traceback
 
 from riotwatcher import LolWatcher, ApiError
 
-from client import emoji
+from client import emoji, english_list
 from datamanager import config, get_data
 from discordutils import get_member
+from errors import BotError
 
 watcher = LolWatcher(config["api-keys"]["riot"], timeout = 5)
 lol_region = "na1"
@@ -53,6 +54,68 @@ for spell in spell_list.values():
 # ITEMS
 
 lolitems = watcher.data_dragon.items(lol_version)["data"]
+
+name_map = {}
+
+lower_names = {}
+
+for key in lolitems:
+  lk = "".join(lolitems[key]["name"].lower().split())
+  lower_names[lk] = {**lolitems[key], "id": key}
+  name_map[lk] = lolitems[key]["name"]
+
+def build_path(key, prefix = 0):
+  item = lolitems[key]
+  output = "|---" * prefix + f"{item['name']} - {item['gold']['total']} {emoji('gold')}" + (f" ({item['gold']['base']} {emoji('gold')})" if item["gold"]["total"] != item["gold"]["base"] else "")
+  for sub in item.get("from", []):
+    output += "\n" + build_path(sub, prefix + 1)
+  return output
+
+def soft_match(a, b):
+  for c in a:
+    f = b.find(c)
+    if f == -1:
+      return False
+    b = b[f + 1:]
+  return True
+
+def find_item(name):
+  prefix = []
+  suffix = []
+  inner = []
+  soft = []
+  for realname in lower_names:
+    if name == realname:
+      return lower_names[name]
+    if realname.startswith(name):
+      prefix.append(realname)
+    if realname.endswith(name):
+      suffix.append(realname)
+    if name in realname:
+      inner.append(realname)
+    if soft_match(name, realname):
+      soft.append(realname)
+  if len(prefix) == 0:
+    if len(suffix) == 0:
+      if len(inner) == 0:
+        if len(soft) == 0:
+          raise BotError(f"No such item found matching '{name}'!")
+        elif len(soft) == 1:
+          return lower_names[soft[0]]
+        else:
+          raise BotError(f"Multiple items found matching '{name}' ({english_list(map(name_map.__getitem__, soft))}); please narrow your search query!")
+      elif len(inner) == 1:
+        return lower_names[inner[0]]
+      else:
+        raise BotError(f"Multiple items found containing '{name}' in its name ({english_list(map(name_map.__getitem__, inner))}); please narrow your search query!")
+    elif len(suffix) == 1:
+      return lower_names[suffix[0]]
+    else:
+      raise BotError(f"Multiple items found ending with '{name}' ({english_list(map(name_map.__getitem__, suffix))}); please narrow your search query!")
+  elif len(prefix) == 1:
+    return lower_names[prefix[0]]
+  else:
+    raise BotError(f"Multiple items found starting with '{name}' ({english_list(map(name_map.__getitem__, prefix))}); please narrow your search query!")
 
 # QUEUES
 

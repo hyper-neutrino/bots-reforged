@@ -1,6 +1,8 @@
-import asyncio, datetime, discord, json, random, re, requests, time, traceback
+import asyncio, datetime, discord, json, pycountry, random, re, requests, time, traceback
 
 from aioconsole import ainput
+
+from word2number import w2n
 
 from client import *
 from datamanager import config, del_data, get_data, has_data, mod_data, set_data, batch_set_data
@@ -237,29 +239,31 @@ async def command_unalias(command, message):
   await set_data("aliases", message.guild.id, command[2].lower(), None)
   await send(message, f"Removed the alias for '{command[2].lower()}'!")
 
-@client.command("User Commands", ["unbonk", "?"], "unbonk <user>", "alias for `unignore`")
-@client.command("User Commands", ["unignore", "?"], "unignore <user>", "make the bot no longer ignore messages from a particular user (on a server)")
-@client.command("User Commands", ["bonk", "?"], "bonk <user>", "alias for `ignore`")
-@client.command("User Commands", ["ignore", "?"], "ignore <user>", "make the bot ignore all messages from a particular user (on a server)")
+@client.command("User Commands", ["unbonk", "?", "..."], "unbonk <user>", "alias for `unignore`")
+@client.command("User Commands", ["unignore", "?", "..."], "unignore <user>", "make the bot no longer ignore messages from a particular user (on a server)")
+@client.command("User Commands", ["bonk", "?", "..."], "bonk <user>", "alias for `ignore`")
+@client.command("User Commands", ["ignore", "?", "..."], "ignore <user>", "make the bot ignore all messages from a particular user (on a server)")
 async def command_ignore(command, message):
-  member = await get_member(message.guild, command[2], message.author)
-  if not command[1].startswith("un") and member == message.author:
-    await send(message, f"You cannot {command[1]} yourself!", reaction = "x")
-  else:
-    await set_data("ignore", message.guild.id, member.id, not command[1].startswith("un"))
-    await send(message, f"No longer ignoring {member.name}#{member.discriminator}!" if command[1].startswith("un") else f"{'Bonk! ' * (command[1] == 'bonk')}Now ignoring {member.name}#{member.discriminator}!")
+  for uinfo in command[2:]:
+    member = await get_member(message.guild, uinfo, message.author)
+    if not command[1].startswith("un") and member == message.author:
+      await send(message, f"You cannot {command[1]} yourself!", reaction = "x")
+    else:
+      await set_data("ignore", message.guild.id, member.id, not command[1].startswith("un"))
+      await send(message, f"No longer ignoring {member.name}#{member.discriminator}!" if command[1].startswith("un") else f"{'Bonk! ' * (command[1] == 'bonk')}Now ignoring {member.name}#{member.discriminator}!")
 
-@client.command("User Commands", ["unshut", "?"], "unbonk <user>", "alias for `unsilence`")
-@client.command("User Commands", ["unsilence", "?"], "unignore <user>", "make the bot delete messages from a particular user (on a server)")
-@client.command("User Commands", ["shut", "?"], "bonk <user>", "alias for `silence`")
-@client.command("User Commands", ["silence", "?"], "ignore <user>", "make the bot delete messages from a particular user (on a server)")
+@client.command("User Commands", ["unshut", "?", "..."], "unbonk <user>", "alias for `unsilence`")
+@client.command("User Commands", ["unsilence", "?", "..."], "unignore <user>", "make the bot delete messages from a particular user (on a server)")
+@client.command("User Commands", ["shut", "?", "..."], "bonk <user>", "alias for `silence`")
+@client.command("User Commands", ["silence", "?", "..."], "ignore <user>", "make the bot delete messages from a particular user (on a server)")
 async def command_silence(command, message):
-  member = await get_member(message.guild, command[2], message.author)
-  if not command[1].startswith("un") and member == message.author:
-    await send(message, f"You cannot {command[1]} yourself!", reaction = "x")
-  else:
-    await set_data("silence", message.guild.id, member.id, not command[1].startswith("un"))
-    await send(message, f"No longer silencing {member.name}#{member.discriminator}!" if command[1].startswith("un") else f"{'https://i.redd.it/l5jmlb1ltqj51.jpg' * (command[1] == 'shut')}Now silencing {member.name}#{member.discriminator}!")
+  for uinfo in command[2:]:
+    member = await get_member(message.guild, uinfo, message.author)
+    if not command[1].startswith("un") and member == message.author:
+      await send(message, f"You cannot {command[1]} yourself!", reaction = "x")
+    else:
+      await set_data("silence", message.guild.id, member.id, not command[1].startswith("un"))
+      await send(message, f"No longer silencing {member.name}#{member.discriminator}!" if command[1].startswith("un") else f"{'https://i.redd.it/l5jmlb1ltqj51.jpg' * (command[1] == 'shut')}Now silencing {member.name}#{member.discriminator}!")
 
 @client.command("Role Commands", ["gib", "?", "..."], "gib <name> [roles...]", "alias for `role give`")
 @client.command("Role Commands", ["role", "give", "?", "..."], "role give <name> [roles...]", "give a list of roles to a user")
@@ -438,10 +442,48 @@ async def command_osu_details(command, message):
     else:
       user = data[0]
       if command[2] == "summary":
-        await send(message, embed = discord.Embed(title = f"osu! player summary: {user['username']}", description = f"Level {user['level']}\nPP: {user['pp_raw']}\nRank: #{user['pp_rank']} (#{user['pp_country_rank']})\nAccuracy: {user['accuracy']}", color = client.color).set_thumbnail(url = f"http://s.ppy.sh/a/{user['user_id']}"))
+        await send(message, embed = discord.Embed(title = f"osu! player details: {user['username']}", description = f"Level {user['level']}\nPP: {user['pp_raw']}\nRank: #{user['pp_rank']} (#{user['pp_country_rank']})\nAccuracy: {user['accuracy']}", color = client.color).set_thumbnail(url = f"http://s.ppy.sh/a/{user['user_id']}"))
       else:
-        await send(message, "Identified osu! player, but this feature is not implemented yet. Here are the details:")
-        await send(message, "```" + str(user)[:1990] + "```")
+        seconds = int(user["total_seconds_played"])
+        minutes, seconds = divmod(seconds, 60)
+        hours, minutes = divmod(minutes, 60)
+        await send(message, embed = discord.Embed(
+          title = f"osu! player summary: {user['username']} #{user['user_id']}",
+          description = f"User since {user['join_date']}",
+          url = f"https://osu.ppy.sh/users/{user['user_id']}",
+          color = client.color
+        ).add_field(
+          name = "Level",
+          value = user["level"]
+        ).add_field(
+          name = "Accuracy",
+          value = user["accuracy"]
+        ).add_field(
+          name = "Performance Points",
+          value = user["pp_raw"]
+        ).add_field(
+          name = "Rank",
+          value = f"#{user['pp_rank']} (#{user['pp_country_rank']} in {pycountry.countries.get(alpha_2 = user['country']).name})"
+        ).add_field(
+          name = "Score Counts",
+          value = " ".join(f"{user['count' + x]} {emoji('osu_' + x)}" for x in ["300", "100", "50"]),
+          inline = False
+        ).add_field(
+          name = "Rating Counts",
+          value = " ".join(f"{user['count_rank_' + x.lower()]} {emoji('osu_' + x)}" for x in ["SSH", "SS", "SH", "S", "A"]),
+          inline = False
+        ).add_field(
+          name = "Best Score",
+          value = user['ranked_score']
+        ).add_field(
+          name = "Total Score",
+          value = user['total_score']
+        ).add_field(
+          name = "Time Played",
+          value = f"{hours}:{str(minutes).zfill(2)}:{str(seconds).zfill(2)}"
+        ).set_thumbnail(
+          url = f"http://s.ppy.sh/a/{user['user_id']}"
+        ))
   else:
     await send(message, f"Failed to fetch from osu! API: status code {rv.status_code}!", reaction = "x")
 
@@ -498,7 +540,7 @@ async def command_lol_ranges(command, message):
   else:
     items = []
     for champ in champs:
-      data = requests.get(f"http://ddragon.leagueoflegends.com/cdn/10.16.1/data/en_US/champion/{champ}.json").json()
+      data = requests.get(f"http://ddragon.leagueoflegends.com/cdn/{lol_version}/data/en_US/champion/{champ}.json").json()
       items.append((data["data"][champ]["stats"]["attackrange"], data["data"][champ]["name"], "Basic Attack"))
       for i, spell in enumerate(data["data"][champ]["spells"]):
         ident = data["data"][champ]["name"] + " " + ("QWER"[i] if 0 <= i < 4 else "?")
@@ -523,6 +565,113 @@ async def command_lol_ranges(command, message):
       stack = ", ".join(f"{ident} ({name})" for ident, name in stack)
       info += f"\n__{rng}__: {stack}"
     await send(message, info, reaction = "check")
+
+@client.command("League of Legends Commands", [("lol", "league"), "item", "?", "..."], "lol item <name>", "get details about an item")
+async def command_lol_item(command, message):
+  item = find_item("".join(command[3:]).lower())
+  await send(message, embed = discord.Embed(
+    title = f"League of Legends Item: {item['name']} (#{item['id']})",
+    description = re.sub("(\\() (.)|(.) (\\))", "\\1\\2\\3\\4", re.sub(" +", " ", re.sub("<[^>]+?>", "", re.sub("<br>|<li>", "\n", item["description"])))),
+    color = client.color,
+    url = f"https://leagueoflegends.fandom.com/wiki/{item['name'].replace(' ', '_')}"
+  ).add_field(
+    name = "Build Path",
+    value = build_path(item["id"]) + ("\n\nBuilds into: " + english_list(lolitems[key]["name"] for key in item.get("into")) if item.get("into") else "")
+  ).add_field(
+    name = "Tags",
+    value = "\n".join("- " + {
+      "CriticalStrike": "Critical Strike",
+      "NonbootsMovement": "Movement Speed",
+      "SpellDamage": "Ability Power",
+      "MagicPenetration": "Magic Penetration",
+      "ArmorPenetration": "Armor Penetration",
+      "SpellBlock": "Magic Resistance",
+      "Slow": "Movement Reduction",
+      "Jungle": "Jungling",
+      "Health": "Health",
+      "Lane": "Laning",
+      "Aura": "Aura",
+      "HealthRegen": "Health Regeneration",
+      "SpellVamp": "Spell Vamp",
+      "GoldPer": "Gold Income",
+      "Mana": "Mana",
+      "Vision": "Vision",
+      "LifeSteal": "Physical Vamp",
+      "Consumable": "Consumable",
+      "Armor": "Armor",
+      "Stealth": "Stealth",
+      "ManaRegen": "Mana Regeneration",
+      "OnHit": "On-Hit",
+      "Active": "Active",
+      "CooldownReduction": "Cooldown Reduction",
+      "Trinket": "Trinket",
+      "AttackSpeed": "Attack Speed",
+      "Boots": "Boots",
+      "AbilityHaste": "Ability Haste",
+      "Tenacity": "Tenacity",
+      "Damage": "Attack Damage"
+    }[tag] for tag in item["tags"])
+  ).set_thumbnail(
+    url = f"http://ddragon.leagueoflegends.com/cdn/{lol_version}/img/item/{item['id']}.png"
+  ))
+
+stats_length = 24
+
+async def stats(channel):
+  counts = {}
+  async for message in channel.history(limit = None):
+    uinfo = f"{truncate(message.author.name, stats_length - 5)}#{message.author.discriminator}"
+    counts[uinfo] = counts.get(uinfo, 0) + 1
+  return sorted(counts.items(), key = lambda a: (-a[1], a[0]))
+
+def truncate(string, length):
+  if len(string) > length:
+    return string[:length - 1] + "…"
+  return string
+
+@client.command("Server Statistics Commands", [("channel", "server"), "stats"], "<channel | server> stats", "output the number of messages sent in each channel by each user")
+async def command_channel_stats(command, message):
+  async with message.channel.typing():
+    if command[1] == "channel":
+      s = await stats(message.channel)
+      total = sum(b for _, b in s)
+      mc = len(str(max(b for _, b in s)))
+      l = max(len(a) for a, _ in s)
+      await send(message, embed = discord.Embed(
+        title = f"Channel Stats for #{message.channel.name}",
+        description = "```\n" + "\n".join(f"{uinfo.ljust(l)}  {str(count).ljust(mc)} ({count / total:.2f}%)" for uinfo, count in await stats(message.channel)) + "\n```",
+        color = client.color
+      ))
+    else:
+      counts = {}
+      ccount = {}
+      cname = {}
+      total = 0
+      failed = 0
+      for channel in message.guild.channels:
+        try:
+          if isinstance(channel, discord.TextChannel):
+            cname[channel.id] = channel.name
+            for uinfo, count in await stats(channel):
+              counts[uinfo] = counts.get(uinfo, 0) + count
+              ccount[channel.id] = ccount.get(channel.id, 0) + count
+              total += count
+        except:
+          failed += 1
+      mc = len(str(max(max(counts.values()), max(ccount.values()))))
+      ul = max(map(len, counts))
+      cl = max(map(len, cname.values()))
+      l = min(max(ul, cl), stats_length)
+      counts = sorted(counts.items(), key = lambda a: (-a[1], a[0]))
+      ccount = sorted(ccount.items(), key = lambda a: (-a[1], a[0]))
+      await send(message, embed = discord.Embed(
+        title = f"Server Stats for {message.guild.name}",
+        description = "```\n" + "\n".join(f"{uinfo.ljust(l)}  {str(count).ljust(mc)} ({count / total:.2f}%)" for uinfo, count in counts) +
+                      "\n\n" + "\n".join(f"#{truncate(cname[cid].ljust(l - 1), stats_length - 1)}  {str(count).ljust(mc)} ({count / total:.2f}%)" for cid, count in ccount) + "\n```",
+        color = client.color
+      ))
+      if failed:
+        await send(message, f"Failed to index the results from {failed} channel{'s' * (failed != 1)}; likely this bot does not have permission to access them.")
 
 @client.command("", ["echo", "..."], "echo <message>", "echo the message")
 async def command_echo(command, message):
@@ -586,3 +735,11 @@ async def command_ehe_te_nandayo(command, message):
   if message.author != client.user and time.time() - await get_data("ehe", message.author.id, default = 0) > 30:
     await send(message, "**ehe te nandayo!?**", reaction = "?")
     await set_data("ehe", message.author.id, time.time())
+
+@client.command("", re.compile(r"\[\w+\]").search, "", "")
+async def command_emoji_react(command, message):
+  for c in re.findall(r"\[(\w+)\]", message.content):
+    try:
+      await message.add_reaction(emoji(c))
+    except:
+      pass

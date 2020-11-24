@@ -49,14 +49,26 @@ async def direct():
             print("Sending failed, for some reason. Try again.")
 
 async def osu_watch():
-  return
-  asyncio.sleep(10)
+  await asyncio.sleep(5)
   while True:
-    for channel in await get_data("watch_channels", "osu", default = set()):
+    for cid in await get_data("watch_channels", "osu", default = set()):
+      channel = client.get_channel(cid)
       for member in channel.members:
-        if await has_data("external", "osu", member):
-          await channel.send("Tracking osu! player " + member.display_name + " in this channel.")
-    asyncio.sleep(10)
+        if await has_data("external", "osu", member.id):
+          osu = await get_data("external", "osu", member.id)
+          try:
+            data = requests.get(f"https://osu.ppy.sh/api/get_user?k={config['api-keys']['osu']}&u={osu}&event_days=1").json()[0]
+            for event in data["events"]:
+              match = re.match("<b><a[^>]+>[^<]+</a></b> unlocked the \"<b>(.+)</b>\" medal!", event["display_html"])
+              if match:
+                medal = match.group(1)
+                if not await has_data("watchlog", "osu", member.id, medal):
+                  await set_data("watchlog", "osu", member.id, medal, True)
+                  await channel.send(f"Congratulations to {member.mention} for earning the **{medal}** medal!")
+          except:
+            print(f"Error in osu!watch for {member.name}#{member.discriminator} (osu user {osu}).")
+            print(traceback.format_exc())
+    await asyncio.sleep(5)
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(asyncio.gather(

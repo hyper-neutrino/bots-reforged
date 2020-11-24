@@ -1,4 +1,4 @@
-import discord, shlex, traceback
+import asyncio, discord, shlex, time, traceback
 
 from datamanager import config, get_data, load_data
 from errors import BotError, DataError
@@ -111,7 +111,16 @@ emoji_shorthand = {
   "check": "✅"
 }
 
+next_slot = 0
+
 async def send(message, *args, **kwargs):
+  global next_slot
+  if next_slot > time.time():
+    async with message.channel.typing():
+      await asyncio.sleep(next_slot - time.time())
+      next_slot += 1
+  else:
+    next_slot = time.time() + 1
   if "embed" in kwargs:
     kwargs["embed"].set_footer(text = f"Requested by {message.author.display_name}")
   reply = await message.channel.send(*args, **{a: kwargs[a] for a in kwargs if a != "reaction"})
