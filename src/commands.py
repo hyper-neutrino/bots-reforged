@@ -9,6 +9,12 @@ from datamanager import config, del_data, get_data, has_data, mod_data, set_data
 from discordutils import *
 from league import *
 
+async def dm(user, *a, **k):
+  channel = user.dm_channel
+  if channel is None:
+    channel = await user.create_dm()
+  await channel.send(*a, **k)
+
 @client.command("", ["help"], "", "")
 @client.command("General Commands", ["help", "rpg"], "help [rpg]", "post a list of commands")
 async def command_help(command, message):
@@ -27,10 +33,7 @@ async def command_help(command, message):
   for section in sections:
     embed.add_field(name = section, value = "\n".join(sections[section]), inline = False)
   
-  channel = message.author.dm_channel
-  if channel is None:
-    channel = await message.author.create_dm()
-  await channel.send(embed = embed)
+  await dm(message.author, embed = embed)
   await send(message, "Sent the command list to your DMs!")
 
 @client.command("General Commands", ["ping"], "ping", "check your ping")
@@ -48,15 +51,15 @@ async def command_unsubscribe(command, message):
   await mod_data("announcement_channels", lambda x: x - {message.channel.id}, default = set())
   await send(message, "Unsubscribed from status updates here!")
 
-@client.command("Channel Type Commands", ["watch", ("osu")], "watch osu", "watch osu! updates here")
+@client.command("Channel Type Commands", ["watch", ("osu", "genshin")], "watch osu/genshin", "watch osu!/Genshin Impact updates here")
 async def command_watch(command, message):
   await mod_data("watch_channels", command[2], lambda x: x | {message.channel.id}, default = set())
-  await send(message, "Now watching " + {"osu": "osu!"}[command[2]] + " updates in this channel!")
+  await send(message, "Now watching " + {"osu": "osu!", "genshin": "Genshin Impact"}[command[2]] + " updates in this channel!")
 
-@client.command("Channel Type Commands", ["unwatch", ("osu")], "unwatch osu", "stop watching osu! updates here")
+@client.command("Channel Type Commands", ["unwatch", ("osu", "genshin")], "unwatch osu/genshin", "stop watching osu!/Genshin Impact updates here")
 async def command_watch(command, message):
   await mod_data("watch_channels", command[2], lambda x: x - {message.channel.id}, default = set())
-  await send(message, "No longer watching " + {"osu": "osu!"}[command[2]] + " updates in this channel!")
+  await send(message, "No longer watching " + {"osu": "osu!", "genshin": "Genshin Impact"}[command[2]] + " updates in this channel!")
 
 words = None
 wordmap = {}
@@ -129,12 +132,12 @@ async def anagram_function(message, answer = None, start = False, stop = False, 
         active = False
         bonus_display = f" **+{bonus}**" if bonus else ""
         alt_display = f" (Alternative answers: {english_list(quote(answers - {answer}))})" if len(answers) > 1 else ""
-        await send(message, f"Congratulations to {message.author.mention} for winning the anagram puzzle! (+{points}{bonus_display}){alt_display}")
+        await send(message, f"Congratulations to {message.author.mention} for winning the anagram puzzle! (+{points}{bonus_display}){alt_display}", allowed_mentions = discord.AllowedMentions.none())
         start = True
       except:
         print(traceback.format_exc())
     elif answer in await get_data("anagram", message.channel.id, "last", default = set()) and time.time() - await get_data("anagram", message.channel.id, "lasttime", default = 0) <= 1:
-      await send(message, f"{message.author.mention} L", reaction = "x")
+      await send(message, f"{message.author.mention} L", reaction = "x", allowed_mentions = discord.AllowedMentions.none())
 
     if start:
       if active:
@@ -232,7 +235,7 @@ async def command_anagram_answer(command, message):
 async def command_alias(command, message):
   member = await get_member(message.guild, command[3], message.author)
   await set_data("aliases", message.guild.id, command[2].lower(), member.id)
-  await send(message, f"Aliased '{command[2].lower()}' to {member.name}#{member.discriminator}!")
+  await send(message, f"Aliased '{command[2].lower()}' to {member.mention}!", allowed_mentions = discord.AllowedMentions.none())
 
 @client.command("User Commands", ["unalias", "?"], "unalias <name>", "remove a name's alias")
 async def command_unalias(command, message):
@@ -250,7 +253,7 @@ async def command_ignore(command, message):
       await send(message, f"You cannot {command[1]} yourself!", reaction = "x")
     else:
       await set_data("ignore", message.guild.id, member.id, not command[1].startswith("un"))
-      await send(message, f"No longer ignoring {member.name}#{member.discriminator}!" if command[1].startswith("un") else f"{'Bonk! ' * (command[1] == 'bonk')}Now ignoring {member.name}#{member.discriminator}!")
+      await send(message, f"No longer ignoring {member.mention}!" if command[1].startswith("un") else f"{'Bonk! ' * (command[1] == 'bonk')}Now ignoring {member.mention}!", allowed_mentions = discord.AllowedMentions.none())
 
 @client.command("User Commands", ["unshut", "?", "..."], "unbonk <user>", "alias for `unsilence`")
 @client.command("User Commands", ["unsilence", "?", "..."], "unignore <user>", "make the bot delete messages from a particular user (on a server)")
@@ -263,7 +266,7 @@ async def command_silence(command, message):
       await send(message, f"You cannot {command[1]} yourself!", reaction = "x")
     else:
       await set_data("silence", message.guild.id, member.id, not command[1].startswith("un"))
-      await send(message, f"No longer silencing {member.name}#{member.discriminator}!" if command[1].startswith("un") else f"{'https://i.redd.it/l5jmlb1ltqj51.jpg' * (command[1] == 'shut')}Now silencing {member.name}#{member.discriminator}!")
+      await send(message, f"No longer silencing {member.mention}!" if command[1].startswith("un") else f"{'https://i.redd.it/l5jmlb1ltqj51.jpg' * (command[1] == 'shut')}Now silencing {member.mention}!", allowed_mentions = discord.AllowedMentions.none())
 
 @client.command("Role Commands", ["gib", "?", "..."], "gib <name> [roles...]", "alias for `role give`")
 @client.command("Role Commands", ["role", "give", "?", "..."], "role give <name> [roles...]", "give a list of roles to a user")
@@ -271,8 +274,11 @@ async def command_role_give(command, message):
   user, *names = command[2 if command[1] == "gib" else 3:]
   member = await get_member(message.guild, user, message.author)
   roles = [get_role(message.guild, string) for string in names]
-  await member.add_roles(*roles)
-  await send(message, f"Granted {english_list(quote(role.name for role in roles))} to {member.name}#{member.discriminator}!")
+  if any(role.id == 741731868692709416 for role in roles) and member.id != 251082987360223233:
+    await send(message, f"<@&741731868692709416> is exclusive to <@!251082987360223233>!", allowed_mentions = discord.AllowedMentions.none())
+  else:
+    await member.add_roles(*roles)
+    await send(message, f"Granted {english_list(quote(role.mention for role in roles))} to {member.mention}!", allowed_mentions = discord.AllowedMentions(roles = False))
 
 @client.command("Role Commands", ["gibnt", "?", "..."], "gibnt <name> [roles...]", "alias for `role remove`")
 @client.command("Role Commands", ["role", "remove", "?", "..."], "role remove <name> [roles...]", "remove a list of roles from a user")
@@ -281,20 +287,23 @@ async def command_role_remove(command, message):
   member = await get_member(message.guild, user, message.author)
   roles = [get_role(message.guild, string) for string in names]
   await member.remove_roles(*roles)
-  await send(message, f"Removed {english_list(quote(role.name for role in roles))} from {member.name}#{member.discriminator}!")
+  await send(message, f"Removed {english_list(quote(role.mention for role in roles))} from {member.mention}!", allowed_mentions = discord.AllowedMentions(roles = False))
 
 @client.command("", ["role", "colour", "?"], "", "")
 @client.command("", ["role", "color", "?"], "", "")
 @client.command("Role Commands", ["role", "colour", "?", "?"], "role colour <role> [colour = 0]", "alias for `role color`")
 @client.command("Role Commands", ["role", "color", "?", "?"], "role color <role> [color = 0]", "recolor a role, or remove its color")
 async def command_role_color(command, message):
-  await get_role(message.guild, command[3]).edit(color = get_color(command[4] if len(command) > 4 else "0"))
-  await send(message, f"Recolored '{command[3]}'!")
+  role = get_role(message.guild, command[3])
+  await role.edit(color = get_color(command[4] if len(command) > 4 else "0"))
+  await send(message, f"Recolored '{role.mention}'!", allowed_mentions = discord.AllowedMentions.none())
 
 @client.command("Role Commands", ["role", "rename", "?", "?"], "role rename <role> <name>", "rename a role")
 async def command_role_rename(command, message):
-  await get_role(message.guild, command[3]).edit(name = command[4])
-  await send(message, f"Renamed '{command[3]}' to '{command[4]}'!")
+  role = get_role(message.guild, command[3])
+  name = role.name
+  await role.edit(name = command[4])
+  await send(message, f"Renamed '{name}' to '{command[4]}'!")
 
 services = {
   "lol": "lol",
@@ -302,26 +311,28 @@ services = {
   "dmoj": "dmoj",
   "cf": "cf",
   "codeforces": "cf",
-  "osu": "osu"
+  "osu": "osu",
+  "ow": "ow",
+  "overwatch": "ow"
 }
 
 service_list = tuple(services)
 
 @client.command("", [service_list, "link", "?"], "", "")
-@client.command("External User Commands", [service_list, "link", "?", "?"], "<lol/league | cf/codeforces | dmoj> link [user = me] <account>", "link a user to an external account")
+@client.command("External User Commands", [service_list, "link", "?", "?"], "<lol/league | cf/codeforces | dmoj | osu | ow/overwatch> link [user = me] <account>", "link a user to an external account")
 async def command_link(command, message):
   service = services[command[1]]
   member = await get_member(message.guild, command[3] if len(command) == 5 else "me", message.author)
   await set_data("external", service, member.id, command[-1])
-  await send(message, f"Linked {member.name}#{member.discriminator} to {command[-1]}!")
+  await send(message, f"Linked {member.mention} to {command[-1]}!", allowed_mentions = discord.AllowedMentions.none())
 
 @client.command("", [service_list, "unlink"], "", "")
-@client.command("External User Commands", [service_list, "unlink", "?"], "<lol/league | cf/codeforces | dmoj> unlink [user = me]", "unlink a user from a service")
+@client.command("External User Commands", [service_list, "unlink", "?"], "<lol/league | cf/codeforces | dmoj | osu | ow/overwatch> unlink [user = me]", "unlink a user from a service")
 async def command_link(command, message):
   service = services[command[1]]
   member = await get_member(message.guild, command[3] if len(command) == 4 else "me", message.author)
   await del_data("external", service, member.id)
-  await send(message, f"Unlinked {member.name}#{member.discriminator}!")
+  await send(message, f"Unlinked {member.mention}!", allowed_mentions = discord.AllowedMentions.none())
 
 async def get_ext_user(key, error, command, message):
   if len(command) == 3:
@@ -486,6 +497,62 @@ async def command_osu_details(command, message):
         ))
   else:
     await send(message, f"Failed to fetch from osu! API: status code {rv.status_code}!", reaction = "x")
+
+def display_ow_rank(rating):
+  try:
+    rank = int(rating)
+    if rank < 1500:
+      e = "ow_bronze"
+    elif rank < 2000:
+      e = "ow_silver"
+    elif rank < 2500:
+      e = "ow_gold"
+    elif rank < 3000:
+      e = "ow_platinum"
+    elif rank < 3500:
+      e = "ow_diamond"
+    elif rank < 4000:
+      e = "ow_master"
+    else:
+      e = "ow_grandmaster"
+    return f"{rating} {emoji(e)}"
+  except:
+    return rating
+
+@client.command("", [("ow", "overwatch"), "summary"], "", "")
+@client.command("External User Commands", [("ow", "overwatch"), "summary", "?"], "ow/overwatch summary <player = me>", "report an overwatch player's summary")
+async def command_ow_summary(command, message):
+  ow = await get_ext_user("ow", "a Blizzard battletag", command, message)
+  try:
+    r = requests.get(f"https://ow-api.com/v1/stats/pc/us/{ow}/profile")
+    if r.status_code != 200:
+      raise RuntimeError("Status Code not 200")
+    data = r.json()
+    try:
+      await send(message, embed = discord.Embed(
+        title = f"Overwatch player summary: {data['name']}",
+        description = "",
+        color = client.color
+      ).add_field(
+        name = "Level",
+        value = str(data["level"] + 100 * data["prestige"])
+      ).add_field(
+        name = "Rating",
+        value = display_ow_rank(data["rating"])
+      ).add_field(
+        name = "Games Won",
+        value = str(data["gamesWon"])
+      ).add_field(
+        name = "Competitive Winrate",
+        value = "%.2f%%" % (data["competitiveStats"]["games"]["won"] / data["competitiveStats"]["games"]["played"] * 100) if "games" in data["competitiveStats"] else "N/A"
+      ).set_thumbnail(
+        url = data["icon"]
+      ))
+    except:
+      print(traceback.format_exc())
+      await send(message, "Failed to generate embed!", reaction = "x")
+  except:
+    await send(message, f"Failed to fetch user data for `{ow}` from Overwatch API; check the spelling of this battletag (please format as `name-number`)!", reaction = "x")
 
 @client.command("", [("lol", "league"), ("report", "current", "report-player", "current-player")], "", "")
 @client.command("League of Legends Commands", [("lol", "league"), ("report", "current", "report-player", "current-player"), "?"], "lol/league <report | current>[-player] [player = me]", "create a game report for the player")
@@ -673,6 +740,147 @@ async def command_channel_stats(command, message):
       if failed:
         await send(message, f"Failed to index the results from {failed} channel{'s' * (failed != 1)}; likely this bot does not have permission to access them.")
 
+@client.command("Miscellaneous Commands", ["blame"], "blame", "blame a random person in this channel (cannot blame any bots)")
+async def command_blame(command, message):
+  members = []
+  for member in message.channel.members:
+    if not member.bot:
+      members.append(member)
+  await send(message, f"It was {random.choice(members).mention}'s fault!", allowed_mentions = discord.AllowedMentions.none())
+
+@client.command("Miscellaneous Commands", ["spoiler", "image"], "spoiler image", "accept an image in a DM to spoiler (for mobile users)")
+async def command_spoiler_image(command, message):
+  try:
+    await dm(message.author, f"The next image(s) you DM to me will be sent to {message.guild.name}#{message.channel.name} as a spoiler.")
+    await message.delete()
+    await set_data("dm_spoiler", message.author.id, message.channel.id)
+  except:
+    await send(message, "You need to allow me to DM you to use this feature!", reaction = "x")
+
+@client.command("Miscellaneous Commands", ["color", "image"], "color image", "auto-color the next image you send in this channel with DeepAI")
+async def command_spoiler_image(command, message):
+  await send(message, f"The next image you send in this channel will be automatically colored with the power of Artificial Intelligence.")
+  await set_data("img_color", message.author.id, message.channel.id, 0)
+
+async def nhentai(nhid, force = False):
+  if force or not await has_data("nhentai", nhid):
+    response = requests.get(f"https://nhentai.net/g/{nhid}")
+    if response.status_code == 404:
+      raise BotError("404 Not Found!")
+    elif response.status_code == 200:
+      t = response.text
+      urls = {x.replace("t.", "i.", 1).replace("t.", ".") for x in re.findall("https://t\\.nhentai\\.net/galleries/\\d+/\\d+t\\.\\w+", t)}
+      urls = sorted(urls, key = lambda s: [int(x) for x in re.findall("\\d+", s)])
+      title = re.findall("<span class=\"pretty\">\\s*(.+?)\\s*</span>", t)[0]
+      subtitle = re.findall("<span class=\"after\">\\s*(.+?)\\s*</span>", t)[0]
+      sauce = int(re.findall("\\d+", urls[0])[0])
+      await set_data("nhentai", nhid, (title, subtitle, sauce, urls))
+      return (title, subtitle, sauce, urls)
+    else:
+      raise BotError(f"Unknown error: {response.status_code}")
+  else:
+    return await get_data("nhentai", nhid)
+
+@client.command("Genshin Commands", ["genshin", ("remind", "reminder"), "..."], "genshin remind/reminder <item>", "set a reminder for a weekly boss, talent book, or weapon ascension material")
+@client.command("Genshin Commands", ["genshin", ("unremind", "unreminder"), "..."], "genshin unremind/unreminder <item>", "remove a reminder for a weekly boss, talent book, or weapon ascension material")
+async def command_genshin_remind(command, message):
+  async def edit(name):
+    if command[2] in ["remind", "reminder"]:
+      await mod_data("genshin", "remind", name, lambda x: x | {message.author.id}, default = set())
+    else:
+      await mod_data("genshin", "remind", name, lambda x: x - {message.author.id}, default = set())
+  item = " ".join(command[3:]).lower()
+  if item in ["dvalin", "stormterror", "dragon"]:
+    await edit("dvalin")
+  elif item in ["andrius", "wolf", "boreas", "lupus", "lupus boreas"]:
+    await edit("andrius")
+  elif item in ["tartaglia", "childe", "golden house"]:
+    await edit("childe")
+  elif item in ["freedom", "resistance", "ballad", "prosperity", "diligence", "gold"]:
+    await edit(item)
+  elif item in ["decarabian", "tile", "debris", "fragment", "tile of decarabian's tower", "debris of decarabian's city", "fragment of decarabian's epic", "scattered piece of decarabian's dream"]:
+    await edit("decarabian")
+  elif item in ["boreal", "tooth", "fang", "boreal wolf's milk tooth", "boreal wolf's cracked tooth", "boreal wolf's broken fang", "boreal wolf's nostalgia"]:
+    await edit("boreal")
+  elif item in ["dandelion", "dandelion gladiator", "fetters", "chains", "shackles", "fetters of the dandelion gladiator", "chains of the dandelion gladiator", "shackles of the dandelion gladiator", "dream of the dandelion gladiator"]:
+    await edit("dandelion")
+  elif item in ["guyun", "sands", "stone", "relic", "divine body", "luminous sands of guyun", "lustrous stone from guyun", "relic from guyun", "divine body from guyun"]:
+    await edit("guyun")
+  elif item in ["elixir", "mist", "mist veiled", "mist veiled elixir", "mist veiled lead elixir", "mist veiled mercury elixir", "mist veiled gold elixir", "mist veiled primo elixir"]:
+    await edit("elixir")
+  elif item in ["aerosiderite", "grain", "bit", "chunk", "grain of aerosiderite", "piece of aerosiderite", "bit of aerosiderite", "chunk of aerosiderite"]:
+    await edit("aerosiderite")
+  else:
+    raise BotError("I don't recognize that! You can only set reminders for weekly bosses, talent books, and weapon ascension materials.")
+  await message.add_reaction("✅")
+
+@client.command("Genshin Commands", ["genshin", "info", "..."], "genshin info <item>", "get info on an item (must enter the internal ID; ask a developer if unsure but it's not too counterintuitive)")
+async def command_genshin_info(command, message):
+  item = " ".join(command[3:]).lower()
+  await client.genshin_info(item, message.channel)
+  await message.add_reaction("✅")
+
+@client.command("", [("nhentai", "fnhentai"), "?"], "", "")
+async def command_nhentai(command, message):
+  nhid = int(command[2])
+  title, subtitle, sauce, urls = await nhentai(nhid, command[1] == "fnhentai")
+  reply = await send(message, embed = discord.Embed(title = title + " " + subtitle, url = f"https://nhentai.net/g/{nhid}", description = f"Page 1 / {len(urls)}").set_image(url = urls[0]))
+  await reply.add_reaction("⬅️")
+  await reply.add_reaction("➡️")
+  await set_data("nhentai_embed", reply.id, (nhid, 0))
+
+import httpx
+import img2pdf, os
+from PIL import Image
+from PyPDF3 import PdfFileMerger
+from io import BytesIO
+
+async def get_async(url):
+  async with httpx.AsyncClient() as client:
+    return await client.get(url)
+
+@client.command("", ["nhdownload", "?"], "", "")
+async def command_nhdownload(command, message):
+  async with message.channel.typing():
+    nhid = int(command[2])
+    title, subtitle, sauce, urls = await nhentai(nhid, True)
+    try:
+      os.mkdir(f"/tmp/{nhid}")
+    except:
+      pass
+    merger = PdfFileMerger()
+    responses = await asyncio.gather(*map(get_async, urls))
+    for page, r in enumerate(responses):
+      pdf_path = f"/tmp/{nhid}/{page}.pdf"
+      pdf_bytes = img2pdf.convert(r.content)
+      with open(pdf_path, "wb") as f:
+        f.write(pdf_bytes)
+      merger.append(pdf_path)
+    final_path = f"/tmp/{nhid}/final.pdf"
+    merger.write(final_path)
+    merger.close()
+    try:
+      with open(final_path, "rb") as f:
+        await send(message, file = discord.File(fp = f, filename = f"[{nhid}] {title}.pdf"))
+    except:
+      await send(message, f"The file is too large to upload; you can access it here: https://dev.hyper-neutrino.xyz/nh/{nhid}")
+
+@client.command("", lambda m: True, "", "")
+async def command_image_spoiler_reply(command, message):
+  if type(message.channel) == discord.DMChannel:
+    if len(message.attachments) > 0:
+      if await has_data("dm_spoiler", message.author.id):
+        await client.get_channel(await get_data("dm_spoiler", message.author.id)).send(files = [(await attachment.to_file(spoiler = True)) for attachment in message.attachments])
+        await del_data("dm_spoiler", message.author.id)
+
+@client.command("", lambda m: True, "", "")
+async def command_image_spoiler_reply(command, message):
+  if len(message.attachments) > 0:
+    if await has_data("img_color", message.author.id, message.channel.id):
+      r = requests.post("https://api.deepai.org/api/colorizer", data = {"image": message.attachments[0].url}, headers = {"api-key": "551549c3-8d2c-426b-ae9f-9211b13e6f14"})
+      await send(message, r.json()["output_url"])
+      await del_data("img_color", message.author.id, message.channel.id)
+
 @client.command("", ["echo", "..."], "echo <message>", "echo the message")
 async def command_echo(command, message):
   await send(message, message.content[message.content.find("echo") + 4:])
@@ -685,7 +893,7 @@ async def command_say(command, message):
 @client.command("", ["eval", "?", "..."], "eval <expr>", "evaluate a Python expression in a command function's scope")
 async def command_eval(command, message):
   if message.author.id not in config["sudo"]:
-    await send(message, "You must be a sudo user to do that!")
+    await send(message, "You must be a sudo user to do that!", reaction = "x")
   else:
     try:
       code = message.content[message.content.find("eval") + 4:].strip()
@@ -694,14 +902,14 @@ async def command_eval(command, message):
       elif code.startswith("```py"):
         code = code[5:]
       code = code.strip("`")
-      await send(message, "```python\n" + str(eval(code))[:1980] + "\n```")
+      await send(message, str(eval(code))[:2000])
     except:
       await send(message, "Error evaluating expression!", reaction = "x")
 
 @client.command("", ["exec", "?", "..."], "exec <code>", "execute Python code in a command function's scope (print is replaced with message output)")
 async def command_exec(command, message):
   if message.author.id not in config["sudo"]:
-    await send(message, "You must be a sudo user to do that!")
+    await send(message, "You must be a sudo user to do that!", reaction = "x")
   else:
     try:
       code = message.content[message.content.find("exec") + 4:].strip()
@@ -718,6 +926,17 @@ async def command_exec(command, message):
     except:
       await send(message, "Error executing expression!", reaction = "x")
 
+@client.command("", ["adjust", "ehecd", "?"], "adjust ehecd <x>", "adjust the cooldown of ehe te nandayo")
+async def command_exec(command, message):
+  if message.author.id not in config["sudo"]:
+    await send(message, "You must be a sudo user to do that!", reaction = "x")
+  else:
+    try:
+      await set_data("ehecd", int(command[3]))
+      await send(message, f"Cooldown of 'ehe te nandayo' is now {command[3]} second{'s' * (command[3] != '1')}!")
+    except:
+      await send(message, "Error; make sure you entered an integer!", reaction = "x")
+
 @client.command("", ["data", "..."], "data", "fetch data from the bot")
 async def command_data(command, message):
   if message.author.id not in config["sudo"]:
@@ -728,11 +947,52 @@ async def command_data(command, message):
 @client.command("", ["identify", "?"], "identify <user>", "identify a user")
 async def command_identify(command, message):
   member = await get_member(message.guild, command[2], message.author)
-  await send(message, f"Identified {member.name}#{member.discriminator}, a.k.a {member.display_name}, I.D. {member.id}.")
+  await send(message, f"Identified {member.name}#{member.discriminator}, a.k.a {member.display_name}, I.D. {member.id} ({member.mention})", allowed_mentions = discord.AllowedMentions.none())
+
+@client.command("", ["emoji", "?", "-"], "", "")
+@client.command("", ["emoji", "?"], "emoji <lookup> [-]", "post an emoji by lookup ID")
+async def command_emoji(command, message):
+  try:
+    await send(message, emoji(command[2]))
+    if len(command) == 4:
+      await message.delete()
+  except:
+    await send(message, "That resulted in an error.", reaction = "x")
+
+@client.command("", [("summary", "summarize"), "?"], "", "")
+@client.command("", [("summary", "summarize"), "?", "?"], "", "")
+@client.command("", [("summary", "summarize"), "?", "?", "?"], "", "")
+async def command_summarize(command, message):
+  url = command[2]
+  if url[0] == "<" and url[-1] == ">":
+    url = url[1:-1]
+  await message.edit(suppress = True)
+  rurl = f"https://api.smmry.com/?SM_API_KEY={config['api-keys']['sm']}"
+  if len(command) >= 4:
+    rurl += "&SM_LENGTH=" + command[3]
+  if len(command) >= 5:
+    rurl += "&SM_KEYWORD_COUNT=" + command[4]
+  rurl += "&SM_URL=" + url
+  r = requests.get(rurl)
+  data = r.json()
+  if "sm_api_error" in data:
+    error = data["sm_api_error"]
+    if error == 0:
+      await send(message, "Internal server problem with the SMMRY API; this is not your fault. Try again later.", reaction = "x")
+    elif error == 1:
+      await send(message, "Parameters are invalid. Check that you entered a real URL; otherwise, contact a developer.", reaction = "x")
+    elif error == 2:
+      await send(message, "This request has intentionally been restricted. Perhaps you have expended the API key's limit (100 per day).", reaction = "x")
+    elif error == 3:
+      await send(message, "Summarization error. This website might not be summarizable.")
+  else:
+    await send(message, (f"**{data['sm_api_title'].strip() or '(no title)'}**\n\n{data['sm_api_content'].strip() or '(no content)'}")[:2000])
+    if "sm_api_keyword_array" in data:
+      await message.channel.send(f"**Keywords**: {', '.join(data['sm_api_keyword_array'])}")
 
 @client.command("", re.compile(r"\b[hH]?[eE][hH][eE]\b").search, "", "")
 async def command_ehe_te_nandayo(command, message):
-  if message.author != client.user and time.time() - await get_data("ehe", message.author.id, default = 0) > 30:
+  if message.author != client.user and time.time() - await get_data("ehe", message.author.id, default = 0) > (await get_data("ehecd", default = 30)):
     await send(message, "**ehe te nandayo!?**", reaction = "?")
     await set_data("ehe", message.author.id, time.time())
 
@@ -743,3 +1003,7 @@ async def command_emoji_react(command, message):
       await message.add_reaction(emoji(c))
     except:
       pass
+
+@client.command("", re.compile(r"\b[Aa][Oo][Cc]\b").search, "", "")
+async def command_aoc(command, message):
+  await message.channel.send("Alexandria Ocasio-Cortez")

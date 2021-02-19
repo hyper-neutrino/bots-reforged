@@ -63,6 +63,22 @@ def get_role(guild, string):
         return role
   raise BotError(f"Found no roles called '{string}'.")
 
+def get_channel(guild, string):
+  match = None
+  for channel in guild.channels:
+    if channel.name == string:
+      if match:
+        raise BotError(f"Found multiple channels called '{string}'")
+      match = role
+  if match is not None:
+    return match
+  elif re.match(r"<#\d+>", string):
+    cid = string[2:-1]
+    for channel in guild.channels:
+      if str(channel.id) == cid:
+        return channel
+  raise BotError(f"Found no channel called '{string}'.")
+
 def get_color(string):
   if string == "":
     return discord.Color(0)

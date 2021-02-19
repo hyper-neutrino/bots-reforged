@@ -335,6 +335,7 @@ chart
 chase
 cheap
 cheat
+cheater
 cheating
 check
 cheek
@@ -432,6 +433,7 @@ concept
 concern
 concerned
 concert
+concerto
 conclude
 conclusion
 concrete
@@ -664,7 +666,6 @@ draft
 drama
 dramatic
 dramatically
-draven
 drawing
 dream
 dress
@@ -672,6 +673,7 @@ drink
 drive
 driver
 during
+dusty
 eager
 early
 earnings
@@ -1089,6 +1091,7 @@ injury
 inner
 innocent
 inquiry
+inserted
 inside
 insight
 insist
@@ -1327,8 +1330,8 @@ necessary
 negative
 negotiate
 negotiation
-neighbor
 neighborhood
+neighbour
 neither
 nerve
 nervous
@@ -1386,6 +1389,7 @@ operating
 operation
 operator
 opinion
+opossum
 opponent
 opportunity
 oppose
@@ -1495,6 +1499,7 @@ plenty
 pocket
 poetry
 point
+pointer
 police
 policy
 political
@@ -1700,6 +1705,7 @@ relevant
 relief
 religion
 religious
+relived
 remain
 remaining
 remarkable
@@ -1756,6 +1762,7 @@ rifle
 right
 river
 romantic
+roster
 rough
 roughly
 round
@@ -1797,6 +1804,7 @@ screen
 script
 search
 season
+seats
 second
 secret
 secretary
@@ -2038,6 +2046,7 @@ symptom
 system
 table
 tablespoon
+tablet
 tactic
 talent
 tales
@@ -2081,6 +2090,7 @@ there
 therefore
 these
 thick
+thicken
 thing
 think
 thinking
@@ -2101,6 +2111,7 @@ throw
 ticket
 ticks
 tight
+tiramisu
 tired
 tissue
 title

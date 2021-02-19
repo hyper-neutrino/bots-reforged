@@ -1,4 +1,4 @@
-import copy, json, os, pickle, sys, traceback
+import copy, json, os, pickle, sys, time, traceback
 
 from filelock import FileLock as Lock
 
@@ -84,6 +84,7 @@ def save_data():
   if current_data is None:
     raise DataError("Cannot save data; it has not yet been loaded! Please try again soon.")
   with lock:
+    current_data["timestamp"] = time.time()
     with open("data/data.pickle", "wb") as f:
       pickle.dump(current_data, f)
 

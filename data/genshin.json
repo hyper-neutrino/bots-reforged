@@ -1,0 +1,2465 @@
+{
+  "talent_books": {
+    "freedom": {
+      "category_name": "Talent Books of Freedom",
+      "name": "Freedom",
+      "days": [0, 3, 6],
+      "region": "mondstadt",
+      "source": "forsaken_rift"
+    },
+    "resistance": {
+      "category_name": "Talent Books of Resistance",
+      "name": "Resistance",
+      "days": [1, 4, 6],
+      "region": "mondstadt",
+      "source": "forsaken_rift"
+    },
+    "ballad": {
+      "category_name": "Talent Books of Ballad",
+      "name": "Ballad",
+      "days": [2, 5, 6],
+      "region": "mondstadt",
+      "source": "forsaken_rift"
+    },
+    "prosperity": {
+      "category_name": "Talent Books of Prosperity",
+      "name": "Prosperity",
+      "days": [0, 3, 6],
+      "region": "liyue",
+      "source": "taishan_mansion"
+    },
+    "diligence": {
+      "category_name": "Talent Books of Diligence",
+      "name": "Diligence",
+      "days": [1, 4, 6],
+      "region": "liyue",
+      "source": "taishan_mansion"
+    },
+    "gold": {
+      "category_name": "Talent Books of Gold",
+      "name": "Gold",
+      "days": [2, 5, 6],
+      "region": "liyue",
+      "source": "taishan_mansion"
+    }
+  },
+  "weapon_ascension": {
+    "decarabian": {
+      "category_name": "Decarabian Weapon Materials",
+      "names": ["Tile of Decarabian's Tower", "Debris of Decarabian's City", "Fragment of Decarabian's Epic", "Shattered Piece of Decarabian's Dream"],
+      "days": [0, 3, 6],
+      "region": "mondstadt",
+      "source": "cecilia_garden"
+    },
+    "boreal": {
+      "category_name": "Boreal Wolf's Weapon Materials",
+      "names": ["Boreal Wolf's Milk Tooth", "Boreal Wolf's Cracked Tooth", "Boreal Wolf's Broken Fang", "Boreal Wolf's Nostalgia"],
+      "days": [1, 4, 6],
+      "region": "mondstadt",
+      "source": "cecilia_garden"
+    },
+    "dandelion": {
+      "category_name": "Dandelion Gladiator Weapon Materials",
+      "names": ["Fetters of the Dandelion Gladiator", "Chains of the Dandelion Gladiator", "Shackles of the Dandelion Gladiator", "Dream of the Dandelion Gladiator"],
+      "days": [2, 5, 6],
+      "region": "mondstadt",
+      "source": "cecilia_garden"
+    },
+    "guyun": {
+      "category_name": "Guyun Weapon Materials",
+      "names": ["Luminous Sands from Guyun", "Lustrous Stone from Guyun", "Relic from Guyun", "Divine Body from Guyun"],
+      "days": [0, 3, 6],
+      "region": "liyue",
+      "source": "hidden_palace_of_lianshan_formula"
+    },
+    "elixir": {
+      "category_name": "Mist Veiled Elixir Weapon Materials",
+      "names": ["Mist Veiled Lead Elixir", "Mist Veiled Mercury Elixir", "Mist Veiled Gold Elixir", "Mist Veiled Primo Elixir"],
+      "days": [1, 4, 6],
+      "region": "liyue",
+      "source": "hidden_palace_of_lianshan_formula"
+    },
+    "aerosiderite": {
+      "category_name": "Aerosiderite Weapon Materials",
+      "names": ["Grain of Aerosiderite", "Piece of Aerosiderite", "Bit of Aerosiderite", "Chunk of Aerosiderite"],
+      "days": [2, 5, 6],
+      "region": "liyue",
+      "source": "hidden_palace_of_lianshan_formula"
+    }
+  },
+  "regions": {
+    "mondstadt": {
+      "name": "Mondstadt",
+      "element": "anemo",
+      "archon": "Barbatos",
+      "government": "Knights of Favonius"
+    },
+    "liyue": {
+      "name": "Liyue",
+      "element": "geo",
+      "archon": "Morax",
+      "government": "Liyue Qixing"
+    }
+  },
+  "domain_types": {
+    "mastery": "Mastery (Talent Books)",
+    "forgery": "Forgery (Weapon Materials)",
+    "blessing": "Blessing (Artifacts)"
+  },
+  "dmains": {
+    "forsaken_rift": {
+      "name": "Forsaken Rift",
+      "region": "mondstadt",
+      "type": "mastery",
+      "drops": ["freedom", "resistance", "ballad"],
+      "tiers": [
+        {
+          "disorder": "You will periodically be afflicted by greatly increased stamina consumption (cryo debuff).",
+          "objective": "Defeat 18 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_cryo", "count": 15}, {"enemy": "slime_cryo_large", "count": 2}, {"enemy": "abyss_mage_cryo", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "You will periodically be afflicted by greatly increased stamina consumption (cryo debuff).",
+          "objective": "Defeat 20 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "hilichurl_fighter", "count": 8}, {"enemy": "slime_cryo", "count": 8}, {"enemy": "slime_cryo_large", "count": 2}, {"enemy": "abyss_mage_cryo", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "You will periodically be afflicted by greatly increased stamina consumption (cryo debuff). Icicles will periodically fall from above, dealing cryo damage and staggering.",
+          "objective": "Defeat 8 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_cryo", "count": 3}, {"enemy": "slime_cryo_large", "count": 2}],
+            [{"enemy": "slime_cryo_large", "count": 2}, {"enemy": "abyss_mage_cryo", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "You will periodically be afflicted by greatly increased stamina consumption (cryo debuff). Icicles will periodically fall from above, dealing cryo damage and staggering.",
+          "objective": "Defeat 8 opponents within 8:00.",
+          "waves": [
+            [{"enemy": "slime_cryo_large", "count": 3}],
+            [{"enemy": "slime_cryo_large", "count": 2}, {"enemy": "abyss_mage_cryo", "count": 1}],
+            [{"enemy": "abyss_mage_cryo", "count": 2}]
+          ]
+        }
+      ]
+    },
+    "taishan_mansion": {
+      "name": "Taishan Mansion",
+      "region": "liyue",
+      "type": "mastery",
+      "drops": ["prosperity", "diligence", "gold"],
+      "tiers": [
+        {
+          "disorder": "You will periodically burn and take continuous pyro damage (pyro debuff).",
+          "objective": "Defeat 20 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_pyro", "count": 12}, {"enemy": "slime_pyro_large", "count": 3}],
+            [{"enemy": "slime_pyro", "count": 4}, {"enemy": "abyss_mage_pyro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "You will periodically burn and take continuous pyro damage (pyro debuff).",
+          "objective": "Defeat 12 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_pyro", "count": 6}, {"enemy": "slime_pyro_large", "count": 4}],
+            [{"enemy": "slime_pyro_large", "count": 1}, {"enemy": "abyss_mage_pyro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "You will periodically burn and take continuous pyro damage (pyro debuff).",
+          "objective": "Defeat 8 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_pyro_large", "count": 6}],
+            [{"enemy": "abyss_mage_pyro", "count": 2}]
+          ]
+        },
+        {
+          "disorder": "You will periodically burn and take continuous pyro damage (pyro debuff).",
+          "objective": "Defeat 4 opponents within 8:00.",
+          "waves": [
+            [{"enemy": "mitachurl_axe", "count": 2}],
+            [{"enemy": "fatui_agent_pyro", "count": 2}]
+          ]
+        }
+      ]
+    },
+    "cecilia_garden": {
+      "name": "Cecilia Garden",
+      "region": "mondstadt",
+      "type": "forgery",
+      "drops": ["decarabian", "boreal", "dandelion"],
+      "tiers": [
+        {
+          "disorder": "You will periodically gain -80% CDR (hydro debuff).",
+          "objective": "Defeat 20 enemies without exceeding 0:20 between each kill.",
+          "waves": [
+            [{"enemy": "slime_hydro", "count": 19}, {"enemy": "slime_hydro_large", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "You will periodically gain -80% CDR (hydro debuff).",
+          "objective": "Defeat 23 enemies without exceeding 0:25 between each kill.",
+          "waves": [
+            [{"enemy": "slime_hydro", "count": 12}, {"enemy": "slime_hydro_large", "count": 3}, {"enemy": "hilichurl_guard_dendro", "count": 8}]
+          ]
+        },
+        {
+          "disorder": "You will periodically gain -100% CDR (hydro debuff).",
+          "objective": "Defeat 22 enemies without exceeding 0:50 between each kill.",
+          "waves": [
+            [{"enemy": "slime_hydro", "count": 14}, {"enemy": "slime_hydro_large", "count": 4}, {"enemy": "hydro_samachurl", "count": 3}, {"enemy": "abyss_mage_hydro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "You will periodically gain -100% CDR (hydro debuff).",
+          "objective": "Defeat 8 enemies without exceeding 0:40 between each kill (wave 1); defeat 2 enemies without exceeding 1:20 between each kill (wave 2).",
+          "waves": [
+            [{"enemy": "slime_hydro_large", "count": 8}],
+            [{"enemy": "abyss_mage_hydro", "count": 2}]
+          ]
+        }
+      ]
+    },
+    "hidden_palace_of_lianshan_formula": {
+      "name": "Hidden Palace of Lianshan Formula",
+      "region": "liyue",
+      "type": "forgery",
+      "drops": ["guyun", "elixir", "aerosiderite"],
+      "tiers": [
+        {
+          "disorder": "Your energy will periodically be continuously drained (electro debuff).",
+          "objective": "Defeat 20 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_electro", "count": 15}],
+            [{"enemy": "slime_electro", "count": 3}, {"enemy": "slime_electro_large", "count": 1}, {"enemy": "slime_electro_mutant", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Your energy will periodically be continuously drained (electro debuff).",
+          "objective": "Defeat 16 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_electro", "count": 7}, {"enemy": "slime_electro_large", "count": 3}, {"enemy": "slime_electro_mutant", "count": 3}],
+            [{"enemy": "slime_electro_large", "count": 2}, {"enemy": "slime_electro_mutant", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Your energy will periodically be continuously drained (electro debuff). Lightning will periodically strike from above, dealing electro damage and draining all of the active character's energy. Lightning bolts may leave behind balls of lightning.",
+          "objective": "Defeat 10 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_electro_large", "count": 6}, {"enemy": "slime_electro_mutant", "count": 3}],
+            [{"enemy": "fatui_cicin_mage_electro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Your energy will periodically be continuously drained (electro debuff). Lightning will periodically strike from above, dealing electro damage and draining all of the active character's energy. Lightning bolts may leave behind balls of lightning.",
+          "objective": "Defeat 8 opponents within 8:00.",
+          "waves": [
+            [{"enemy": "slime_electro_large", "count": 4}, {"enemy": "slime_electro_mutant", "count": 2}, {"enemy": "fatui_cicin_mage_electro", "count": 2}]
+          ]
+        }
+      ]
+    }
+  },
+  "enemy_factions": {
+    "none": "No Faction",
+    "hilichurl": "Hilichurls",
+    "fatui": "Fatui",
+    "treasure_hoarders": "Treasure Hoarders",
+    "abyss_order": "Abyss Order"
+  },
+  "enemy_groups": {
+    "slime": {
+      "name": "Slime",
+      "type": "common",
+      "faction": "none"
+    },
+    "whopperflower": {
+      "name": "Whopperflower",
+      "type": "common",
+      "faction": "none"
+    },
+    "misc_common": {
+      "name": "Miscellaneous",
+      "type": "common",
+      "faction": "none"
+    },
+    "hilichurl": {
+      "name": "Hilichurl",
+      "type": "common",
+      "faction": "hilichurl"
+    },
+    "hilichurl_shooter": {
+      "name": "Hilichurl Shooter",
+      "type": "common",
+      "faction": "hilichurl"
+    },
+    "samachurl": {
+      "name": "Samachurl",
+      "type": "common",
+      "faction": "hilichurl"
+    },
+    "hilichurl_unusual": {
+      "name": "Unusual Hilichurl",
+      "type": "common",
+      "faction": "Hilichurl"
+    },
+    "fatui_vanguard": {
+      "name": "Fatui Vanguard",
+      "type": "common",
+      "faction": "fatui"
+    },
+    "fatui_bracer": {
+      "name": "Fatui Bracer",
+      "type": "common",
+      "faction": "fatui"
+    },
+    "fatui_legionnaire": {
+      "name": "Fatui Legionnaire",
+      "type": "common",
+      "faction": "fatui"
+    },
+    "treasure_hoarder": {
+      "name": "Treasure Hoarder",
+      "type": "common",
+      "faction": "treasure_hoarders"
+    },
+    "mitachurl": {
+      "name": "Mitachurl",
+      "type": "elite",
+      "faction": "hilichurl"
+    },
+    "lawachurl": {
+      "name": "Lawachurl",
+      "type": "elite",
+      "faction": "hilichurl"
+    },
+    "abyss_mage": {
+      "name": "Abyss Mage",
+      "type": "elite",
+      "faction": "abyss_order"
+    },
+    "automaton": {
+      "name": "Automaton",
+      "type": "elite",
+      "faction": "abyss_order"
+    },
+    "fatui_cicin_mage": {
+      "name": "Fatui Cicin Mage",
+      "type": "elite",
+      "faction": "fatui"
+    },
+    "fatui_agent": {
+      "name": "Fatui Agent",
+      "type": "elite",
+      "faction": "fatui"
+    },
+    "misc_elite": {
+      "name": "Miscellaneous",
+      "type": "elite",
+      "faction": "none"
+    },
+    "geovishap": {
+      "name": "Geovishap",
+      "type": "elite",
+      "faction": "none"
+    },
+    "hypostasis": {
+      "name": "Hypostasis",
+      "type": "normal_boss",
+      "faction": "none"
+    },
+    "regisvine": {
+      "name": "Regisvine",
+      "type": "normal_boss",
+      "faction": "none"
+    },
+    "misc_normal": {
+      "name": "Normal Boss",
+      "type": "normal_boss",
+      "faction": "none"
+    },
+    "weekly_boss": {
+      "name": "Weekly Boss",
+      "type": "weekly_boss",
+      "faction": "none"
+    }
+  },
+  "enemies": {
+    "slime_anemo": {
+      "name": "Anemo Slime",
+      "group": "slime",
+      "emoji": "slime_anemo",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_anemo_large": {
+      "name": "Large Anemo Slime",
+      "group": "slime",
+      "emoji": "slime_anemo_large",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_cryo": {
+      "name": "Cryo Slime",
+      "group": "slime",
+      "emoji": "slime_cryo",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_cryo_large": {
+      "name": "Large Cryo Slime",
+      "group": "slime",
+      "emoji": "slime_cryo_large",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },,
+    "slime_dendro": {
+      "name": "Dendro Slime",
+      "group": "slime",
+      "emoji": "slime_dendro",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_dendro_large": {
+      "name": "Large Dendro Slime",
+      "group": "slime",
+      "emoji": "slime_dendro_large",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_electro": {
+      "name": "Electro Slime",
+      "group": "slime",
+      "emoji": "slime_electro",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_electro_large": {
+      "name": "Large Electro Slime",
+      "group": "slime",
+      "emoji": "slime_electro_large",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_electro_mutant": {
+      "name": "Mutant Electro Slime",
+      "group": "slime",
+      "emoji": "slime_electro_mutant",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_geo": {
+      "name": "Geo Slime",
+      "group": "slime",
+      "emoji": "slime_geo",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_geo_large": {
+      "name": "Large Geo Slime",
+      "group": "slime",
+      "emoji": "slime_geo_large",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_hydro": {
+      "name": "Hydro Slime",
+      "group": "slime",
+      "emoji": "slime_hydro",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_hydro_large": {
+      "name": "Large Hydro Slime",
+      "group": "slime",
+      "emoji": "slime_hydro_large",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_pyro": {
+      "name": "Pyro Slime",
+      "group": "slime",
+      "emoji": "slime_pyro",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "slime_pyro_large": {
+      "name": "Large Pyro Slime",
+      "group": "slime",
+      "emoji": "slime_pyro_large",
+      "drops": [
+        {
+          "id": "slime",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "whopperflower_cryo": {
+      "name": "Cryo Whopperflower",
+      "group": "whopperflower",
+      "emoji": "whopperflower_cryo",
+      "drops": [
+        {
+          "id": "nectar",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "whopperflower_pyro": {
+      "name": "Pyro Whopperflower",
+      "group": "whopperflower",
+      "emoji": "whopperflower_pyro",
+      "drops": [
+        {
+          "id": "nectar",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "defense_mechanism": {
+      "name": "Defense Mechanism",
+      "group": "misc_common",
+      "emoji": "defense_mechanism",
+      "drops": []
+    },
+    "hilichurl": {
+      "name": "Hilichurl",
+      "group": "hilichurl",
+      "emoji": "hilichurl",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_fighter": {
+      "name": "Hilichurl Fighter",
+      "group": "hilichurl",
+      "emoji": "hilichurl",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_guard_dendro": {
+      "name": "Wooden Shield Hilichurl Guard",
+      "group": "hilichurl",
+      "emoji": "hilichurl",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_guard_geo": {
+      "name": "Rock Shield Hilichurl Guard",
+      "group": "hilichurl",
+      "emoji": "hilichurl",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_guard_cryo": {
+      "name": "Ice Shield Hilichurl Fighter",
+      "group": "hilichurl",
+      "emoji": "hilichurl",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_berserker": {
+      "name": "Hilichurl Berserker",
+      "group": "hilichurl",
+      "emoji": "hilichurl_pyro",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_grenadier_pyro": {
+      "name": "Hilichurl Grenadier",
+      "group": "hilichurl",
+      "emoji": "hilichurl",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_grenadier_cryo": {
+      "name": "Cryo Hilichurl Grenadier",
+      "group": "hilichurl",
+      "emoji": "hilichurl_cryo",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_shooter": {
+      "name": "Hilichurl Shooter",
+      "group": "hilichurl_shooter",
+      "emoji": "hilichurl",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }, {
+          "id": "arrowhead",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_shooter_cryo": {
+      "name": "Cryo Hilichurl Shooter",
+      "group": "hilichurl_shooter",
+      "emoji": "hilichurl_cryo",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }, {
+          "id": "arrowhead",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_shooter_electro": {
+      "name": "Electro Hilichurl Shooter",
+      "group": "hilichurl_shooter",
+      "emoji": "hilichurl_electro",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }, {
+          "id": "arrowhead",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_shooter_pyro": {
+      "name": "Pyro Hilichurl Shooter",
+      "group": "hilichurl_shooter",
+      "emoji": "hilichurl_pyro",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }, {
+          "id": "arrowhead",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "samachurl_anemo": {
+      "name": "Anemo Samachurl",
+      "group": "samachurl",
+      "emoji": "samachurl_anemo",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }, {
+          "id": "scroll",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "samachurl_cryo": {
+      "name": "Cryo Samachurl",
+      "group": "samachurl",
+      "emoji": "samachurl_cryo",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }, {
+          "id": "scroll",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "samachurl_dendro": {
+      "name": "Dendro Samachurl",
+      "group": "samachurl",
+      "emoji": "samachurl_dendro",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }, {
+          "id": "scroll",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "samachurl_geo": {
+      "name": "Geo Samachurl",
+      "group": "samachurl",
+      "emoji": "samachurl_geo",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }, {
+          "id": "scroll",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "samachurl_hydro": {
+      "name": "Hydro Samachurl",
+      "group": "samachurl",
+      "emoji": "samachurl_hydro",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        }, {
+          "id": "scroll",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hilichurl_unusual": {
+      "name": "Unusual Hilichurl",
+      "group": "hilichurl_unusual",
+      "emoji": "hilichurl_unusual",
+      "drops": []
+    },
+    "fatui_vanguard_anemoboxer": {
+      "name": "Anemoboxer Vanguard",
+      "group": "fatui_vanguard",
+      "emoji": "vanguard_anemoboxer",
+      "drops": [
+        {
+          "id": "fatui_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "fatui_vanguard_electrohammer": {
+      "name": "Electrohammer Vanguard",
+      "group": "fatui_vanguard",
+      "emoji": "vanguard_electrohammer",
+      "drops": [
+        {
+          "id": "fatui_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "fatui_bracer_geochanter": {
+      "name": "Geochanter Bracer",
+      "group": "fatui_bracer",
+      "emoji": "bracer_geochanter",
+      "drops": [
+        {
+          "id": "fatui_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "fatui_bracer_pyroslinger": {
+      "name": "Pyroslinger Bracer",
+      "group": "fatui_bracer",
+      "emoji": "bracer_pyroslinger",
+      "drops": [
+        {
+          "id": "fatui_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "fatui_legionnaire_cryogunner": {
+      "name": "Cryogunner Legionnaire",
+      "group": "fatui_legionnaire",
+      "emoji": "legionnaire_cryogunner",
+      "drops": [
+        {
+          "id": "fatui_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "fatui_legionnaire_hydrogunner": {
+      "name": "Hydrogunner Legionnaire",
+      "group": "fatui_legionnaire",
+      "emoji": "legionnaire_hydrogunner",
+      "drops": [
+        {
+          "id": "fatui_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hoarder_potioneer_cryo": {
+      "name": "Cryo Potioneer",
+      "group": "treasure_hoarder",
+      "emoji": "hoarder_potioneer_cryo",
+      "drops": [
+        {
+          "id": "hoarder_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hoarder_potioneer_electro": {
+      "name": "Electro Potioneer",
+      "group": "treasure_hoarder",
+      "emoji": "hoarder_potioneer_electro",
+      "drops": [
+        {
+          "id": "hoarder_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hoarder_potioneer_hydro": {
+      "name": "Hydro Potioneer",
+      "group": "treasure_hoarder",
+      "emoji": "hoarder_potioneer_hydro",
+      "drops": [
+        {
+          "id": "hoarder_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hoarder_potioneer_pyro": {
+      "name": "Pyro Potioneer",
+      "group": "treasure_hoarder",
+      "emoji": "hoarder_potioneer_pyro",
+      "drops": [
+        {
+          "id": "hoarder_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hoarder_crusher": {
+      "name": "Crusher",
+      "group": "treasure_hoarder",
+      "emoji": "hoarder_crusher",
+      "drops": [
+        {
+          "id": "hoarder_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hoarder_gravedigger": {
+      "name": "Gravedigger",
+      "group": "treasure_hoarder",
+      "emoji": "hoarder_gravedigger",
+      "drops": [
+        {
+          "id": "hoarder_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hoarder_marksman": {
+      "name": "Marksman",
+      "group": "treasure_hoarder",
+      "emoji": "hoarder_marksman",
+      "drops": [
+        {
+          "id": "hoarder_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hoarder_scout": {
+      "name": "Scout",
+      "group": "treasure_hoarder",
+      "emoji": "hoarder_scout",
+      "drops": [
+        {
+          "id": "hoarder_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hoarder_handyman": {
+      "name": "Handyman",
+      "group": "treasure_hoarder",
+      "emoji": "hoarder_handyman",
+      "drops": [
+        {
+          "id": "hoarder_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hoarder_pugilist": {
+      "name": "Pugilist",
+      "group": "treasure_hoarder",
+      "emoji": "hoarder_pugilist",
+      "drops": [
+        {
+          "id": "hoarder_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "hoarder_scout": {
+      "name": "Scout",
+      "group": "treasure_hoarder",
+      "emoji": "hoarder_scout",
+      "drops": [
+        {
+          "id": "hoarder_insignia",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "mitachurl_pyro_axe": {
+      "name": "Blazing Axe Mitachurl",
+      "group": "mitachurl",
+      "emoji": "mitachurl",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        },
+        {
+          "id": "horn",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "mitachurl_dendro_shield": {
+      "name": "Wooden Shieldwall Mitachurl",
+      "group": "mitachurl",
+      "emoji": "mitachurl",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        },
+        {
+          "id": "horn",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "mitachurl_geo_shield": {
+      "name": "Rock Shieldwall Mitachurl",
+      "group": "mitachurl",
+      "emoji": "mitachurl",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        },
+        {
+          "id": "horn",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "mitachurl_cryo_shield": {
+      "name": "Ice Shieldwall Mitachurl",
+      "group": "mitachurl",
+      "emoji": "mitachurl",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        },
+        {
+          "id": "horn",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "lawachurl_geo": {
+      "name": "Stonehide Lawachurl",
+      "group": "lawachurl",
+      "emoji": "lawachurl_geo",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        },
+        {
+          "id": "horn",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "lawachurl_cryo": {
+      "name": "Frostarm Lawachurl",
+      "group": "lawachurl",
+      "emoji": "lawachurl_cryo",
+      "drops": [
+        {
+          "id": "mask",
+          "type": "general_ascension"
+        },
+        {
+          "id": "horn",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "abyss_mage_cryo": {
+      "name": "Cryo Abyss Mage",
+      "group": "abyss_mage",
+      "emoji": "abyss_mage_cryo",
+      "drops": [
+        {
+          "id": "ley_line",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "abyss_mage_hydro": {
+      "name": "Hydro Abyss Mage",
+      "group": "abyss_mage",
+      "emoji": "abyss_mage_hydro",
+      "drops": [
+        {
+          "id": "ley_line",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "abyss_mage_pyro": {
+      "name": "Pyro Abyss Mage",
+      "group": "abyss_mage",
+      "emoji": "abyss_mage_pyro",
+      "drops": [
+        {
+          "id": "ley_line",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "ruin_guard": {
+      "name": "Ruin Guard",
+      "group": "automaton",
+      "emoji": "ruin_guard",
+      "drops": [
+        {
+          "id": "chaos",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "ruin_hunter": {
+      "name": "Ruin Hunter",
+      "group": "automaton",
+      "emoji": "ruin_hunter",
+      "drops": [
+        {
+          "id": "chaos",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "ruin_grader": {
+      "name": "Ruin Grader",
+      "group": "automaton",
+      "emoji": "ruin_grader",
+      "drops": [
+        {
+          "id": "chaos",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "fatui_cicin_mage_electro": {
+      "name": "Fatui Electro Cicin Mage",
+      "group": "fatui_cicin_mage",
+      "emoji": "cicin_mage_electro",
+      "drops": [
+        {
+          "id": "mist_grass",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "fatui_cicin_mage_cryo": {
+      "name": "Fatui Cryo Cicin Mage",
+      "group": "fatui_cicin_mage",
+      "emoji": "cicin_mage_cryo",
+      "drops": [
+        {
+          "id": "mist_grass",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "fatui_agent_pyro": {
+      "name": "Fatui Pyro Agent",
+      "group": "fatui_agent",
+      "emoji": "agent_pyro",
+      "drops": [
+        {
+          "id": "sacrificial_knife",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "eye_of_the_storm": {
+      "name": "Eye of the Storm",
+      "group": "misc_elite",
+      "emoji": "eye_of_the_storm",
+      "drops": []
+    },
+    "geovishap": {
+      "name": "Geovishap",
+      "group": "geovishap",
+      "emoji": "geovishap",
+      "drops": [
+        {
+          "id": "bone_shard",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "geovishap_hatchling": {
+      "name": "Geovishap Hatchling",
+      "group": "geovishap",
+      "emoji": "geovishap_hatchling",
+      "drops": [
+        {
+          "id": "bone_shard",
+          "type": "general_ascension"
+        }
+      ]
+    },
+    "snowboar_king": {
+      "name": "The Great Snowboar King",
+      "group": "misc_elite",
+      "emoji": "snowboar_king",
+      "drops": []
+    },
+    "hypostasis_anemo": {
+      "name": "Anemo Hypostasis (Beth)",
+      "group": "hypostasis",
+      "emoji": "hypostasis_anemo",
+      "drops": [
+        {
+          "id": "hurricane_seed",
+          "type": "elemental_materials"
+        },
+        {
+          "id": "anemo",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "lucky_dog",
+          "type": "artifacts"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        }
+      ]
+    },
+    "hypostasis_electro": {
+      "name": "Electro Hypostasis (Aleph)",
+      "group": "hypostasis",
+      "emoji": "hypostasis_electro",
+      "drops": [
+        {
+          "id": "lightning_prism",
+          "type": "elemental_materials"
+        },
+        {
+          "id": "electro",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "traveling_doctor",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
+        },
+        {
+          "id": "prayers_for_wisdom",
+          "type": "artifacts"
+        }
+      ]
+    },
+    "hypostasis_geo": {
+      "name": "Geo Hypostasis (Gimel)",
+      "group": "hypostasis",
+      "emoji": "hypostasis_geo",
+      "drops": [
+        {
+          "id": "basalt_pillar",
+          "type": "elemental_materials"
+        },
+        {
+          "id": "geo",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "traveling_doctor",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
+        }
+      ]
+    },
+    "regisvine_cryo": {
+      "name": "Cryo Regisvine",
+      "group": "regisvine",
+      "emoji": "regisvine_cryo",
+      "drops": [
+        {
+          "id": "hoarfrost_core",
+          "type": "elemental_materials"
+        },
+        {
+          "id": "cryo",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "lucky_dog",
+          "type": "artifacts"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
+        },
+        {
+          "id": "prayers_to_springtime",
+          "type": "artifacts"
+        }
+      ]
+    },
+    "regisvine_pyro": {
+      "name": "Pyro Regisvine",
+      "group": "regisvine",
+      "emoji": "regisvine_pyro",
+      "drops": [
+        {
+          "id": "everflame_seed",
+          "type": "elemental_materials"
+        },
+        {
+          "id": "pyro",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "adventurer",
+          "type": "artifacts"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "prayers_for_illumination",
+          "type": "artifacts"
+        }
+      ]
+    },
+    "oceanid": {
+      "name": "Rhodeia of Loch (Oceanid of Qingce)",
+      "group": "misc_normal",
+      "emoji": "oceanid",
+      "drops": [
+        {
+          "id": "cleansing_heart",
+          "type": "elemental_materials"
+        },
+        {
+          "id": "hydro",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "adventurer",
+          "type": "artifacts"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
+        },
+        {
+          "id": "prayers_for_destiny",
+          "type": "artifacts"
+        }
+      ]
+    },
+    "geovishap_primo": {
+      "name": "Primo Geovishap",
+      "group": "misc_normal",
+      "emoji": "geovishap_primo",
+      "drops": [
+        {
+          "id": "juvenile_jade",
+          "type": "elemental_materials"
+        },
+        {
+          "id": "cryo",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "electro",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "geo",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "hydro",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "pyro",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
+        },
+        {
+          "id": "prayers_for_destiny",
+          "type": "artifacts"
+        },
+        {
+          "id": "prayers_for_illumination",
+          "type": "artifacts"
+        },
+        {
+          "id": "prayers_to_springtime",
+          "type": "artifacts"
+        },
+        {
+          "id": "prayers_for_wisdom",
+          "type": "artifacts"
+        }
+      ]
+    },
+    "andrius": {
+      "name": "Andrius (Lupus Boreas, Dominator of Wolves)",
+      "group": "weekly_boss",
+      "emoji": "andrius",
+      "drops": [
+        {
+          "id": "tail_of_boreas",
+          "type": "talent_boss"
+        },
+        {
+          "id": "ring_of_boreas",
+          "type": "talent_boss"
+        },
+        {
+          "id": "spirit_locket_of_boreas",
+          "type": "talent_boss"
+        },
+        {
+          "id": "cryo",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "geo",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "pyro",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
+        },
+        {
+          "id": "gladiator_finale",
+          "type": "artifacts"
+        },
+        {
+          "id": "wanderer_troupe",
+          "type": "artifacts"
+        }
+      ]
+    },
+    "dvalin": {
+      "name": "Dvalin (Stormterror)",
+      "group": "weekly_boss",
+      "emoji": "dvalin",
+      "drops": [
+        {
+          "id": "dvalins_plume",
+          "type": "talent_boss"
+        },
+        {
+          "id": "dvalins_claw",
+          "type": "talent_boss"
+        },
+        {
+          "id": "dvalins_sigh",
+          "type": "talent_boss"
+        },
+        {
+          "id": "anemo",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "electro",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "hydro",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
+        },
+        {
+          "id": "gladiator_finale",
+          "type": "artifacts"
+        },
+        {
+          "id": "wanderer_troupe",
+          "type": "artifacts"
+        }
+      ]
+    },
+    "andrius": {
+      "name": "Andrius (Lupus Boreas, Dominator of Wolves)",
+      "group": "weekly_boss",
+      "emoji": "andrius",
+      "drops": [
+        {
+          "id": "tusk_of_monoceros_caeli",
+          "type": "talent_boss"
+        },
+        {
+          "id": "shard_of_a_foul_legacy",
+          "type": "talent_boss"
+        },
+        {
+          "id": "shadow_of_the_warrior",
+          "type": "talent_boss"
+        },
+        {
+          "id": "cryo",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "hydro",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "electro",
+          "type": "ascension_gems"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
+        },
+        {
+          "id": "gladiator_finale",
+          "type": "artifacts"
+        },
+        {
+          "id": "wanderer_troupe",
+          "type": "artifacts"
+        }
+      ]
+    }
+  },
+  "characters": {
+    "anemo_mc": {
+      "name": "Aether/Lumine (Anemo)",
+      "tier": 5,
+      "element": "anemo",
+      "weapon": "sword",
+      "constellation": "Viator/Viatrix",
+      "talent_common": "scroll",
+      "weekly": "dvalins_sigh",
+      "boss_drop": "none",
+      "specialty": "windwheel_aster",
+      "ascension": "mask",
+      "stats": {
+        "secondary_stat": "atk",
+        "hp": 10875,
+        "atk": 212,
+        "def": 683,
+        "secondary": 24
+      }
+    },
+    "geo_mc": {
+      "name": "Aether/Lumine (Geo)",
+      "tier": 5,
+      "element": "geo",
+      "weapon": "sword",
+      "constellation": "Viator/Viatrix",
+      "talent_common": "arrowhead",
+      "weekly": "dvalins_sigh",
+      "boss_drop": "none",
+      "specialty": "windwheel_aster",
+      "ascension": "mask",
+      "stats": {
+        "secondary_stat": "atk",
+        "hp": 10875,
+        "atk": 212,
+        "def": 683,
+        "secondary": 24
+      }
+    },
+    "albedo": {
+      "name": "Albedo",
+      "tier": 5,
+      "element": "geo",
+      "weapon": "sword",
+      "region": "mondstadt",
+      "birthmonth": 9,
+      "birthdate": 13,
+      "constellation": "Princeps Cretaceus",
+      "talent_book": "ballad",
+      "talent_common": "scroll",
+      "weekly": "tusk_of_monoceros_caeli",
+      "boss_drop": "basalt_pillar",
+      "specialty": "cecilia",
+      "ascension": "scroll",
+      "stats": {
+        "secondary_stat": "geo",
+        "hp": 13226,
+        "atk": 251,
+        "def": 876,
+        "secondary": 28.8
+      }
+    },
+    "amber": {
+      "name": "Amber",
+      "tier": 4,
+      "element": "pyro",
+      "weapon": "bow",
+      "region": "mondstadt",
+      "birthmonth": 8,
+      "birthdate": 10,
+      "constellation": "Lepus",
+      "talent_book": "freedom",
+      "talent_common": "arrowhead",
+      "weekly": "dvalins_sigh",
+      "boss_drop": "everflame_seed",
+      "specialty": "small_lamp_grass",
+      "ascension": "arrowhead",
+      "stats": {
+        "secondary_stat": "atk",
+        "hp": 9461,
+        "atk": 223,
+        "def": 601,
+        "secondary": 24
+      }
+    },
+    "barbara": {
+      "name": "Barbara",
+      "tier": 4,
+      "element": "hydro",
+      "weapon": "catalyst",
+      "region": "mondstadt",
+      "birthmonth": 7,
+      "birthdate": 5,
+      "constellation": "Crater",
+      "talent_book": "freedom",
+      "talent_common": "scroll",
+      "weekly": "ring_of_boreas",
+      "boss_drop": "cleansing_heart",
+      "specialty": "philanemo_mushroom",
+      "ascension": "scroll",
+      "stats": {
+        "secondary_stat": "hp",
+        "hp": 9787,
+        "atk": 159,
+        "def": 669,
+        "secondary": 24
+      }
+    },
+    "beidou": {
+      "name": "Beidou",
+      "tier": 4,
+      "element": "electro",
+      "weapon": "claymore",
+      "region": "liyue",
+      "birthmonth": 2,
+      "birthdate": 14,
+      "constellation": "Victor Mare",
+      "talent_book": "gold",
+      "talent_common": "hoarder_insignia",
+      "weekly": "dvalins_sigh",
+      "boss_drop": "lightning_prism",
+      "specialty": "noctilucous_jade",
+      "ascension": "hoarder_insignia",
+      "stats": {
+        "secondary_stat": "electro",
+        "hp": 13050,
+        "atk": 225,
+        "def": 648,
+        "secondary": 24
+      }
+    },
+    "bennett": {
+      "name": "Bennett",
+      "tier": 4,
+      "element": "pyro",
+      "weapon": "sword",
+      "region": "mondstadt",
+      "birthmonth": 2,
+      "birthdate": 29,
+      "constellation": "Rota Calamitas",
+      "talent_book": "resistance",
+      "talent_common": "hoarder_insignia",
+      "weekly": "dvalins_plume",
+      "boss_drop": "everflame_seed",
+      "specialty": "windwheel_aster",
+      "ascension": "hoarder_insignia",
+      "stats": {
+        "secondary_stat": "er",
+        "hp": 12397,
+        "atk": 191,
+        "def": 771,
+        "secondary": 26.7
+      }
+    },
+    "chongyun": {
+      "name": "Chongyun",
+      "tier": 4,
+      "element": "cryo",
+      "weapon": "claymore",
+      "region": "liyue",
+      "birthmonth": 9,
+      "birthdate": 7,
+      "constellation": "Nubis Caesor",
+      "talent_book": "diligence",
+      "talent_common": "mask",
+      "weekly": "dvalins_sigh",
+      "boss_drop": "hoarfrost_core",
+      "specialty": "cor_lapis",
+      "ascension": "mask",
+      "stats": {
+        "secondary_stat": "atk",
+        "hp": 10984,
+        "atk": 223,
+        "def": 648,
+        "secondary": 24
+      }
+    },
+    "diluc": {
+      "name": "Diluc",
+      "tier": 5,
+      "element": "pyro",
+      "weapon": "claymore",
+      "region": "mondstadt",
+      "birthmonth": 4,
+      "birthdate": 30,
+      "constellation": "Noctua",
+      "talent_book": "resistance",
+      "talent_common": "fatui_insignia",
+      "weekly": "dvalins_plume",
+      "boss_drop": "everflame_seed",
+      "specialty": "small_lamp_grass",
+      "ascension": "fatui_insignia",
+      "stats": {
+        "secondary_stat": "crit_rate",
+        "hp": 12981,
+        "atk": 335,
+        "def": 784,
+        "secondary": 19.2
+      }
+    },
+    "diona": {
+      "name": "Diona",
+      "tier": 4,
+      "element": "cryo",
+      "weapon": "bow",
+      "region": "mondstadt",
+      "birthmonth": 1,
+      "birthdate": 18,
+      "constellation": "Feles",
+      "talent_book": "freedom",
+      "talent_common": "arrowhead",
+      "weekly": "shard_of_a_foul_legacy",
+      "boss_drop": "hoarfrost_core",
+      "specialty": "calla_lily",
+      "ascension": "arrowhead",
+      "stats": {
+        "secondary_stat": "cryo",
+        "hp": 9570,
+        "atk": 212,
+        "def": 601,
+        "secondary": 24
+      }
+    },
+    "fischl": {
+      "name": "Fischl",
+      "tier": 4,
+      "element": "electro",
+      "weapon": "bow",
+      "region": "mondstadt",
+      "birthmonth": 5,
+      "birthdate": 27,
+      "constellation": "Corvus",
+      "talent_book": "ballad",
+      "talent_common": "arrowhead",
+      "weekly": "spirit_locket_of_boreas",
+      "boss_drop": "lightning_prism",
+      "specialty": "small_lamp_grass",
+      "ascension": "arrowhead",
+      "stats": {
+        "secondary_stat": "atk",
+        "hp": 9189,
+        "atk": 244,
+        "def": 594,
+        "secondary": 24
+      }
+    },
+    "ganyu": {
+      "name": "Ganyu",
+      "tier": 5,
+      "element": "cryo",
+      "weapon": "bow",
+      "region": "liyue",
+      "birthmonth": 2,
+      "birthdate": 2,
+      "constellation": "Sinae Unicornis",
+      "talent_book": "diligence",
+      "talent_common": "nectar",
+      "weekly": "shadow_of_the_warrior",
+      "boss_drop": "hoarfrost_core",
+      "specialty": "qingxin",
+      "ascension": "nectar",
+      "stats": {
+        "secondary_stat": "crit_dmg",
+        "hp": 9797,
+        "atk": 335,
+        "def": 630,
+        "secondary": 38.4
+      }
+    },
+    "jean": {
+      "name": "Jean",
+      "tier": 5,
+      "element": "anemo",
+      "weapon": "sword",
+      "region": "mondstadt",
+      "birthmonth": 3,
+      "birthdate": 14,
+      "constellation": "Leo Minor",
+      "talent_book": "resistance",
+      "talent_common": "mask",
+      "weekly": "dvalins_plume",
+      "boss_drop": "hurricane_seed",
+      "specialty": "dandelion_seed",
+      "ascension": "mask",
+      "stats": {
+        "secondary_stat": "heal",
+        "hp": 14695,
+        "atk": 239,
+        "def": 769,
+        "secondary": 22.2
+      }
+    },
+    "kaeya": {
+      "name": "Kaeya",
+      "tier": 4,
+      "element": "cryo",
+      "weapon": "sword",
+      "region": "mondstadt",
+      "birthmonth": 11,
+      "birthdate": 30,
+      "constellation": "Pavo Ocellus",
+      "talent_book": "ballad",
+      "talent_common": "hoarder_insignia",
+      "weekly": "spirit_locket_of_boreas",
+      "boss_drop": "hoarfrost_core",
+      "specialty": "calla_lily",
+      "ascension": "hoarder_insignia",
+      "stats": {
+        "secondary_stat": "er",
+        "hp": 11636,
+        "atk": 223,
+        "def": 792,
+        "secondary": 26.7
+      }
+    },
+    "keqing": {
+      "name": "Keqing",
+      "tier": 5,
+      "element": "electro",
+      "weapon": "sword",
+      "region": "liyue",
+      "birthmonth": 11,
+      "birthdate": 20,
+      "constellation": "Trulla Cementarii",
+      "talent_book": "prosperity",
+      "talent_common": "nectar",
+      "weekly": "ring_of_boreas",
+      "boss_drop": "lightning_prism",
+      "specialty": "cor_lapis",
+      "ascension": "nectar",
+      "stats": {
+        "secondary_stat": "crit_dmg",
+        "hp": 13103,
+        "atk": 323,
+        "def": 799,
+        "secondary": 38.4
+      }
+    },
+    "klee": {
+      "name": "Klee",
+      "tier": 5,
+      "element": "pyro",
+      "weapon": "catalyst",
+      "region": "mondstadt",
+      "birthmonth": 7,
+      "birthdate": 27,
+      "constellation": "Trifolium",
+      "talent_book": "freedom",
+      "talent_common": "scroll",
+      "weekly": "ring_of_boreas",
+      "boss_drop": "everflame_seed",
+      "specialty": "philanemo_mushroom",
+      "ascension": "scroll",
+      "stats": {
+        "secondary_stat": "pyro",
+        "hp": 10287,
+        "atk": 311,
+        "def": 615,
+        "secondary": 28.8
+      }
+    },
+    "lisa": {
+      "name": "Lisa",
+      "tier": 4,
+      "element": "electro",
+      "weapon": "catalyst",
+      "region": "mondstadt",
+      "birthmonth": 6,
+      "birthdate": 9,
+      "constellation": "Tempus Fugit",
+      "talent_book": "ballad",
+      "talent_common": "slime",
+      "weekly": "dvalins_claw",
+      "boss_drop": "lightning_prism",
+      "specialty": "valberry",
+      "ascension": "slime",
+      "stats": {
+        "secondary_stat": "em",
+        "hp": 9570,
+        "atk": 232,
+        "def": 573,
+        "secondary": 96
+      }
+    },
+    "mona": {
+      "name": "Mona",
+      "tier": 5,
+      "element": "hydro",
+      "weapon": "catalyst",
+      "region": "mondstadt",
+      "birthmonth": 8,
+      "birthdate": 31,
+      "constellation": "Astrolabos",
+      "talent_book": "resistance",
+      "talent_common": "nectar",
+      "weekly": "ring_of_boreas",
+      "boss_drop": "cleansing_heart",
+      "specialty": "philanemo_mushroom",
+      "ascension": "nectar",
+      "stats": {
+        "secondary_stat": "er",
+        "hp": 10409,
+        "atk": 287,
+        "def": 653,
+        "secondary": 32
+      }
+    },
+    "ningguang": {
+      "name": "Ningguang",
+      "tier": 4,
+      "element": "geo",
+      "weapon": "catalyst",
+      "region": "liyue",
+      "birthmonth": 8,
+      "birthdate": 26,
+      "constellation": "Opus Aequilibrium",
+      "talent_book": "prosperity",
+      "talent_common": "fatui_insignia",
+      "weekly": "spirit_locket_of_boreas",
+      "boss_drop": "basalt_pillar",
+      "specialty": "glaze_lily",
+      "ascension": "fatui_insignia",
+      "stats": {
+        "secondary_stat": "geo",
+        "hp": 9787,
+        "atk": 212,
+        "def": 573,
+        "secondary": 24
+      }
+    },
+    "noelle": {
+      "name": "Noelle",
+      "tier": 4,
+      "element": "geo",
+      "weapon": "claymore",
+      "region": "mondstadt",
+      "birthmonth": 3,
+      "birthdate": 21,
+      "constellation": "Parma Cordis",
+      "talent_book": "resistance",
+      "talent_common": "mask",
+      "weekly": "dvalins_claw",
+      "boss_drop": "basalt_pillar",
+      "specialty": "valberry",
+      "ascension": "mask",
+      "stats": {
+        "secondary_stat": "def",
+        "hp": 12071,
+        "atk": 191,
+        "def": 799,
+        "secondary": 30
+      }
+    },
+    "qiqi": {
+      "name": "Qiqi",
+      "tier": 5,
+      "element": "cryo",
+      "weapon": "sword",
+      "region": "liyue",
+      "birthmonth": 3,
+      "birthdate": 3,
+      "constellation": "Pristina Nola",
+      "talent_book": "prosperity",
+      "talent_common": "scroll",
+      "weekly": "tail_of_boreas",
+      "boss_drop": "hoarfrost_core",
+      "specialty": "violetgrass",
+      "ascension": "scroll",
+      "stats": {
+        "secondary_stat": "heal",
+        "hp": 12368,
+        "atk": 287,
+        "def": 922,
+        "secondary": 22.2
+      }
+    },
+    "razor": {
+      "name": "Razor",
+      "tier": 4,
+      "element": "electro",
+      "weapon": "claymore",
+      "region": "mondstadt",
+      "birthmonth": 9,
+      "birthdate": 9,
+      "constellation": "Lupus Minor",
+      "talent_book": "resistance",
+      "talent_common": "mask",
+      "weekly": "dvalins_claw",
+      "boss_drop": "lightning_prism",
+      "specialty": "wolfhook",
+      "ascension": "mask",
+      "stats": {
+        "secondary_stat": "phys",
+        "hp": 11962,
+        "atk": 234,
+        "def": 751,
+        "secondary": 30
+      }
+    },
+    "sucrose": {
+      "name": "Sucrose",
+      "tier": 4,
+      "element": "anemo",
+      "weapon": "catalyst",
+      "region": "mondstadt",
+      "birthmonth": 11,
+      "birthdate": 26,
+      "constellation": "Ampulla",
+      "talent_book": "freedom",
+      "talent_common": "nectar",
+      "weekly": "spirit_locket_of_boreas",
+      "boss_drop": "hurricane_seed",
+      "specialty": "windwheel_aster",
+      "ascension": "nectar",
+      "stats": {
+        "secondary_stat": "anemo",
+        "hp": 9243,
+        "atk": 170,
+        "def": 703,
+        "secondary": 24
+      }
+    },
+    "tartaglia": {
+      "name": "Tartaglia",
+      "tier": 5,
+      "element": "hydro",
+      "weapon": "bow",
+      "region": "liyue",
+      "birthmonth": 7,
+      "birthdate": 20,
+      "constellation": "Monoceros Caeli",
+      "talent_book": "freedom",
+      "talent_common": "fatui_insignia",
+      "weekly": "shard_of_a_foul_legacy",
+      "boss_drop": "cleansing_heart",
+      "specialty": "starconch",
+      "ascension": "fatui_insignia",
+      "stats": {
+        "secondary_stat": "hydro",
+        "hp": 13103,
+        "atk": 301,
+        "def": 815,
+        "secondary": 28.8
+      }
+    },
+    "venti": {
+      "name": "Venti",
+      "tier": 5,
+      "element": "anemo",
+      "weapon": "bow",
+      "region": "mondstadt",
+      "birthmonth": 6,
+      "birthdate": 16,
+      "constellation": "Carmen_Dei",
+      "talent_book": "ballad",
+      "talent_common": "slime",
+      "weekly": "tail_of_boreas",
+      "boss_drop": "hurricane_seed",
+      "specialty": "cecilia",
+      "ascension": "slime",
+      "stats": {
+        "secondary_stat": "er",
+        "hp": 10531,
+        "atk": 263,
+        "def": 669,
+        "secondary": 32
+      }
+    },
+    "xiangling": {
+      "name": "Xiangling",
+      "tier": 4,
+      "element": "pyro",
+      "weapon": "polearm",
+      "region": "liyue",
+      "birthmonth": 11,
+      "birthdate": 2,
+      "constellation": "Trulla",
+      "talent_book": "diligence",
+      "talent_common": "slime",
+      "weekly": "dvalins_claw",
+      "boss_drop": "everflame_seed",
+      "specialty": "jueyun_chili",
+      "ascension": "slime",
+      "stats": {
+        "secondary_stat": "em",
+        "hp": 10875,
+        "atk": 225,
+        "def": 669,
+        "secondary": 96
+      }
+    },
+    "xiao": {
+      "name": "Xiao",
+      "tier": 5,
+      "element": "anemo",
+      "weapon": "polearm",
+      "region": "liyue",
+      "birthmonth": 4,
+      "birthdate": 17,
+      "constellation": "Alatus Nemeseos",
+      "talent_book": "prosperity",
+      "talent_common": "slime",
+      "weekly": "shadow_of_the_warrior",
+      "boss_drop": "juvenile_jade",
+      "specialty": "qingxin",
+      "ascension": "slime",
+      "stats": {
+        "secondary_stat": "crit_rate",
+        "hp": 12736,
+        "atk": 349,
+        "def": 799,
+        "secondary": 19.2
+      }
+    },
+    "xingqiu": {
+      "name": "Xingqiu",
+      "tier": 4,
+      "element": "hydro",
+      "weapon": "sword",
+      "region": "liyue",
+      "birthmonth": 10,
+      "birthdate": 9,
+      "constellation": "Fabulae Textile",
+      "talent_book": "gold",
+      "talent_common": "mask",
+      "weekly": "tail_of_boreas",
+      "boss_drop": "cleansing_heart",
+      "specialty": "silk_flower",
+      "ascension": "mask",
+      "stats": {
+        "secondary_stat": "atk",
+        "hp": 10223,
+        "atk": 202,
+        "def": 758,
+        "secondary": 24
+      }
+    },
+    "xinyan": {
+      "name": "Xinyan",
+      "tier": 4,
+      "element": "pyro",
+      "weapon": "claymore",
+      "region": "liyue",
+      "birthmonth": 10,
+      "birthdate": 16,
+      "constellation": "Fila Ignium",
+      "talent_book": "gold",
+      "talent_common": "hoarder_insignia",
+      "weekly": "tusk_of_monoceros_caeli",
+      "boss_drop": "everflame_seed",
+      "specialty": "violetgrass",
+      "ascension": "hoarder_insignia",
+      "stats": {
+        "secondary_stat": "atk",
+        "hp": 11201,
+        "atk": 249,
+        "def": 799,
+        "secondary": 24
+      }
+    },
+    "zhongli": {
+      "name": "Zhongli",
+      "tier": 5,
+      "element": "geo",
+      "weapon": "polearm",
+      "region": "liyue",
+      "birthmonth": 12,
+      "birthdate": 31,
+      "constellation": "Lapis Dei",
+      "talent_book": "gold",
+      "talent_common": "slime",
+      "weekly": "tusk_of_monoceros_caeli",
+      "boss_drop": "basalt_pillar",
+      "specialty": "cor_lapis",
+      "ascension": "slime",
+      "stats": {
+        "secondary_stat": "geo",
+        "hp": 14695,
+        "atk": 251,
+        "def": 738,
+        "secondary": 28.8
+      }
+    }
+  },
+  "weapons": {
+    "amos_bow": {
+      "name": "Amos' Bow",
+      "tier": 5,
+      "type": "bow",
+      "atk": 608,
+      "secondary_stat": "atk",
+      "secondary": 49.6,
+      "passive_name": "Strong-Willed",
+      "passive": "Increases Normal Attack and Charged Attack DMG by 12/15/18/21/24%. After a Normal or Charged Attack is fired, DMG dealt increases by a further 8/10/12/14/16% every 0.1 seconds up to 5 times.",
+      "weapon_material": "dandelion",
+      "common_material_1": "chaos",
+      "common_material_2": "slime"
+    },
+    "apprentice_notes": {
+      "name": "Apprentice's Notes",
+      "tier": 1,
+      "type": "catalyst",
+      "atk": 185,
+      "secondary_stat": "none",
+      "passive_name": "none",
+      "weapon_material": "decarabian",
+      "common_material_1": "horn",
+      "common_material_2": "mask"
+    }
+  },
+  "elements": {
+    "anemo": "Anemo",
+    "cryo": "Cryo",
+    "dendro": "Dendro",
+    "electro": "Electro",
+    "geo": "Geo",
+    "hydro": "Hydro",
+    "pyro": "Pyro"
+  },
+  "weapon_types": {
+    "bow": "Bow",
+    "catalyst": "Catalyst",
+    "claymore": "Claymore",
+    "polearm": "Polearm",
+    "sword": "Sword"
+  },
+  "ascension_gems": {
+    "anemo": "Vayuda Turquoise",
+    "cryo": "Shivada Jade",
+    "electro": "Vajrada Amethyst",
+    "geo": "Prithiva Topaz",
+    "hydro": "Varunada Lazurite",
+    "pyro": "Agnidus Agate"
+  },
+  "elemental_materials": {
+    "basalt_pillar": {
+      "name": "Basalt Pillar",
+      "boss": "Geo Hypostasis (Gimel)"
+    },
+    "cleansing_heart": {
+      "name": "Cleansing Heart",
+      "boss": "Rhodeia of Loch (Oceanid of Qingce)"
+    },
+    "everflame_seed": {
+      "name": "Everflame Seed",
+      "boss": "Pyro Regisvine"
+    },
+    "hoarfrost_core": {
+      "name": "Hoarfrost Core",
+      "boss": "Cryo Regisvine"
+    },
+    "hurricane_seed": {
+      "name": "Hurricane Seed",
+      "boss": "Anemo Hypostasis (Beth)"
+    },
+    "juvenile_jade": {
+      "name": "Juvenile Jade",
+      "boss": "Primo Geovishap"
+    },
+    "lightning_prism": {
+      "name": "Lightning Prism",
+      "boss": "Electro Hypostasis (Aleph)"
+    }
+  },
+  "general_ascension": {
+    "arrowhead": {
+      "category_name": "Firm/Sharp/Weathered Arrowhead",
+      "tiers": ["Firm Arrowhead", "Sharp Arrowhead", "Weathered Arrowhead"]
+    },
+    "fatui_insignia": {
+      "category_name": "Recruit/Sergeant/Lieutenant's Insignia",
+      "tiers": ["Recruit's Insignia", "Sergeant's Insignia", "Lieutenant's Insignia"]
+    },
+    "hoarder_insignia": {
+      "category_name": "Treasure Hoarder/Silver Raven/Golden Raven Insignia",
+      "tiers": ["Treasure Hoarder Insignia", "Silver Raven Insignia", "Golden Raven Insignia"]
+    },
+    "mask": {
+      "category_name": "Damaged/Stained/Ominous Mask",
+      "tiers": ["Damaged Mask", "Stained Mask", "Ominous Mask"]
+    },
+    "nectar": {
+      "category_name": "Whopperflower/Shimmering/Energy Nectar",
+      "tiers": ["Whopperflower Nectar", "Shimmering Nectar", "Energy Nectar"]
+    },
+    "scroll": {
+      "category_name": "Divining/Sealed/Forbidden Curse Scroll",
+      "tiers": ["Divining Scroll", "Sealed Scroll", "Forbidden Curse Scroll"]
+    },
+    "slime": {
+      "category_name": "Slime Condensate/Secretions/Concentrate",
+      "tiers": ["Slime Condensate", "Slime Secretions", "Slime Concentrate"]
+    }
+  },
+  "regional_specialties": {
+    "glaze_lily": {
+      "name": "Glaze Lily",
+      "region": "liyue"
+    },
+    "cor_lapis": {
+      "name": "Cor Lapis",
+      "region": "liyue"
+    },
+    "silk_flower": {
+      "name": "Silk Flower",
+      "region": "liyue"
+    },
+    "qingxin": {
+      "name": "Qingxin",
+      "region": "liyue"
+    },
+    "jueyun_chili": {
+      "name": "Jueyun Chili",
+      "region": "liyue"
+    },
+    "noctilucous_jade": {
+      "name": "Noctilucous Jade",
+      "region": "liyue"
+    },
+    "starconch": {
+      "name": "Starconch",
+      "region": "liyue"
+    },
+    "violetgrass": {
+      "name": "Violetgrass",
+      "region": "liyue"
+    },
+    "cecilia": {
+      "name": "Cecilia",
+      "region": "mondstadt"
+    },
+    "philanemo_mushroom": {
+      "name": "Philanemo Mushroom",
+      "region": "mondstadt"
+    },
+    "dandelion_seed": {
+      "name": "Dandelion Seed",
+      "region": "mondstadt"
+    },
+    "calla_lily": {
+      "name": "Calla Lily",
+      "region": "mondstadt"
+    },
+    "small_lamp_grass": {
+      "name": "Small Lamp Grass",
+      "region": "mondstadt"
+    },
+    "wolfhook": {
+      "name": "Wolfhook",
+      "region": "mondstadt"
+    },
+    "valberry": {
+      "name": "Valberry",
+      "region": "mondstadt"
+    },
+    "windwheel_aster": {
+      "name": "Windwheel Aster",
+      "region": "mondstadt"
+    }
+  }
+}
