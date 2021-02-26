@@ -73,51 +73,18 @@ async def osu_watch():
           print(traceback.format_exc())
     await asyncio.sleep(5)
 
-def query(category, day, region):
-  for key, value in genshin_data[category].items():
-    if day in value["days"] and region == value["region"]:
-      return (key, value)
-  return ("null", {})
-
 async def genshin_daily():
   await asyncio.sleep(5)
-  await del_data("genshin", "remind", "last")
   while True:
     n = datetime.datetime.now()
-    if n.hour >= 0:
+    if n.hour >= 4:
       for cid in await get_data("watch_channels", "genshin", default = set()):
         try:
           if (n.year, n.month, n.day) != await get_data("genshin", "remind", "last", cid):
             await set_data("genshin", "remind", "last", cid, (n.year, n.month, n.day))
             wd = n.weekday()
             channel = client.get_channel(cid)
-            if wd == 6:
-              await channel.send(embed = discord.Embed(
-                title = "Sunday",
-                description = "**All talent books and weapon ascension materials** are available for farming today; you may select the reward type you want before entering each Domain of Mastery and Forgery. If you wish to get details about these items, run `please genshin info <item>`."
-              ))
-            else:
-              embed = discord.Embed(
-                title = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][wd],
-                description = "It is the weekly reset, so all bosses (Stormterror, Wolf of the North, Tartaglia) are available again." if wd == 0 else ""
-              )
-              el = []
-              for region in genshin_data["regions"]:
-                tid, tval = query("talent_books", wd, region)
-                wid, wval = query("weapon_ascension", wd, region)
-                el.append(emoji(f"{tid}2"))
-                el.append(emoji(f"{wid}3"))
-                te = [str(emoji(f"{tid}{i}")) for i in range(1, 4)]
-                we = [str(emoji(f"{wid}{i}")) for i in range(1, 5)]
-                embed.add_field(
-                  name = genshin_data["regions"][region]["name"],
-                  value = f"- {tval['category_name']} ({''.join(te)})" + "\n" +
-                          f"- {wval['category_name']} ({''.join(we)})" + "\n",
-                  inline = False
-                )
-              msg = await channel.send(embed = embed)
-              for e in el:
-                await msg.add_reaction(e)
+            await client.genshin_daily(channel, wd)
         except BotError as e:
           await channel.send(e.message)
         except DataError as e:
@@ -127,10 +94,22 @@ async def genshin_daily():
           print(traceback.format_exc())
     await asyncio.sleep(5)
 
+async def genshin_reminder():
+  await asyncio.sleep(5)
+  while True:
+    d = {**await get_data("genshin", "resin_reminder", default = {})}
+    for (uid, cid) in d:
+      amt = await get_data("genshin", "resin_reminder", (uid, cid))
+      if await resin_amount(uid) >= amt:
+        await del_data("genshin", "resin_reminder", (uid, cid))
+        await client.get_channel(cid).send(f"<@!{uid}> you have reached {amt} resin!" + (" (why???)" * (amt == 0)) + (" (nice)" * (amt == 69)) + (" (well, no you haven't but...)" * (amt > 160)))
+    await asyncio.sleep(5)
+
 loop = asyncio.get_event_loop()
 loop.run_until_complete(asyncio.gather(
   client.start(config["discord-token"]),
   direct(),
-  osu_watch(),
-  genshin_daily()
+#   osu_watch(),
+  genshin_daily(),
+  genshin_reminder()
 ))

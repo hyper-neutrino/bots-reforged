@@ -106,7 +106,7 @@
     "forgery": "Forgery (Weapon Materials)",
     "blessing": "Blessing (Artifacts)"
   },
-  "dmains": {
+  "domains": {
     "forsaken_rift": {
       "name": "Forsaken Rift",
       "region": "mondstadt",
@@ -180,7 +180,7 @@
           "disorder": "You will periodically burn and take continuous pyro damage (pyro debuff).",
           "objective": "Defeat 4 opponents within 8:00.",
           "waves": [
-            [{"enemy": "mitachurl_axe", "count": 2}],
+            [{"enemy": "mitachurl_axe_pyro", "count": 2}],
             [{"enemy": "fatui_agent_pyro", "count": 2}]
           ]
         }
@@ -194,28 +194,28 @@
       "tiers": [
         {
           "disorder": "You will periodically gain -80% CDR (hydro debuff).",
-          "objective": "Defeat 20 enemies without exceeding 0:20 between each kill.",
+          "objective": "Defeat 20 opponents without exceeding 0:20 between each kill.",
           "waves": [
             [{"enemy": "slime_hydro", "count": 19}, {"enemy": "slime_hydro_large", "count": 1}]
           ]
         },
         {
           "disorder": "You will periodically gain -80% CDR (hydro debuff).",
-          "objective": "Defeat 23 enemies without exceeding 0:25 between each kill.",
+          "objective": "Defeat 23 opponents without exceeding 0:25 between each kill.",
           "waves": [
             [{"enemy": "slime_hydro", "count": 12}, {"enemy": "slime_hydro_large", "count": 3}, {"enemy": "hilichurl_guard_dendro", "count": 8}]
           ]
         },
         {
           "disorder": "You will periodically gain -100% CDR (hydro debuff).",
-          "objective": "Defeat 22 enemies without exceeding 0:50 between each kill.",
+          "objective": "Defeat 22 opponents without exceeding 0:50 between each kill.",
           "waves": [
-            [{"enemy": "slime_hydro", "count": 14}, {"enemy": "slime_hydro_large", "count": 4}, {"enemy": "hydro_samachurl", "count": 3}, {"enemy": "abyss_mage_hydro", "count": 1}]
+            [{"enemy": "slime_hydro", "count": 14}, {"enemy": "slime_hydro_large", "count": 4}, {"enemy": "samachurl_hydro", "count": 3}, {"enemy": "abyss_mage_hydro", "count": 1}]
           ]
         },
         {
           "disorder": "You will periodically gain -100% CDR (hydro debuff).",
-          "objective": "Defeat 8 enemies without exceeding 0:40 between each kill (wave 1); defeat 2 enemies without exceeding 1:20 between each kill (wave 2).",
+          "objective": "Defeat 8/2 opponents without exceeding 0:40/1:20 between each kill.",
           "waves": [
             [{"enemy": "slime_hydro_large", "count": 8}],
             [{"enemy": "abyss_mage_hydro", "count": 2}]
@@ -261,6 +261,256 @@
           ]
         }
       ]
+    },
+    "domain_of_guyun": {
+      "name": "Domain of Guyun",
+      "region": "liyue",
+      "type": "blessing",
+      "drops": ["lucky_dog", "brave_heart", "archaic_petra", "retracing_bolide"],
+      "tiers": [
+        {
+          "disorder": "Electro-Charged damage +150%, AoE +100%.",
+          "objective": "Defeat 28 opponents while protecting the Monolith.",
+          "waves": [
+            [{"enemy": "slime_hydro", "count": 21}, {"enemy": "slime_hydro_large", "count": 6}, {"enemy": "abyss_mage_hydro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Triggering Overload deals a burst of damage to nearby enemies.",
+          "objective": "Defeat 22 opponents while protecting the Monolith.",
+          "waves": [
+            [{"enemy": "slime_pyro", "count": 16}, {"enemy": "slime_pyro_large", "count": 5}, {"enemy": "abyss_mage_pyro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Triggering Superconduct deals a burst of damage to nearby enemies.",
+          "objective": "Defeat 20 opponents while protecting the Monolith.",
+          "waves": [
+            [{"enemy": "slime_cryo", "count": 15}, {"enemy": "slime_cryo_large", "count": 4}, {"enemy": "abyss_mage_cryo", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Electro-Charged damage +150%, AoE +100%",
+          "objective": "Defeat 20 opponents while protecting the Monolith.",
+          "waves": [
+            [{"enemy": "slime_hydro", "count": 5}, {"enemy": "slime_hydro_large", "count": 6}, {"enemy": "hilichurl", "count": 6}, {"enemy": "samachurl_hydro", "count": 2}, {"enemy": "abyss_mage_hydro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Triggering Overload deals a burst of damage to nearby enemies. Triggering Melt or Vaporize deals a burst of damage to you.",
+          "objective": "Defeat 3 opponents within 5:00.",
+          "waves": [
+            [{"enemy": "abyss_mage_pyro", "count": 1}],
+            [{"enemy": "ruin_guard", "count": 2}]
+          ]
+        },
+        {
+          "disorder": "Triggering Superconduct deals a burst of damage to nearby enemies. Triggering Melt or Vaporize deals a burst of damage to you.",
+          "objective": "Defeat 5 opponents within 7:00.",
+          "waves": [
+            [{"enemy": "ruin_hunter", "count": 1}, {"enemy": "hilichurl", "count": 2}],
+            [{"enemy": "abyss_mage_cryo", "count": 2}]
+          ]
+        }
+      ]
+    },
+    "midsummer_courtyard": {
+      "name": "Midsummer Courtyard",
+      "region": "mondstadt",
+      "type": "blessing",
+      "drops": ["adventurer", "resolution_of_sojourner", "thundering_fury", "thundersoother"],
+      "tiers": [
+        {
+          "disorder": "Triggering Melt deals a burst of damage to nearby enemies.",
+          "objective": "Defeat 26 opponents within 5:00.",
+          "waves": [
+            [{"enemy": "slime_cryo", "count": 3}, {"enemy": "slime_hydro", "count": 7}, {"enemy": "hilichurl", "count": 14}, {"enemy": "abyss_mage_cryo", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Triggering Overload deals a burst of damage to nearby enemies. Triggering Superconduct deals a burst of damage to you.",
+          "objective": "Defeat 12 opponents within 5:00.",
+          "waves": [
+            [{"enemy": "slime_electro", "count": 1}, {"enemy": "fatui_cicin_mage_electro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Triggering Melt deals a burst of damage to nearby enemies. Triggering Superconduct deals a burst of damage to you.",
+          "objective": "Defeat 14 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_cryo", "count": 13}, {"enemy": "abyss_mage_cryo", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Triggering Vaporize deals a burst of damage to nearby enemies. Triggering Electro-Charged deals a burst of damage to you.",
+          "objective": "Defeat 15 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_hydro", "count": 13}, {"enemy": "abyss_mage_hydro", "count": 1}, {"enemy": "samachurl_hydro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Triggering Melt deals a burst of damage to nearby enemies. Triggering Superconduct deals a burst of damage to you.",
+          "objective": "Defeat 5 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_cryo_large", "count": 3}, {"enemy": "abyss_mage_cryo", "count": 2}]
+          ]
+        },
+        {
+          "disorder": "Triggering Overload deals a burst of damage to nearby enemies. Triggering Superconduct deals a burst of damage to you.",
+          "objective": "Defeat 7 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_electro_large", "count": 3}, {"enemy": "slime_electro_mutant", "count": 2}],
+            [{"enemy": "fatui_cicin_mage_electro", "count": 2}]
+          ]
+        }
+      ]
+    },
+    "valley_of_remembrance": {
+      "name": "Valley of Remembrance",
+      "region": "mondstadt",
+      "type": "blessing",
+      "drops": ["traveling_doctor", "tiny_miracle", "viridescent_venerer", "maiden_beloved"],
+      "tiers": [
+        {
+          "disorder": "+75% physical damage for all party members.",
+          "objective": "Defeat 23 opponents within 5:00.",
+          "waves": [
+            [{"enemy": "hoarder", "count": 23}]
+          ]
+        },
+        {
+          "disorder": "+75% physical damage for all party members.",
+          "objective": "Defeat 16 opponents within 5:00.",
+          "waves": [
+            [{"enemy": "hoarder", "count": 15}, {"enemy": "fatui_agent_pyro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "+75% physical damage for all party members.",
+          "objective": "Defeat 20 opponents within 0:20.",
+          "waves": [
+            [{"enemy": "hoarder", "count": 18}, {"enemy": "fatui_agent_pyro", "count": 1}, {"enemy": "fatui_cicin_mage_electro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "+75% physical damage for all party members.",
+          "objective": "Defeat 7 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "hoarder", "count": 5}, {"enemy": "fatui_agent_pyro", "count": 1}, {"enemy": "fatui_cicin_mage_electro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "+75% physical damage for all party members.",
+          "objective": "Defeat 5 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "hoarder_potioneer_cryo", "count": 3}, {"enemy": "fatui_agent_pyro", "count": 1}, {"enemy": "fatui_cicin_mage_electro", "count": 1}]
+          ]
+        }
+      ]
+    },
+    "hidden_palace_of_zhou_formula": {
+      "name": "Hidden Palace of Zhou Formula",
+      "region": "liyue",
+      "type": "blessing",
+      "drops": ["defender_will", "martial_artist", "crimson_witch_of_flames", "lavawalker"],
+      "tiers": [
+        {
+          "disorder": "The duration of Frozen is greatly increased. Triggering Superconduct deals a burst of damage to nearby enemies.",
+          "objective": "Defeat 20 opponents while protecting the Monolith.",
+          "waves": [
+            [{"enemy": "slime_electro_large", "count": 6}, {"enemy": "slime_hydro", "count": 8}, {"enemy": "slime_hydro_large", "count": 6}]
+          ]
+        },
+        {
+          "disorder": "Triggering Melt deals a burst of damage to nearby enemies. Triggering Overload deals a burst of damage to you.",
+          "objective": "Defeat 8 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_pyro_large", "count": 4}, {"enemy": "mitachurl_axe_pyro", "count": 2}, {"enemy": "abyss_mage_pyro", "count": 2}]
+          ]
+        },
+        {
+          "disorder": "Triggering Superconduct deals a burst of damage to nearby enemies. Triggering Overload deals a burst of damage to you.",
+          "objective": "Defeat 16 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "slime_electro_large", "count": 3}, {"enemy": "hilichurl_fighter", "count": 2}],
+            [{"enemy": "slime_electro_large", "count": 3}, {"enemy": "hilichurl_fighter", "count": 2}],
+            [{"enemy": "slime_electro_large", "count": 5}],
+            [{"enemy": "fatui_cicin_mage_electro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Triggering Melt deals a burst of damage to nearby enemies. Triggering Overload deals a burst of damage to you.",
+          "objective": "Defeat 6 opponents within 1:00 (time is gained after each kill)",
+          "waves": [
+            [{"enemy": "slime_pyro", "count": 2}, {"enemy": "mitachurl_axe_pyro", "count": 2}, {"enemy": "abyss_mage_pyro", "count": 2}]
+          ]
+        }
+      ]
+    },
+    "peak_of_vindagnyr": {
+      "name": "Peak of Vindagnyr",
+      "region": "mondstadt",
+      "type": "blessing",
+      "drops": ["defender_will", "gambler", "blizzard_strayer", "heart_of_depth"],
+      "tiers": [
+        {
+          "disorder": "Characters will accumulate Sheer Cold and will lose HP over time once Sheer Cold reaches its limit. The platforms intermittently switch between Subzero, which accelerate Sheer Cold's accumulation, and Warm, which removes Sheer Cold over time.",
+          "objective": "Defeat 14 opponents within 10:00.",
+          "waves": [
+            [{"enemy": "slime_cryo", "count": 10}, {"enemy": "slime_cryo_large", "count": 2}, {"enemy": "mitachurl_shield_cryo", "count": 2}]
+          ]
+        },
+        {
+          "disorder": "Sheer Cold mechanism; see above.",
+          "objective": "Defeat 10 opponents within 10:00.",
+          "waves": [
+            [{"enemy": "slime_cryo", "count": 3}, {"enemy": "slime_cryo_large", "count": 2}, {"enemy": "hilichurl_grenadier_cryo", "count": 3}, {"enemy": "mitachurl_shield_cryo", "count": 2}]
+          ]
+        },
+        {
+          "disorder": "Sheer Cold mechanism; see above.",
+          "objective": "Defeat 8 opponents within 10:00.",
+          "waves": [
+            [{"enemy": "slime_cryo_large", "count": 2}, {"enemy": "hilichurl_grenadier_cryo", "count": 2}, {"enemy": "mitachurl_shield_cryo", "count": 3}, {"enemy": "abyss_mage_cryo", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "Sheer Cold mechanism; see above.",
+          "objective": "Defeat 2 opponents within 10:00.",
+          "waves": [
+            [{"enemy": "abyss_mage_cryo", "count": 1}, {"enemy": "lawachurl_cryo", "count": 1}]
+          ]
+        }
+      ]
+    },
+    "clear_pool_and_mountain_cavern": {
+      "name": "Clear Pool and Mountain Cavern",
+      "region": "liyue",
+      "type": "blessing",
+      "drops": ["gambler", "scholar", "bloodstained_chivalry", "noblesse_oblige"],
+      "tiers": [
+        {
+          "disorder": "+75 geo damage for all party members.",
+          "objective": "Defeat 3 opponents within 5:00.",
+          "waves": [
+            [{"enemy": "abyss_mage_cryo", "count": 1}, {"enemy": "abyss_mage_pyro", "count": 2}]
+          ]
+        },
+        {
+          "disorder": "+75 geo damage for all party members.",
+          "objective": "Defeat 3 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "abyss_mage_cryo", "count": 2}, {"enemy": "abyss_mage_pyro", "count": 1}]
+          ]
+        },
+        {
+          "disorder": "+75 geo damage for all party members.",
+          "objective": "Defeat 3 opponents within 6:00.",
+          "waves": [
+            [{"enemy": "abyss_mage_cryo", "count": 1}, {"enemy": "abyss_mage_pyro", "count": 1}, {"enemy": "abyss_mage_hydro", "count": 1}]
+          ]
+        }
+      ]
     }
   },
   "enemy_factions": {
@@ -270,270 +520,17 @@
     "treasure_hoarders": "Treasure Hoarders",
     "abyss_order": "Abyss Order"
   },
-  "enemy_groups": {
-    "slime": {
-      "name": "Slime",
-      "type": "common",
-      "faction": "none"
-    },
-    "whopperflower": {
-      "name": "Whopperflower",
-      "type": "common",
-      "faction": "none"
-    },
-    "misc_common": {
-      "name": "Miscellaneous",
-      "type": "common",
-      "faction": "none"
-    },
-    "hilichurl": {
-      "name": "Hilichurl",
-      "type": "common",
-      "faction": "hilichurl"
-    },
-    "hilichurl_shooter": {
-      "name": "Hilichurl Shooter",
-      "type": "common",
-      "faction": "hilichurl"
-    },
-    "samachurl": {
-      "name": "Samachurl",
-      "type": "common",
-      "faction": "hilichurl"
-    },
-    "hilichurl_unusual": {
-      "name": "Unusual Hilichurl",
-      "type": "common",
-      "faction": "Hilichurl"
-    },
-    "fatui_vanguard": {
-      "name": "Fatui Vanguard",
-      "type": "common",
-      "faction": "fatui"
-    },
-    "fatui_bracer": {
-      "name": "Fatui Bracer",
-      "type": "common",
-      "faction": "fatui"
-    },
-    "fatui_legionnaire": {
-      "name": "Fatui Legionnaire",
-      "type": "common",
-      "faction": "fatui"
-    },
-    "treasure_hoarder": {
-      "name": "Treasure Hoarder",
-      "type": "common",
-      "faction": "treasure_hoarders"
-    },
-    "mitachurl": {
-      "name": "Mitachurl",
-      "type": "elite",
-      "faction": "hilichurl"
-    },
-    "lawachurl": {
-      "name": "Lawachurl",
-      "type": "elite",
-      "faction": "hilichurl"
-    },
-    "abyss_mage": {
-      "name": "Abyss Mage",
-      "type": "elite",
-      "faction": "abyss_order"
-    },
-    "automaton": {
-      "name": "Automaton",
-      "type": "elite",
-      "faction": "abyss_order"
-    },
-    "fatui_cicin_mage": {
-      "name": "Fatui Cicin Mage",
-      "type": "elite",
-      "faction": "fatui"
-    },
-    "fatui_agent": {
-      "name": "Fatui Agent",
-      "type": "elite",
-      "faction": "fatui"
-    },
-    "misc_elite": {
-      "name": "Miscellaneous",
-      "type": "elite",
-      "faction": "none"
-    },
-    "geovishap": {
-      "name": "Geovishap",
-      "type": "elite",
-      "faction": "none"
-    },
-    "hypostasis": {
-      "name": "Hypostasis",
-      "type": "normal_boss",
-      "faction": "none"
-    },
-    "regisvine": {
-      "name": "Regisvine",
-      "type": "normal_boss",
-      "faction": "none"
-    },
-    "misc_normal": {
-      "name": "Normal Boss",
-      "type": "normal_boss",
-      "faction": "none"
-    },
-    "weekly_boss": {
-      "name": "Weekly Boss",
-      "type": "weekly_boss",
-      "faction": "none"
-    }
+  "enemy_tiers": {
+    "common": "Common",
+    "elite": "Elite",
+    "normal_boss": "Normal Boss",
+    "weekly_boss": "Weekly Boss"
   },
-  "enemies": {
-    "slime_anemo": {
-      "name": "Anemo Slime",
-      "group": "slime",
-      "emoji": "slime_anemo",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_anemo_large": {
-      "name": "Large Anemo Slime",
-      "group": "slime",
-      "emoji": "slime_anemo_large",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_cryo": {
-      "name": "Cryo Slime",
-      "group": "slime",
-      "emoji": "slime_cryo",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_cryo_large": {
-      "name": "Large Cryo Slime",
-      "group": "slime",
-      "emoji": "slime_cryo_large",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },,
-    "slime_dendro": {
-      "name": "Dendro Slime",
-      "group": "slime",
-      "emoji": "slime_dendro",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_dendro_large": {
-      "name": "Large Dendro Slime",
-      "group": "slime",
-      "emoji": "slime_dendro_large",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_electro": {
-      "name": "Electro Slime",
-      "group": "slime",
-      "emoji": "slime_electro",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_electro_large": {
-      "name": "Large Electro Slime",
-      "group": "slime",
-      "emoji": "slime_electro_large",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_electro_mutant": {
-      "name": "Mutant Electro Slime",
-      "group": "slime",
-      "emoji": "slime_electro_mutant",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_geo": {
-      "name": "Geo Slime",
-      "group": "slime",
-      "emoji": "slime_geo",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_geo_large": {
-      "name": "Large Geo Slime",
-      "group": "slime",
-      "emoji": "slime_geo_large",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_hydro": {
-      "name": "Hydro Slime",
-      "group": "slime",
-      "emoji": "slime_hydro",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_hydro_large": {
-      "name": "Large Hydro Slime",
-      "group": "slime",
-      "emoji": "slime_hydro_large",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "slime_pyro": {
-      "name": "Pyro Slime",
-      "group": "slime",
+  "enemy_groups": {
+    "slimes": {
+      "name": "Slimes",
+      "type": "common",
+      "faction": "none",
       "emoji": "slime_pyro",
       "drops": [
         {
@@ -542,31 +539,10 @@
         }
       ]
     },
-    "slime_pyro_large": {
-      "name": "Large Pyro Slime",
-      "group": "slime",
-      "emoji": "slime_pyro_large",
-      "drops": [
-        {
-          "id": "slime",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "whopperflower_cryo": {
-      "name": "Cryo Whopperflower",
-      "group": "whopperflower",
-      "emoji": "whopperflower_cryo",
-      "drops": [
-        {
-          "id": "nectar",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "whopperflower_pyro": {
-      "name": "Pyro Whopperflower",
-      "group": "whopperflower",
+    "whopperflowers": {
+      "name": "Whopperflowers",
+      "type": "common",
+      "faction": "none",
       "emoji": "whopperflower_pyro",
       "drops": [
         {
@@ -575,15 +551,19 @@
         }
       ]
     },
-    "defense_mechanism": {
-      "name": "Defense Mechanism",
-      "group": "misc_common",
+    "misc_common": {
+      "name": "Miscellaneous",
+      "type": "common",
+      "faction": "none",
       "emoji": "defense_mechanism",
-      "drops": []
+      "drops": [
+        
+      ]
     },
-    "hilichurl": {
-      "name": "Hilichurl",
-      "group": "hilichurl",
+    "hilichurls": {
+      "name": "Hilichurls",
+      "type": "common",
+      "faction": "hilichurl",
       "emoji": "hilichurl",
       "drops": [
         {
@@ -592,114 +572,10 @@
         }
       ]
     },
-    "hilichurl_fighter": {
-      "name": "Hilichurl Fighter",
-      "group": "hilichurl",
-      "emoji": "hilichurl",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hilichurl_guard_dendro": {
-      "name": "Wooden Shield Hilichurl Guard",
-      "group": "hilichurl",
-      "emoji": "hilichurl",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hilichurl_guard_geo": {
-      "name": "Rock Shield Hilichurl Guard",
-      "group": "hilichurl",
-      "emoji": "hilichurl",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hilichurl_guard_cryo": {
-      "name": "Ice Shield Hilichurl Fighter",
-      "group": "hilichurl",
-      "emoji": "hilichurl",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hilichurl_berserker": {
-      "name": "Hilichurl Berserker",
-      "group": "hilichurl",
-      "emoji": "hilichurl_pyro",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hilichurl_grenadier_pyro": {
-      "name": "Hilichurl Grenadier",
-      "group": "hilichurl",
-      "emoji": "hilichurl",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hilichurl_grenadier_cryo": {
-      "name": "Cryo Hilichurl Grenadier",
-      "group": "hilichurl",
-      "emoji": "hilichurl_cryo",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hilichurl_shooter": {
-      "name": "Hilichurl Shooter",
-      "group": "hilichurl_shooter",
-      "emoji": "hilichurl",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }, {
-          "id": "arrowhead",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hilichurl_shooter_cryo": {
-      "name": "Cryo Hilichurl Shooter",
-      "group": "hilichurl_shooter",
-      "emoji": "hilichurl_cryo",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }, {
-          "id": "arrowhead",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hilichurl_shooter_electro": {
-      "name": "Electro Hilichurl Shooter",
-      "group": "hilichurl_shooter",
+    "hilichurl_shooters": {
+      "name": "Hilichurl Shooters",
+      "type": "common",
+      "faction": "hilichurl",
       "emoji": "hilichurl_electro",
       "drops": [
         {
@@ -711,79 +587,10 @@
         }
       ]
     },
-    "hilichurl_shooter_pyro": {
-      "name": "Pyro Hilichurl Shooter",
-      "group": "hilichurl_shooter",
-      "emoji": "hilichurl_pyro",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }, {
-          "id": "arrowhead",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "samachurl_anemo": {
-      "name": "Anemo Samachurl",
-      "group": "samachurl",
-      "emoji": "samachurl_anemo",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }, {
-          "id": "scroll",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "samachurl_cryo": {
-      "name": "Cryo Samachurl",
-      "group": "samachurl",
-      "emoji": "samachurl_cryo",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }, {
-          "id": "scroll",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "samachurl_dendro": {
-      "name": "Dendro Samachurl",
-      "group": "samachurl",
-      "emoji": "samachurl_dendro",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }, {
-          "id": "scroll",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "samachurl_geo": {
-      "name": "Geo Samachurl",
-      "group": "samachurl",
-      "emoji": "samachurl_geo",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
-        }, {
-          "id": "scroll",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "samachurl_hydro": {
-      "name": "Hydro Samachurl",
-      "group": "samachurl",
+    "samachurls": {
+      "name": "Samachurls",
+      "type": "common",
+      "faction": "hilichurl",
       "emoji": "samachurl_hydro",
       "drops": [
         {
@@ -796,25 +603,17 @@
       ]
     },
     "hilichurl_unusual": {
-      "name": "Unusual Hilichurl",
-      "group": "hilichurl_unusual",
-      "emoji": "hilichurl_unusual",
-      "drops": []
-    },
-    "fatui_vanguard_anemoboxer": {
-      "name": "Anemoboxer Vanguard",
-      "group": "fatui_vanguard",
-      "emoji": "vanguard_anemoboxer",
+      "name": "Unusual Hilichurls",
+      "type": "common",
+      "faction": "Hilichurl",
       "drops": [
-        {
-          "id": "fatui_insignia",
-          "type": "general_ascension"
-        }
+        
       ]
     },
-    "fatui_vanguard_electrohammer": {
-      "name": "Electrohammer Vanguard",
-      "group": "fatui_vanguard",
+    "fatui_vanguards": {
+      "name": "Fatui Vanguards",
+      "type": "common",
+      "faction": "fatui",
       "emoji": "vanguard_electrohammer",
       "drops": [
         {
@@ -823,20 +622,10 @@
         }
       ]
     },
-    "fatui_bracer_geochanter": {
-      "name": "Geochanter Bracer",
-      "group": "fatui_bracer",
-      "emoji": "bracer_geochanter",
-      "drops": [
-        {
-          "id": "fatui_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "fatui_bracer_pyroslinger": {
-      "name": "Pyroslinger Bracer",
-      "group": "fatui_bracer",
+    "fatui_bracers": {
+      "name": "Fatui Bracers",
+      "type": "common",
+      "faction": "fatui",
       "emoji": "bracer_pyroslinger",
       "drops": [
         {
@@ -845,20 +634,10 @@
         }
       ]
     },
-    "fatui_legionnaire_cryogunner": {
-      "name": "Cryogunner Legionnaire",
-      "group": "fatui_legionnaire",
-      "emoji": "legionnaire_cryogunner",
-      "drops": [
-        {
-          "id": "fatui_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "fatui_legionnaire_hydrogunner": {
-      "name": "Hydrogunner Legionnaire",
-      "group": "fatui_legionnaire",
+    "fatui_legionnaires": {
+      "name": "Fatui Legionnaires",
+      "type": "common",
+      "faction": "fatui",
       "emoji": "legionnaire_hydrogunner",
       "drops": [
         {
@@ -867,86 +646,10 @@
         }
       ]
     },
-    "hoarder_potioneer_cryo": {
-      "name": "Cryo Potioneer",
-      "group": "treasure_hoarder",
-      "emoji": "hoarder_potioneer_cryo",
-      "drops": [
-        {
-          "id": "hoarder_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hoarder_potioneer_electro": {
-      "name": "Electro Potioneer",
-      "group": "treasure_hoarder",
-      "emoji": "hoarder_potioneer_electro",
-      "drops": [
-        {
-          "id": "hoarder_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hoarder_potioneer_hydro": {
-      "name": "Hydro Potioneer",
-      "group": "treasure_hoarder",
-      "emoji": "hoarder_potioneer_hydro",
-      "drops": [
-        {
-          "id": "hoarder_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hoarder_potioneer_pyro": {
-      "name": "Pyro Potioneer",
-      "group": "treasure_hoarder",
-      "emoji": "hoarder_potioneer_pyro",
-      "drops": [
-        {
-          "id": "hoarder_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hoarder_crusher": {
-      "name": "Crusher",
-      "group": "treasure_hoarder",
-      "emoji": "hoarder_crusher",
-      "drops": [
-        {
-          "id": "hoarder_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hoarder_gravedigger": {
-      "name": "Gravedigger",
-      "group": "treasure_hoarder",
-      "emoji": "hoarder_gravedigger",
-      "drops": [
-        {
-          "id": "hoarder_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hoarder_marksman": {
-      "name": "Marksman",
-      "group": "treasure_hoarder",
-      "emoji": "hoarder_marksman",
-      "drops": [
-        {
-          "id": "hoarder_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hoarder_scout": {
-      "name": "Scout",
-      "group": "treasure_hoarder",
+    "treasure_hoarders": {
+      "name": "Treasure Hoarders",
+      "type": "common",
+      "faction": "treasure_hoarders",
       "emoji": "hoarder_scout",
       "drops": [
         {
@@ -955,42 +658,10 @@
         }
       ]
     },
-    "hoarder_handyman": {
-      "name": "Handyman",
-      "group": "treasure_hoarder",
-      "emoji": "hoarder_handyman",
-      "drops": [
-        {
-          "id": "hoarder_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hoarder_pugilist": {
-      "name": "Pugilist",
-      "group": "treasure_hoarder",
-      "emoji": "hoarder_pugilist",
-      "drops": [
-        {
-          "id": "hoarder_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "hoarder_scout": {
-      "name": "Scout",
-      "group": "treasure_hoarder",
-      "emoji": "hoarder_scout",
-      "drops": [
-        {
-          "id": "hoarder_insignia",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "mitachurl_pyro_axe": {
-      "name": "Blazing Axe Mitachurl",
-      "group": "mitachurl",
+    "mitachurls": {
+      "name": "Mitachurls",
+      "type": "elite",
+      "faction": "hilichurl",
       "emoji": "mitachurl",
       "drops": [
         {
@@ -1000,57 +671,29 @@
         {
           "id": "horn",
           "type": "general_ascension"
-        }
-      ]
-    },
-    "mitachurl_dendro_shield": {
-      "name": "Wooden Shieldwall Mitachurl",
-      "group": "mitachurl",
-      "emoji": "mitachurl",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
         },
         {
-          "id": "horn",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "mitachurl_geo_shield": {
-      "name": "Rock Shieldwall Mitachurl",
-      "group": "mitachurl",
-      "emoji": "mitachurl",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
+          "id": "traveling_doctor",
+          "type": "artifacts"
         },
         {
-          "id": "horn",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "mitachurl_cryo_shield": {
-      "name": "Ice Shieldwall Mitachurl",
-      "group": "mitachurl",
-      "emoji": "mitachurl",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
+          "id": "berserker",
+          "type": "artifacts"
         },
         {
-          "id": "horn",
-          "type": "general_ascension"
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
         }
       ]
     },
-    "lawachurl_geo": {
-      "name": "Stonehide Lawachurl",
-      "group": "lawachurl",
+    "lawachurls": {
+      "name": "Lawachurls",
+      "type": "elite",
+      "faction": "hilichurl",
       "emoji": "lawachurl_geo",
       "drops": [
         {
@@ -1060,150 +703,580 @@
         {
           "id": "horn",
           "type": "general_ascension"
-        }
-      ]
-    },
-    "lawachurl_cryo": {
-      "name": "Frostarm Lawachurl",
-      "group": "lawachurl",
-      "emoji": "lawachurl_cryo",
-      "drops": [
-        {
-          "id": "mask",
-          "type": "general_ascension"
         },
         {
-          "id": "horn",
-          "type": "general_ascension"
+          "id": "traveling_doctor",
+          "type": "artifacts"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
         }
       ]
     },
-    "abyss_mage_cryo": {
-      "name": "Cryo Abyss Mage",
-      "group": "abyss_mage",
+    "abyss_mages": {
+      "name": "Abyss Mages",
+      "type": "elite",
+      "faction": "abyss_order",
       "emoji": "abyss_mage_cryo",
       "drops": [
         {
           "id": "ley_line",
           "type": "general_ascension"
-        }
-      ]
-    },
-    "abyss_mage_hydro": {
-      "name": "Hydro Abyss Mage",
-      "group": "abyss_mage",
-      "emoji": "abyss_mage_hydro",
-      "drops": [
+        },
         {
-          "id": "ley_line",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "abyss_mage_pyro": {
-      "name": "Pyro Abyss Mage",
-      "group": "abyss_mage",
-      "emoji": "abyss_mage_pyro",
-      "drops": [
+          "id": "traveling_doctor",
+          "type": "artifacts"
+        },
         {
-          "id": "ley_line",
-          "type": "general_ascension"
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
         }
       ]
     },
-    "ruin_guard": {
-      "name": "Ruin Guard",
-      "group": "automaton",
+    "automata": {
+      "name": "Automata",
+      "type": "elite",
+      "faction": "abyss_order",
       "emoji": "ruin_guard",
       "drops": [
         {
           "id": "chaos",
           "type": "general_ascension"
-        }
-      ]
-    },
-    "ruin_hunter": {
-      "name": "Ruin Hunter",
-      "group": "automaton",
-      "emoji": "ruin_hunter",
-      "drops": [
+        },
         {
-          "id": "chaos",
-          "type": "general_ascension"
-        }
-      ]
-    },
-    "ruin_grader": {
-      "name": "Ruin Grader",
-      "group": "automaton",
-      "emoji": "ruin_grader",
-      "drops": [
+          "id": "traveling_doctor",
+          "type": "artifacts"
+        },
         {
-          "id": "chaos",
-          "type": "general_ascension"
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
         }
       ]
     },
-    "fatui_cicin_mage_electro": {
-      "name": "Fatui Electro Cicin Mage",
-      "group": "fatui_cicin_mage",
+    "fatui_cicin_mages": {
+      "name": "Fatui Cicin Mages",
+      "type": "elite",
+      "faction": "fatui",
       "emoji": "cicin_mage_electro",
       "drops": [
         {
           "id": "mist_grass",
           "type": "general_ascension"
-        }
-      ]
-    },
-    "fatui_cicin_mage_cryo": {
-      "name": "Fatui Cryo Cicin Mage",
-      "group": "fatui_cicin_mage",
-      "emoji": "cicin_mage_cryo",
-      "drops": [
+        },
         {
-          "id": "mist_grass",
-          "type": "general_ascension"
+          "id": "traveling_doctor",
+          "type": "artifacts"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
         }
       ]
     },
-    "fatui_agent_pyro": {
-      "name": "Fatui Pyro Agent",
-      "group": "fatui_agent",
+    "fatui_agents": {
+      "name": "Fatui Agents",
+      "type": "elite",
+      "faction": "fatui",
       "emoji": "agent_pyro",
       "drops": [
         {
           "id": "sacrificial_knife",
           "type": "general_ascension"
+        },
+        {
+          "id": "traveling_doctor",
+          "type": "artifacts"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
         }
       ]
     },
-    "eye_of_the_storm": {
-      "name": "Eye of the Storm",
-      "group": "misc_elite",
+    "misc_elite": {
+      "name": "Miscellaneous",
+      "type": "elite",
+      "faction": "none",
       "emoji": "eye_of_the_storm",
-      "drops": []
+      "drops": [
+        {
+          "id": "traveling_doctor",
+          "type": "artifacts"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
+        }
+      ]
     },
-    "geovishap": {
-      "name": "Geovishap",
-      "group": "geovishap",
+    "geovishaps": {
+      "name": "Geovishaps",
+      "type": "elite",
+      "faction": "none",
       "emoji": "geovishap",
       "drops": [
         {
           "id": "bone_shard",
           "type": "general_ascension"
+        },
+        {
+          "id": "traveling_doctor",
+          "type": "artifacts"
+        },
+        {
+          "id": "berserker",
+          "type": "artifacts"
+        },
+        {
+          "id": "instructor",
+          "type": "artifacts"
+        },
+        {
+          "id": "the_exile",
+          "type": "artifacts"
         }
       ]
     },
+    "hypostases": {
+      "name": "Hypostases",
+      "type": "normal_boss",
+      "faction": "none",
+      "emoji": "hypostasis_electro"
+    },
+    "regisvines": {
+      "name": "Regisvines",
+      "type": "normal_boss",
+      "faction": "none",
+      "emoji": "regisvine_pyro"
+    },
+    "misc_normal": {
+      "name": "Normal Bosses",
+      "type": "normal_boss",
+      "faction": "none",
+      "emoji": "oceanid"
+    },
+    "weekly_boss": {
+      "name": "Weekly Bosses",
+      "type": "weekly_boss",
+      "faction": "none",
+      "emoji": "dvalin"
+    }
+  },
+  "enemies": {
+    "slime_anemo": {
+      "name": "Anemo Slime",
+      "group": "slimes",
+      "emoji": "slime_anemo"
+    },
+    "slime_anemo_large": {
+      "name": "Large Anemo Slime",
+      "group": "slimes",
+      "emoji": "slime_anemo_large"
+    },
+    "slime_cryo": {
+      "name": "Cryo Slime",
+      "group": "slimes",
+      "emoji": "slime_cryo"
+    },
+    "slime_cryo_large": {
+      "name": "Large Cryo Slime",
+      "group": "slimes",
+      "emoji": "slime_cryo_large"
+    },
+    "slime_dendro": {
+      "name": "Dendro Slime",
+      "group": "slimes",
+      "emoji": "slime_dendro"
+    },
+    "slime_dendro_large": {
+      "name": "Large Dendro Slime",
+      "group": "slimes",
+      "emoji": "slime_dendro_large"
+    },
+    "slime_electro": {
+      "name": "Electro Slime",
+      "group": "slimes",
+      "emoji": "slime_electro"
+    },
+    "slime_electro_large": {
+      "name": "Large Electro Slime",
+      "group": "slimes",
+      "emoji": "slime_electro_large"
+    },
+    "slime_electro_mutant": {
+      "name": "Mutant Electro Slime",
+      "group": "slimes",
+      "emoji": "slime_electro_mutant"
+    },
+    "slime_geo": {
+      "name": "Geo Slime",
+      "group": "slimes",
+      "emoji": "slime_geo"
+    },
+    "slime_geo_large": {
+      "name": "Large Geo Slime",
+      "group": "slimes",
+      "emoji": "slime_geo_large"
+    },
+    "slime_hydro": {
+      "name": "Hydro Slime",
+      "group": "slimes",
+      "emoji": "slime_hydro"
+    },
+    "slime_hydro_large": {
+      "name": "Large Hydro Slime",
+      "group": "slimes",
+      "emoji": "slime_hydro_large"
+    },
+    "slime_pyro": {
+      "name": "Pyro Slime",
+      "group": "slimes",
+      "emoji": "slime_pyro"
+    },
+    "slime_pyro_large": {
+      "name": "Large Pyro Slime",
+      "group": "slimes",
+      "emoji": "slime_pyro_large"
+    },
+    "whopperflower_cryo": {
+      "name": "Cryo Whopperflower",
+      "group": "whopperflowers",
+      "emoji": "whopperflower_cryo"
+    },
+    "whopperflower_pyro": {
+      "name": "Pyro Whopperflower",
+      "group": "whopperflowers",
+      "emoji": "whopperflower_pyro"
+    },
+    "defense_mechanism": {
+      "name": "Defense Mechanism",
+      "group": "misc_common",
+      "emoji": "defense_mechanism"
+    },
+    "hilichurl": {
+      "name": "Hilichurl (Generic)",
+      "group": "hilichurls",
+      "emoji": "hilichurl"
+    },
+    "hilichurl_normal": {
+      "name": "Hilichurl",
+      "group": "hilichurls",
+      "emoji": "hilichurl"
+    },
+    "hilichurl_fighter": {
+      "name": "Hilichurl Fighter",
+      "group": "hilichurls",
+      "emoji": "hilichurl"
+    },
+    "hilichurl_guard_dendro": {
+      "name": "Wooden Shield Hilichurl Guard",
+      "group": "hilichurls",
+      "emoji": "hilichurl"
+    },
+    "hilichurl_guard_geo": {
+      "name": "Rock Shield Hilichurl Guard",
+      "group": "hilichurls",
+      "emoji": "hilichurl"
+    },
+    "hilichurl_guard_cryo": {
+      "name": "Ice Shield Hilichurl Fighter",
+      "group": "hilichurls",
+      "emoji": "hilichurl"
+    },
+    "hilichurl_berserker": {
+      "name": "Hilichurl Berserker",
+      "group": "hilichurls",
+      "emoji": "hilichurl_pyro"
+    },
+    "hilichurl_grenadier_pyro": {
+      "name": "Hilichurl Grenadier",
+      "group": "hilichurls",
+      "emoji": "hilichurl"
+    },
+    "hilichurl_grenadier_cryo": {
+      "name": "Cryo Hilichurl Grenadier",
+      "group": "hilichurls",
+      "emoji": "hilichurl_cryo"
+    },
+    "hilichurl_shooter": {
+      "name": "Hilichurl Shooter",
+      "group": "hilichurl_shooters",
+      "emoji": "hilichurl"
+    },
+    "hilichurl_shooter_cryo": {
+      "name": "Cryo Hilichurl Shooter",
+      "group": "hilichurl_shooters",
+      "emoji": "hilichurl_cryo"
+    },
+    "hilichurl_shooter_electro": {
+      "name": "Electro Hilichurl Shooter",
+      "group": "hilichurl_shooters",
+      "emoji": "hilichurl_electro"
+    },
+    "hilichurl_shooter_pyro": {
+      "name": "Pyro Hilichurl Shooter",
+      "group": "hilichurl_shooters",
+      "emoji": "hilichurl_pyro"
+    },
+    "samachurl_anemo": {
+      "name": "Anemo Samachurl",
+      "group": "samachurls",
+      "emoji": "samachurl_anemo"
+    },
+    "samachurl_cryo": {
+      "name": "Cryo Samachurl",
+      "group": "samachurls",
+      "emoji": "samachurl_cryo"
+    },
+    "samachurl_dendro": {
+      "name": "Dendro Samachurl",
+      "group": "samachurls",
+      "emoji": "samachurl_dendro"
+    },
+    "samachurl_geo": {
+      "name": "Geo Samachurl",
+      "group": "samachurls",
+      "emoji": "samachurl_geo"
+    },
+    "samachurl_hydro": {
+      "name": "Hydro Samachurl",
+      "group": "samachurls",
+      "emoji": "samachurl_hydro"
+    },
+    "hilichurl_unusual": {
+      "name": "Unusual Hilichurl",
+      "group": "hilichurl_unusual",
+      "emoji": "hilichurl_unusual",
+      "drops": []
+    },
+    "fatui_vanguard_anemoboxer": {
+      "name": "Anemoboxer Vanguard",
+      "group": "fatui_vanguards",
+      "emoji": "vanguard_anemoboxer"
+    },
+    "fatui_vanguard_electrohammer": {
+      "name": "Electrohammer Vanguard",
+      "group": "fatui_vanguards",
+      "emoji": "vanguard_electrohammer"
+    },
+    "fatui_bracer_geochanter": {
+      "name": "Geochanter Bracer",
+      "group": "fatui_bracers",
+      "emoji": "bracer_geochanter"
+    },
+    "fatui_bracer_pyroslinger": {
+      "name": "Pyroslinger Bracer",
+      "group": "fatui_bracers",
+      "emoji": "bracer_pyroslinger"
+    },
+    "fatui_legionnaire_cryogunner": {
+      "name": "Cryogunner Legionnaire",
+      "group": "fatui_legionnaires",
+      "emoji": "legionnaire_cryogunner"
+    },
+    "fatui_legionnaire_hydrogunner": {
+      "name": "Hydrogunner Legionnaire",
+      "group": "fatui_legionnaires",
+      "emoji": "legionnaire_hydrogunner"
+    },
+    "hoarder": {
+      "name": "Treasure Hoarder (Generic)",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_scout"
+    },
+    "hoarder_potioneer_cryo": {
+      "name": "Cryo Potioneer",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_potioneer_cryo"
+    },
+    "hoarder_potioneer_electro": {
+      "name": "Electro Potioneer",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_potioneer_electro"
+    },
+    "hoarder_potioneer_hydro": {
+      "name": "Hydro Potioneer",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_potioneer_hydro"
+    },
+    "hoarder_potioneer_pyro": {
+      "name": "Pyro Potioneer",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_potioneer_pyro"
+    },
+    "hoarder_crusher": {
+      "name": "Crusher",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_crusher"
+    },
+    "hoarder_gravedigger": {
+      "name": "Gravedigger",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_gravedigger"
+    },
+    "hoarder_marksman": {
+      "name": "Marksman",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_marksman"
+    },
+    "hoarder_scout": {
+      "name": "Scout",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_scout"
+    },
+    "hoarder_handyman": {
+      "name": "Handyman",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_handyman"
+    },
+    "hoarder_pugilist": {
+      "name": "Pugilist",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_pugilist"
+    },
+    "hoarder_scout": {
+      "name": "Scout",
+      "group": "treasure_hoarders",
+      "emoji": "hoarder_scout"
+    },
+    "mitachurl_axe_pyro": {
+      "name": "Blazing Axe Mitachurl",
+      "group": "mitachurls",
+      "emoji": "mitachurl"
+    },
+    "mitachurl_shield_dendro": {
+      "name": "Wooden Shieldwall Mitachurl",
+      "group": "mitachurls",
+      "emoji": "mitachurl"
+    },
+    "mitachurl_shield_geo": {
+      "name": "Rock Shieldwall Mitachurl",
+      "group": "mitachurls",
+      "emoji": "mitachurl"
+    },
+    "mitachurl_shield_cryo": {
+      "name": "Ice Shieldwall Mitachurl",
+      "group": "mitachurls",
+      "emoji": "mitachurl"
+    },
+    "lawachurl_geo": {
+      "name": "Stonehide Lawachurl",
+      "group": "lawachurls",
+      "emoji": "lawachurl_geo"
+    },
+    "lawachurl_cryo": {
+      "name": "Frostarm Lawachurl",
+      "group": "lawachurls",
+      "emoji": "lawachurl_cryo"
+    },
+    "abyss_mage_cryo": {
+      "name": "Cryo Abyss Mage",
+      "group": "abyss_mages",
+      "emoji": "abyss_mage_cryo"
+    },
+    "abyss_mage_hydro": {
+      "name": "Hydro Abyss Mage",
+      "group": "abyss_mages",
+      "emoji": "abyss_mage_hydro"
+    },
+    "abyss_mage_pyro": {
+      "name": "Pyro Abyss Mage",
+      "group": "abyss_mages",
+      "emoji": "abyss_mage_pyro"
+    },
+    "ruin_guard": {
+      "name": "Ruin Guard",
+      "group": "automata",
+      "emoji": "ruin_guard"
+    },
+    "ruin_hunter": {
+      "name": "Ruin Hunter",
+      "group": "automata",
+      "emoji": "ruin_hunter"
+    },
+    "ruin_grader": {
+      "name": "Ruin Grader",
+      "group": "automata",
+      "emoji": "ruin_grader"
+    },
+    "fatui_cicin_mage_electro": {
+      "name": "Fatui Electro Cicin Mage",
+      "group": "fatui_cicin_mages",
+      "emoji": "cicin_mage_electro"
+    },
+    "fatui_cicin_mage_cryo": {
+      "name": "Fatui Cryo Cicin Mage",
+      "group": "fatui_cicin_mages",
+      "emoji": "cicin_mage_cryo"
+    },
+    "fatui_agent_pyro": {
+      "name": "Fatui Pyro Agent",
+      "group": "fatui_agents",
+      "emoji": "agent_pyro"
+    },
+    "eye_of_the_storm": {
+      "name": "Eye of the Storm",
+      "group": "misc_elite",
+      "emoji": "eye_of_the_storm"
+    },
+    "geovishap": {
+      "name": "Geovishap",
+      "group": "geovishaps",
+      "emoji": "geovishap"
+    },
     "geovishap_hatchling": {
       "name": "Geovishap Hatchling",
-      "group": "geovishap",
-      "emoji": "geovishap_hatchling",
-      "drops": [
-        {
-          "id": "bone_shard",
-          "type": "general_ascension"
-        }
-      ]
+      "group": "geovishaps",
+      "emoji": "geovishap_hatchling"
     },
     "snowboar_king": {
       "name": "The Great Snowboar King",
@@ -1213,7 +1286,7 @@
     },
     "hypostasis_anemo": {
       "name": "Anemo Hypostasis (Beth)",
-      "group": "hypostasis",
+      "group": "hypostases",
       "emoji": "hypostasis_anemo",
       "drops": [
         {
@@ -1240,7 +1313,7 @@
     },
     "hypostasis_electro": {
       "name": "Electro Hypostasis (Aleph)",
-      "group": "hypostasis",
+      "group": "hypostases",
       "emoji": "hypostasis_electro",
       "drops": [
         {
@@ -1271,7 +1344,7 @@
     },
     "hypostasis_geo": {
       "name": "Geo Hypostasis (Gimel)",
-      "group": "hypostasis",
+      "group": "hypostases",
       "emoji": "hypostasis_geo",
       "drops": [
         {
@@ -1298,7 +1371,7 @@
     },
     "regisvine_cryo": {
       "name": "Cryo Regisvine",
-      "group": "regisvine",
+      "group": "regisvines",
       "emoji": "regisvine_cryo",
       "drops": [
         {
@@ -1329,7 +1402,7 @@
     },
     "regisvine_pyro": {
       "name": "Pyro Regisvine",
-      "group": "regisvine",
+      "group": "regisvines",
       "emoji": "regisvine_pyro",
       "drops": [
         {
@@ -1550,10 +1623,10 @@
         }
       ]
     },
-    "andrius": {
-      "name": "Andrius (Lupus Boreas, Dominator of Wolves)",
+    "childe": {
+      "name": "Childe (Tartaglia, Eleventh Fatui Harbinger)",
       "group": "weekly_boss",
-      "emoji": "andrius",
+      "emoji": "childe",
       "drops": [
         {
           "id": "tusk_of_monoceros_caeli",
@@ -1602,9 +1675,124 @@
       ]
     }
   },
+  "enemy_emoji_map": {
+    "defense_mechanism": {
+      "id": "defense_mechanism",
+      "group": false
+    },
+    "hoarder_\\w+": {
+      "id": "treasure_hoarders",
+      "group": true
+    },
+    "ruin_\\w+": {
+      "id": "automata",
+      "group": true
+    },
+    "geovishap(_hatchling)?": {
+      "id": "geovishaps",
+      "group": true
+    },
+    "whopperflower_\\w+": {
+      "id": "whopperflowers",
+      "group": true
+    },
+    "abyss_mage_\\w+": {
+      "id": "abyss_mages",
+      "group": true
+    },
+    "hilichurl_electro": {
+      "id": "hilichurl_shooters",
+      "group": true
+    },
+    "hilichurl(_\\w+)?": {
+      "id": "hilichurls",
+      "group": true
+    },
+    "samachurl_\\w+": {
+      "id": "samachurls",
+      "group": true
+    },
+    "mitachurl": {
+      "id": "mitachurls",
+      "group": true
+    },
+    "lawachurl_\\w+": {
+      "id": "lawachurls",
+      "group": true
+    },
+    "slime_\\w+": {
+      "id": "slimes",
+      "group": true
+    },
+    "agent_pyro": {
+      "id": "fatui_agents",
+      "group": true
+    },
+    "cicin_mage_\\w+": {
+      "id": "cicin_mages",
+      "group": true
+    },
+    "legionnaire_\\w+": {
+      "id": "fatui_legionnaires",
+      "group": true
+    },
+    "bracer_\\w+": {
+      "id": "bracers",
+      "group": true
+    },
+    "vanguard_\\w+": {
+      "id": "vanguards",
+      "group": true
+    },
+    "eye_of_the_storm": {
+      "id": "misc_elite",
+      "group": true
+    },
+    "hypostasis_anemo": {
+      "id": "hypostasis_anemo",
+      "group": false
+    },
+    "hypostasis_electro": {
+      "id": "hypostasis_electro",
+      "group": false
+    },
+    "hypostasis_geo": {
+      "id": "hypostasis_geo",
+      "group": false
+    },
+    "regisvine_cryo": {
+      "id": "regisvine_cryo",
+      "group": false
+    },
+    "regisvine_pyro": {
+      "id": "regisvine_pyro",
+      "group": false
+    },
+    "oceanid": {
+      "id": "oceanid",
+      "group": false
+    },
+    "geovishap_primo": {
+      "id": "geovishap_primo",
+      "group": false
+    },
+    "childe": {
+      "id": "childe",
+      "group": false
+    },
+    "dvalin": {
+      "id": "dvalin",
+      "group": false
+    },
+    "andrius": {
+      "id": "andrius",
+      "group": false
+    }
+  },
   "characters": {
     "anemo_mc": {
       "name": "Aether/Lumine (Anemo)",
+      "title": "",
       "tier": 5,
       "element": "anemo",
       "weapon": "sword",
@@ -1615,7 +1803,7 @@
       "specialty": "windwheel_aster",
       "ascension": "mask",
       "stats": {
-        "secondary_stat": "atk",
+        "secondary_stat": "ATK",
         "hp": 10875,
         "atk": 212,
         "def": 683,
@@ -1624,6 +1812,7 @@
     },
     "geo_mc": {
       "name": "Aether/Lumine (Geo)",
+      "title": "",
       "tier": 5,
       "element": "geo",
       "weapon": "sword",
@@ -1634,7 +1823,7 @@
       "specialty": "windwheel_aster",
       "ascension": "mask",
       "stats": {
-        "secondary_stat": "atk",
+        "secondary_stat": "ATK",
         "hp": 10875,
         "atk": 212,
         "def": 683,
@@ -1643,6 +1832,7 @@
     },
     "albedo": {
       "name": "Albedo",
+      "title": "Kreideprinz",
       "tier": 5,
       "element": "geo",
       "weapon": "sword",
@@ -1657,7 +1847,7 @@
       "specialty": "cecilia",
       "ascension": "scroll",
       "stats": {
-        "secondary_stat": "geo",
+        "secondary_stat": "Geo Damage Bonus",
         "hp": 13226,
         "atk": 251,
         "def": 876,
@@ -1666,6 +1856,7 @@
     },
     "amber": {
       "name": "Amber",
+      "title": "Gliding Champion",
       "tier": 4,
       "element": "pyro",
       "weapon": "bow",
@@ -1680,7 +1871,7 @@
       "specialty": "small_lamp_grass",
       "ascension": "arrowhead",
       "stats": {
-        "secondary_stat": "atk",
+        "secondary_stat": "ATK",
         "hp": 9461,
         "atk": 223,
         "def": 601,
@@ -1689,6 +1880,7 @@
     },
     "barbara": {
       "name": "Barbara",
+      "title": "Shining Idol",
       "tier": 4,
       "element": "hydro",
       "weapon": "catalyst",
@@ -1703,7 +1895,7 @@
       "specialty": "philanemo_mushroom",
       "ascension": "scroll",
       "stats": {
-        "secondary_stat": "hp",
+        "secondary_stat": "HP",
         "hp": 9787,
         "atk": 159,
         "def": 669,
@@ -1712,6 +1904,7 @@
     },
     "beidou": {
       "name": "Beidou",
+      "title": "Uncrowned Lord of the Ocean",
       "tier": 4,
       "element": "electro",
       "weapon": "claymore",
@@ -1726,7 +1919,7 @@
       "specialty": "noctilucous_jade",
       "ascension": "hoarder_insignia",
       "stats": {
-        "secondary_stat": "electro",
+        "secondary_stat": "Electro Damage Bonus",
         "hp": 13050,
         "atk": 225,
         "def": 648,
@@ -1735,6 +1928,7 @@
     },
     "bennett": {
       "name": "Bennett",
+      "title": "Trial by Fire",
       "tier": 4,
       "element": "pyro",
       "weapon": "sword",
@@ -1758,6 +1952,7 @@
     },
     "chongyun": {
       "name": "Chongyun",
+      "title": "Frozen Ardor",
       "tier": 4,
       "element": "cryo",
       "weapon": "claymore",
@@ -1772,7 +1967,7 @@
       "specialty": "cor_lapis",
       "ascension": "mask",
       "stats": {
-        "secondary_stat": "atk",
+        "secondary_stat": "ATK",
         "hp": 10984,
         "atk": 223,
         "def": 648,
@@ -1781,6 +1976,7 @@
     },
     "diluc": {
       "name": "Diluc",
+      "title": "The Dark Side of Dawn",
       "tier": 5,
       "element": "pyro",
       "weapon": "claymore",
@@ -1795,7 +1991,7 @@
       "specialty": "small_lamp_grass",
       "ascension": "fatui_insignia",
       "stats": {
-        "secondary_stat": "crit_rate",
+        "secondary_stat": "CRIT Rate",
         "hp": 12981,
         "atk": 335,
         "def": 784,
@@ -1804,6 +2000,7 @@
     },
     "diona": {
       "name": "Diona",
+      "title": "Kätzlein Cocktail",
       "tier": 4,
       "element": "cryo",
       "weapon": "bow",
@@ -1818,7 +2015,7 @@
       "specialty": "calla_lily",
       "ascension": "arrowhead",
       "stats": {
-        "secondary_stat": "cryo",
+        "secondary_stat": "Cryo Damage Bonus",
         "hp": 9570,
         "atk": 212,
         "def": 601,
@@ -1827,6 +2024,7 @@
     },
     "fischl": {
       "name": "Fischl",
+      "title": "Prinzessin der Verurteilung!",
       "tier": 4,
       "element": "electro",
       "weapon": "bow",
@@ -1841,7 +2039,7 @@
       "specialty": "small_lamp_grass",
       "ascension": "arrowhead",
       "stats": {
-        "secondary_stat": "atk",
+        "secondary_stat": "ATK",
         "hp": 9189,
         "atk": 244,
         "def": 594,
@@ -1850,6 +2048,7 @@
     },
     "ganyu": {
       "name": "Ganyu",
+      "title": "Plenilune Gaze",
       "tier": 5,
       "element": "cryo",
       "weapon": "bow",
@@ -1864,15 +2063,40 @@
       "specialty": "qingxin",
       "ascension": "nectar",
       "stats": {
-        "secondary_stat": "crit_dmg",
+        "secondary_stat": "CRIT DMG",
         "hp": 9797,
         "atk": 335,
         "def": 630,
         "secondary": 38.4
       }
     },
+    "hu_tao": {
+      "name": "Hu Tao",
+      "title": "Fragrance in Thaw",
+      "tier": 5,
+      "element": "pyro",
+      "weapon": "polearm",
+      "region": "liyue",
+      "birthmonth": 7,
+      "birthdate": 15,
+      "constellation": "Papilio Charontis",
+      "talent_book": "diligence",
+      "talent_common": "nectar",
+      "weekly": "shard_of_a_foul_legacy",
+      "boss_drop": "juvenile_jade",
+      "specialty": "silk_flower",
+      "ascension": "nectar",
+      "stats": {
+        "secondary_stat": "CRIT DMG",
+        "hp": 15552,
+        "atk": 106,
+        "def": 876,
+        "secondary": 38.4
+      }
+    },
     "jean": {
       "name": "Jean",
+      "title": "Dandelion Knight",
       "tier": 5,
       "element": "anemo",
       "weapon": "sword",
@@ -1887,7 +2111,7 @@
       "specialty": "dandelion_seed",
       "ascension": "mask",
       "stats": {
-        "secondary_stat": "heal",
+        "secondary_stat": "Healing Bonus",
         "hp": 14695,
         "atk": 239,
         "def": 769,
@@ -1896,6 +2120,7 @@
     },
     "kaeya": {
       "name": "Kaeya",
+      "title": "Frostwind Swordsman",
       "tier": 4,
       "element": "cryo",
       "weapon": "sword",
@@ -1910,7 +2135,7 @@
       "specialty": "calla_lily",
       "ascension": "hoarder_insignia",
       "stats": {
-        "secondary_stat": "er",
+        "secondary_stat": "Energy Recharge",
         "hp": 11636,
         "atk": 223,
         "def": 792,
@@ -1919,6 +2144,7 @@
     },
     "keqing": {
       "name": "Keqing",
+      "title": "Driving Thunder",
       "tier": 5,
       "element": "electro",
       "weapon": "sword",
@@ -1933,7 +2159,7 @@
       "specialty": "cor_lapis",
       "ascension": "nectar",
       "stats": {
-        "secondary_stat": "crit_dmg",
+        "secondary_stat": "CRIT DMG",
         "hp": 13103,
         "atk": 323,
         "def": 799,
@@ -1942,6 +2168,7 @@
     },
     "klee": {
       "name": "Klee",
+      "title": "Fleeing Sunlight",
       "tier": 5,
       "element": "pyro",
       "weapon": "catalyst",
@@ -1956,7 +2183,7 @@
       "specialty": "philanemo_mushroom",
       "ascension": "scroll",
       "stats": {
-        "secondary_stat": "pyro",
+        "secondary_stat": "Pyro Damage Bonus",
         "hp": 10287,
         "atk": 311,
         "def": 615,
@@ -1965,6 +2192,7 @@
     },
     "lisa": {
       "name": "Lisa",
+      "title": "Witch of Purple Rose",
       "tier": 4,
       "element": "electro",
       "weapon": "catalyst",
@@ -1979,7 +2207,7 @@
       "specialty": "valberry",
       "ascension": "slime",
       "stats": {
-        "secondary_stat": "em",
+        "secondary_stat": "Elemental Mastery",
         "hp": 9570,
         "atk": 232,
         "def": 573,
@@ -1988,6 +2216,7 @@
     },
     "mona": {
       "name": "Mona",
+      "title": "Astral Reflection",
       "tier": 5,
       "element": "hydro",
       "weapon": "catalyst",
@@ -2002,7 +2231,7 @@
       "specialty": "philanemo_mushroom",
       "ascension": "nectar",
       "stats": {
-        "secondary_stat": "er",
+        "secondary_stat": "Energy Recharge",
         "hp": 10409,
         "atk": 287,
         "def": 653,
@@ -2011,6 +2240,7 @@
     },
     "ningguang": {
       "name": "Ningguang",
+      "title": "Eclipsing Star",
       "tier": 4,
       "element": "geo",
       "weapon": "catalyst",
@@ -2025,7 +2255,7 @@
       "specialty": "glaze_lily",
       "ascension": "fatui_insignia",
       "stats": {
-        "secondary_stat": "geo",
+        "secondary_stat": "Geo Damage Bonus",
         "hp": 9787,
         "atk": 212,
         "def": 573,
@@ -2034,6 +2264,7 @@
     },
     "noelle": {
       "name": "Noelle",
+      "title": "Chivalric Blossom",
       "tier": 4,
       "element": "geo",
       "weapon": "claymore",
@@ -2048,7 +2279,7 @@
       "specialty": "valberry",
       "ascension": "mask",
       "stats": {
-        "secondary_stat": "def",
+        "secondary_stat": "DEF",
         "hp": 12071,
         "atk": 191,
         "def": 799,
@@ -2057,6 +2288,7 @@
     },
     "qiqi": {
       "name": "Qiqi",
+      "title": "Icy Resurrection",
       "tier": 5,
       "element": "cryo",
       "weapon": "sword",
@@ -2071,7 +2303,7 @@
       "specialty": "violetgrass",
       "ascension": "scroll",
       "stats": {
-        "secondary_stat": "heal",
+        "secondary_stat": "Healing Bonus",
         "hp": 12368,
         "atk": 287,
         "def": 922,
@@ -2080,6 +2312,7 @@
     },
     "razor": {
       "name": "Razor",
+      "title": "Wolf Boy",
       "tier": 4,
       "element": "electro",
       "weapon": "claymore",
@@ -2094,15 +2327,40 @@
       "specialty": "wolfhook",
       "ascension": "mask",
       "stats": {
-        "secondary_stat": "phys",
+        "secondary_stat": "Physical Damage Bonus",
         "hp": 11962,
         "atk": 234,
         "def": 751,
         "secondary": 30
       }
     },
+    "rosaria": {
+      "name": "Rosaria",
+      "title": "Barbed Benevolence",
+      "tier": 4,
+      "element": "cryo",
+      "weapon": "polearm",
+      "region": "mondstadt",
+      "birthmonth": 1,
+      "birthdate": 24,
+      "constellation": "Spinea Corona",
+      "talent_book": "ballad",
+      "talent_common": "fatui_insignia",
+      "weekly": "shadow_of_the_warrior",
+      "boss_drop": "hoarfrost_core",
+      "specialty": "valberry",
+      "ascension": "fatui_insignia",
+      "stats": {
+        "secondary_stat": "Unknown",
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "secondary": 0
+      }
+    },
     "sucrose": {
       "name": "Sucrose",
+      "title": "Harmless Sweetie",
       "tier": 4,
       "element": "anemo",
       "weapon": "catalyst",
@@ -2117,7 +2375,7 @@
       "specialty": "windwheel_aster",
       "ascension": "nectar",
       "stats": {
-        "secondary_stat": "anemo",
+        "secondary_stat": "Anemo Damage Bonus",
         "hp": 9243,
         "atk": 170,
         "def": 703,
@@ -2126,6 +2384,7 @@
     },
     "tartaglia": {
       "name": "Tartaglia",
+      "title": "Childe",
       "tier": 5,
       "element": "hydro",
       "weapon": "bow",
@@ -2140,7 +2399,7 @@
       "specialty": "starconch",
       "ascension": "fatui_insignia",
       "stats": {
-        "secondary_stat": "hydro",
+        "secondary_stat": "Hydro Damage Bonus",
         "hp": 13103,
         "atk": 301,
         "def": 815,
@@ -2149,6 +2408,7 @@
     },
     "venti": {
       "name": "Venti",
+      "title": "Windborne Bard",
       "tier": 5,
       "element": "anemo",
       "weapon": "bow",
@@ -2163,7 +2423,7 @@
       "specialty": "cecilia",
       "ascension": "slime",
       "stats": {
-        "secondary_stat": "er",
+        "secondary_stat": "Energy Recharge",
         "hp": 10531,
         "atk": 263,
         "def": 669,
@@ -2172,6 +2432,7 @@
     },
     "xiangling": {
       "name": "Xiangling",
+      "title": "Exquisite Delicacy",
       "tier": 4,
       "element": "pyro",
       "weapon": "polearm",
@@ -2186,7 +2447,7 @@
       "specialty": "jueyun_chili",
       "ascension": "slime",
       "stats": {
-        "secondary_stat": "em",
+        "secondary_stat": "Elemental Mastery",
         "hp": 10875,
         "atk": 225,
         "def": 669,
@@ -2195,6 +2456,7 @@
     },
     "xiao": {
       "name": "Xiao",
+      "title": "Vigilant Yaksha",
       "tier": 5,
       "element": "anemo",
       "weapon": "polearm",
@@ -2209,7 +2471,7 @@
       "specialty": "qingxin",
       "ascension": "slime",
       "stats": {
-        "secondary_stat": "crit_rate",
+        "secondary_stat": "CRIT Rate",
         "hp": 12736,
         "atk": 349,
         "def": 799,
@@ -2218,6 +2480,7 @@
     },
     "xingqiu": {
       "name": "Xingqiu",
+      "title": "Juvenile Galant",
       "tier": 4,
       "element": "hydro",
       "weapon": "sword",
@@ -2232,7 +2495,7 @@
       "specialty": "silk_flower",
       "ascension": "mask",
       "stats": {
-        "secondary_stat": "atk",
+        "secondary_stat": "ATK",
         "hp": 10223,
         "atk": 202,
         "def": 758,
@@ -2241,6 +2504,7 @@
     },
     "xinyan": {
       "name": "Xinyan",
+      "title": "Blazing Riff",
       "tier": 4,
       "element": "pyro",
       "weapon": "claymore",
@@ -2255,7 +2519,7 @@
       "specialty": "violetgrass",
       "ascension": "hoarder_insignia",
       "stats": {
-        "secondary_stat": "atk",
+        "secondary_stat": "ATK",
         "hp": 11201,
         "atk": 249,
         "def": 799,
@@ -2264,6 +2528,7 @@
     },
     "zhongli": {
       "name": "Zhongli",
+      "title": "Vago Mundo",
       "tier": 5,
       "element": "geo",
       "weapon": "polearm",
@@ -2278,7 +2543,7 @@
       "specialty": "cor_lapis",
       "ascension": "slime",
       "stats": {
-        "secondary_stat": "geo",
+        "secondary_stat": "Geo Damage Bonus",
         "hp": 14695,
         "atk": 251,
         "def": 738,
@@ -2287,29 +2552,1710 @@
     }
   },
   "weapons": {
+    "staff_of_homa": {
+      "name": "Staff of Homa",
+      "type": "polearm",
+      "tier": 5,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "CRIT DMG",
+      "secondary_stat": 66.2,
+      "passive_name": "Reckless Cinnabar",
+      "passive": "HP increased by 20-40%. Additionally, provides an ATK Bonus based on 0.8-1.6% of the wielder's Max HP. When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1-1.8% of Max HP.",
+      "base_atk": 608,
+      "ascension": "aerosiderite",
+      "material_1": "ley_line",
+      "material_2": "slime"
+    },
+    "skyward_harp": {
+      "name": "Skyward Harp",
+      "type": "bow",
+      "tier": 5,
+      "series": "Mondstadt Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 22.1,
+      "passive_name": "Echoing Ballad",
+      "passive": "Increases CRIT DMG by 20-40%. Hits have a 60-100% chance to inflict a small AoE attack, dealing 125% Physical ATK DMG. Can only occur once every 4-2s.",
+      "base_atk": 674,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "arrowhead"
+    },
+    "primordial_jade_cutter": {
+      "name": "Primordial Jade Cutter",
+      "type": "sword",
+      "tier": 5,
+      "series": "Primordial Jade Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 44.1,
+      "passive_name": "Protector's Virtue",
+      "passive": "HP increased by 20-40%. Additionally, provides an ATK Bonus based on 1.2-2.4% of the wielder's Max HP.",
+      "base_atk": 542,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "hoarder_insignia"
+    },
+    "summit_shaper": {
+      "name": "Summit Shaper",
+      "type": "sword",
+      "tier": 5,
+      "series": "Liyue Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 49.6,
+      "passive_name": "Golden Majesty",
+      "passive": "Increases Shield Strength by 20-40%. Scoring hits on opponents increases ATK by 4-8% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.",
+      "base_atk": 608,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "mask"
+    },
+    "vortex_vanquisher": {
+      "name": "Vortex Vanquisher",
+      "type": "polearm",
+      "tier": 5,
+      "series": "Liyue Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 49.6,
+      "passive_name": "Golden Majesty",
+      "passive": "Increases Shield Strength by 20-40%. Scoring hits on opponents increases ATK by 4-8% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.",
+      "base_atk": 608,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "hoarder_insignia"
+    },
+    "the_unforged": {
+      "name": "The Unforged",
+      "type": "claymore",
+      "tier": 5,
+      "series": "Liyue Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 49.6,
+      "passive_name": "Golden Majesty",
+      "passive": "Increases Shield Strength by 20-40%. Scoring hits on opponents increases ATK by 4-8% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.",
+      "base_atk": 608,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "hoarder_insignia"
+    },
+    "memory_of_dust": {
+      "name": "Memory of Dust",
+      "type": "catalyst",
+      "tier": 5,
+      "series": "Liyue Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 49.6,
+      "passive_name": "Golden Majesty",
+      "passive": "Increases Shield Strength by 20-40%. Scoring hits on opponents increases ATK by 4-8% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.",
+      "base_atk": 608,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "mask"
+    },
+    "skyward_spine": {
+      "name": "Skyward Spine",
+      "type": "polearm",
+      "tier": 5,
+      "series": "Mondstadt Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 36.8,
+      "passive_name": "Blackwing",
+      "passive": "Increases CRIT Rate by 8-16% and increases Normal ATK SPD by 12%. Additionally, Normal and Charged Attacks hits on opponents have a 50% chance to trigger a vaccuum blade that deals 40-100% of ATK as DMG in a small AoE. This effect can occur no more than once every 2s.",
+      "base_atk": 674,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "scroll"
+    },
+    "aquila_favonia": {
+      "name": "Aquila Favonia",
+      "type": "sword",
+      "tier": 5,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Physical DMG Bonus",
+      "secondary_stat": 41.3,
+      "passive_name": "Falcon's Defiance",
+      "passive": "ATK is increased by 20-40%. Triggers on taking DMG: the soul of the Falcon of the West awakens, holding the banner of the resistance aloft, regenerating HP equal to 100-160% of ATK and dealing 200-320% of ATK as DMG to surrounding opponents. This effect can only occur once every 15s.",
+      "base_atk": 674,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "arrowhead"
+    },
+    "skyward_blade": {
+      "name": "Skyward Blade",
+      "type": "sword",
+      "tier": 5,
+      "series": "Mondstadt Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 55.1,
+      "passive_name": "Sky-Piercing Fang",
+      "passive": "Crit Rate increased by 4-8%. Gains Skypiercing Might upon using Elemental Burst: Increases Movement SPD by 10%, increases ATK SPD by 10%, and increases the DMG of Normal and Charged Attack hits by 20-40% for 12s.",
+      "base_atk": 608,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "slime"
+    },
+    "wolf_gravestone": {
+      "name": "Wolf's Gravestone",
+      "type": "claymore",
+      "tier": 5,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 49.6,
+      "passive_name": "Wolfish Tracker",
+      "passive": "Increases ATK by 20-40%. On hit, attacks against opponents with less than 30% HP increase all party members' ATK by 40-80% for 12s. Can only occur once every 30s.",
+      "base_atk": 608,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "scroll"
+    },
+    "skyward_pride": {
+      "name": "Skyward Pride",
+      "type": "claymore",
+      "tier": 5,
+      "series": "Mondstadt Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 36.8,
+      "passive_name": "Sky-ripping Dragon Spine",
+      "passive": "Increases all DMG by 8-16%. After using an Elemental Burst, Normal or Charged Attack, on hit, creates a vacuum blade that does 80-160% of ATK as DMG to opponents along its path. Lasts for 20s or 8 vacuum blades.",
+      "base_atk": 674,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "slime"
+    },
+    "skyward_atlas": {
+      "name": "Skyward Atlas",
+      "type": "catalyst",
+      "tier": 5,
+      "series": "Mondstadt Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 33.1,
+      "passive_name": "Wandering Clouds",
+      "passive": "Increases Elemental DMG Bonus by 12-24%. Normal Attack hits have a 50% chance to earn the favor of the clouds. which actively seek out nearby opponents to attack for 15s, dealing 160-320% ATK DMG. Can only occur once every 30s.",
+      "base_atk": 674,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "arrowhead"
+    },
+    "lost_prayer_to_the_sacred_winds": {
+      "name": "Lost Prayer to the Sacred Winds",
+      "type": "catalyst",
+      "tier": 5,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 33.1,
+      "passive_name": "Boundless Blessing",
+      "passive": "Increases Movement SPD by 10%. When in battle, gain an 8-16% Elemental DMG Bonus every 4s. Max 4 stacks. Lasts until the character falls or leaves combat.",
+      "base_atk": 608,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "slime"
+    },
+    "primordial_jade_winged_spear": {
+      "name": "Primordial Jade Winged-Spear",
+      "type": "polearm",
+      "tier": 5,
+      "series": "Primordial Jade Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 22.1,
+      "passive_name": "Eagle Spear of Justice",
+      "passive": "On hit, increases ATK by 3.2-6.0% for 6s. Max 7 stacks. This effect can only occur once every 0.3s. While in possession of the maximum possible stacks, DMG dealt is increased by 12-24%.",
+      "base_atk": 674,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "fatui_insignia"
+    },
     "amos_bow": {
       "name": "Amos' Bow",
-      "tier": 5,
       "type": "bow",
-      "atk": 608,
-      "secondary_stat": "atk",
-      "secondary": 49.6,
+      "tier": 5,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 49.6,
       "passive_name": "Strong-Willed",
-      "passive": "Increases Normal Attack and Charged Attack DMG by 12/15/18/21/24%. After a Normal or Charged Attack is fired, DMG dealt increases by a further 8/10/12/14/16% every 0.1 seconds up to 5 times.",
-      "weapon_material": "dandelion",
-      "common_material_1": "chaos",
-      "common_material_2": "slime"
+      "passive": "Increases Normal Attack and Charged Attack DMG by 12-24%. After a Normal or Charged Attack is fired, DMG dealt increases by a further 8-16% every 0.1 seconds up to 5 times.",
+      "base_atk": 608,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "slime"
+    },
+    "sacrificial_bow": {
+      "name": "Sacrificial Bow",
+      "type": "bow",
+      "tier": 4,
+      "series": "Sacrificial Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 30.6,
+      "passive_name": "Composed",
+      "passive": "After dealing damage to an opponent with an Elemental Skill, the skill has a 40-80% chance to end its own CD. Can only occur once every 30-16s.",
+      "base_atk": 565,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "slime"
+    },
+    "the_black_sword": {
+      "name": "The Black Sword",
+      "type": "sword",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Battle Pass"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 27.6,
+      "passive_name": "Justice",
+      "passive": "Increases DMG dealt by Normal and Charged Attacks by 20-40%.<br>Additionally, regenerates 60-100% of ATK as HP when Normal and Charged Attacks score a CRIT Hit. This effect can occur once every 5s.",
+      "base_atk": 510,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "slime"
+    },
+    "wine_and_song": {
+      "name": "Wine and Song",
+      "type": "catalyst",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Currently Unobtainable"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 45.9,
+      "passive_name": "Wind in the Square",
+      "passive": "For every character in the party who hails from Mondstadt, the character who equips this weapon gains 8-16% ATK increase and 3-5% Movement SPD increase.",
+      "base_atk": 510,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "scroll"
+    },
+    "blackcliff_warbow": {
+      "name": "Blackcliff Warbow",
+      "type": "bow",
+      "tier": 4,
+      "series": "Blackcliff Series",
+      "sources": [
+        "Paimon's Bargains"
+      ],
+      "secondary_type": "CRIT DMG",
+      "secondary_stat": 36.8,
+      "passive_name": "Press the Advantage",
+      "passive": "After defeating an opponent, ATK is increased by 12-24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+      "base_atk": 565,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "nectar"
+    },
+    "blackcliff_slasher": {
+      "name": "Blackcliff Slasher",
+      "type": "claymore",
+      "tier": 4,
+      "series": "Blackcliff Series",
+      "sources": [
+        "Paimon's Bargains"
+      ],
+      "secondary_type": "CRIT DMG",
+      "secondary_stat": 55.1,
+      "passive_name": "Press the Advantage",
+      "passive": "After defeating an opponent, ATK is increased by 12-24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+      "base_atk": 510,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "fatui_insignia"
+    },
+    "deathmatch": {
+      "name": "Deathmatch",
+      "type": "polearm",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Battle Pass"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 36.8,
+      "passive_name": "Gladiator",
+      "passive": "If there are at least 2 opponents nearby, ATK is increased by 16-32% and DEF is increased by 16-32%. If there are less than 2 opponents nearby, ATK is increased by 24-48%.",
+      "base_atk": 454,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "nectar"
+    },
+    "the_viridescent_hunt": {
+      "name": "The Viridescent Hunt",
+      "type": "bow",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Battle Pass"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 27.6,
+      "passive_name": "Verdant Wind",
+      "passive": "Upon hit, Normal and Aimed Shot Attacks have a 50% chance to generate a Cyclone, which will continuously attract surrounding opponents, dealing 40-80% of ATK as DMG to these opponents every 0.5s for 4s. This effect can only occur once every 14-10s.",
+      "base_atk": 510,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "arrowhead"
+    },
+    "serpent_spine": {
+      "name": "Serpent Spine",
+      "type": "claymore",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Battle Pass"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 27.6,
+      "passive_name": "Wavesplitter",
+      "passive": "Every 4s a character is on the field, they will deal 6-10% more DMG and take 3-1.8%  more DMG. This effect has a maximum of 5 stacks and will not be reset if the character leaves the field, but will be reduced by 1 stack when the character takes DMG.",
+      "base_atk": 510,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "nectar"
+    },
+    "eye_of_perception": {
+      "name": "Eye of Perception",
+      "type": "catalyst",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 55.1,
+      "passive_name": "Echo",
+      "passive": "Normal and Charged Attacks have a 50% chance to fire a Bolt of Perception, dealing 240-360% ATK as DMG. This bolt can bounce between opponents a maximum of 4 times. This effect can occur once every 12-8s.",
+      "base_atk": 454,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "mask"
+    },
+    "lithic_blade": {
+      "name": "Lithic Blade",
+      "type": "claymore",
+      "tier": 4,
+      "series": "Lithic Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 41.3,
+      "passive_name": "Lithic Axiom - Unity",
+      "passive": "For every character in the party who hails from Liyue, the character who equips this weapon gains 7-11% ATK increase and 3-7% CRIT Rate increase. This effect stacks up to 4 times.",
+      "base_atk": 510,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "arrowhead"
+    },
+    "the_flute": {
+      "name": "The Flute",
+      "type": "sword",
+      "tier": 4,
+      "series": "Wanderer's Troupe Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 41.3,
+      "passive_name": "Chord",
+      "passive": "Normal or Charged Attacks grant a Harmonic on hits. Gaining 5 Harmonics triggers the power of music and deals 100-200% ATK DMG to surrounding enemies. Harmonics last up to 30s, and a maximum of 1 can be gained every 0.5s.",
+      "base_atk": 510,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "slime"
+    },
+    "sacrificial_sword": {
+      "name": "Sacrificial Sword",
+      "type": "sword",
+      "tier": 4,
+      "series": "Sacrificial Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 61.3,
+      "passive_name": "Composed",
+      "passive": "After dealing damage to an opponent with an Elemental Skill, the skill has a 40-80% chance to end its own CD. Can only occur once every 30-16s.",
+      "base_atk": 454,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "scroll"
+    },
+    "royal_longsword": {
+      "name": "Royal Longsword",
+      "type": "sword",
+      "tier": 4,
+      "series": "Royal Series",
+      "sources": [
+        "Paimon's Bargains"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 41.3,
+      "passive_name": "Focus",
+      "passive": "Upon dealing damage to an opponent, increases CRIT Rate by 8-16%. Max 5 stacks. A CRIT hit removes all existing stacks.",
+      "base_atk": 510,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "arrowhead"
+    },
+    "prototype_rancour": {
+      "name": "Prototype Rancour",
+      "type": "sword",
+      "tier": 4,
+      "series": "Prototype Series",
+      "sources": [
+        "Adventure Rank 10 Reward",
+        "Forging",
+        "Stellar Reunion"
+      ],
+      "secondary_type": "Physical DMG Bonus",
+      "secondary_stat": 34.5,
+      "passive_name": "Smashed Stone",
+      "passive": "On hit, Normal or Charged Attacks increase ATK and DEF by 4-8% for 6s. Max 4 stacks. Can only occur once every 0.3s.",
+      "base_atk": 565,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "fatui_insignia"
+    },
+    "lion_roar": {
+      "name": "Lion's Roar",
+      "type": "sword",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 41.3,
+      "passive_name": "Bane of Fire and Thunder",
+      "passive": "Increases DMG against enemies affected by Pyro or Electro by 20-36%.",
+      "base_atk": 510,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "hoarder_insignia"
+    },
+    "prototype_crescent": {
+      "name": "Prototype Crescent",
+      "type": "bow",
+      "tier": 4,
+      "series": "Prototype Series",
+      "sources": [
+        "Forging"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 41.3,
+      "passive_name": "Unreturning",
+      "passive": "Charged Attack hits on weak points increase Movement SPD by 10% and ATK by 36-72% for 10s.",
+      "base_atk": 510,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "hoarder_insignia"
+    },
+    "lithic_spear": {
+      "name": "Lithic Spear",
+      "type": "polearm",
+      "tier": 4,
+      "series": "Lithic Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 27.6,
+      "passive_name": "Lithic Axiom - Unity",
+      "passive": "For every characters who hails from Liyue, the characters who equips this weapon gains 7-11% ATK increase and a 3-7% CRIT Rate increase. This effect stacks up to 4 times.",
+      "base_atk": 565,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "arrowhead"
+    },
+    "alley_hunter": {
+      "name": "Alley Hunter",
+      "type": "bow",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 36.8,
+      "passive_name": "Urban Guerrilla",
+      "passive": "Every 4s a character is on the field, their ATK increases by 4-8% and their CRIT DMG increases by 4-8%. This effect has a maximum of 5 stacks and will not be reset if the character leaves the field, but will be cleared when the character takes DMG.",
+      "base_atk": 454,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "hoarder_insignia"
+    },
+    "prototype_starglitter": {
+      "name": "Prototype Starglitter",
+      "type": "polearm",
+      "tier": 4,
+      "series": "Prototype Series",
+      "sources": [
+        "Forging"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 45.9,
+      "passive_name": "Magic Affinity",
+      "passive": "After using an Elemental Skill, increases Normal and Charged Attack DMG by 8-16% for 12s. Max 2 stacks.",
+      "base_atk": 510,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "mask"
+    },
+    "favonius_warbow": {
+      "name": "Favonius Warbow",
+      "type": "bow",
+      "tier": 4,
+      "series": "Favonius Series",
+      "sources": [
+        "Gacha",
+        "Mondstadt Archon Quest reward"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 61.3,
+      "passive_name": "Windfall",
+      "passive": "CRIT hits have a 60-100% chance to generate 1 Elemental Orb, which will regenerate 6 Energy for the character. Can only occur once every 12-6s.",
+      "base_atk": 454,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "nectar"
+    },
+    "dragonspine_spear": {
+      "name": "Dragonspine Spear",
+      "type": "polearm",
+      "tier": 4,
+      "series": "Dragonspine Series",
+      "sources": [
+        "Forging",
+        "Reward from The Festering Fang World Quest"
+      ],
+      "secondary_type": "Physical DMG Bonus",
+      "secondary_stat": 69.0,
+      "passive_name": "Frost Burial",
+      "passive": "Hitting an opponent with Normal and Charged Attacks has a 60-100% chance of forming and dropping an Everfrost Icicle above them, dealing 80-140% AoE ATK DMG. Opponents affected by Cryo are dealt 200-360% ATK DMG instead by the icicle. Can only occur once every 10s.",
+      "base_atk": 454,
+      "ascension": "boreal",
+      "material_1": "mist_grass",
+      "material_2": "fatui_insignia"
+    },
+    "snow_tombed_starsilver": {
+      "name": "Snow-Tombed Starsilver",
+      "type": "claymore",
+      "tier": 4,
+      "series": "Dragonspine Series",
+      "sources": [
+        "Forging",
+        "Reward for the Ancient Carvings puzzle"
+      ],
+      "secondary_type": "Physical DMG Bonus",
+      "secondary_stat": 34.5,
+      "passive_name": "Frost Burial",
+      "passive": "Hitting an opponent with Normal and Charged Attacks has a 60-100% chance of forming and dropping an Everfrost Icicle above them, dealing 80-140% AoE ATK DMG. Opponents affected by Cryo are dealt 200-360% ATK DMG instead by the icicle. Can only occur once every 10s.",
+      "base_atk": 565,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "slime"
+    },
+    "festering_desire": {
+      "name": "Festering Desire",
+      "type": "sword",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "The Chalk Prince and the Dragon Event"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 45.9,
+      "passive_name": "Undying Admiration",
+      "passive": "Increases Elemental Skill DMG by 16-32% and Elemental Skill CRIT Rate by 6-12%.",
+      "base_atk": 510,
+      "ascension": "dandelion",
+      "material_1": "horn",
+      "material_2": "fatui_insignia"
+    },
+    "compound_bow": {
+      "name": "Compound Bow",
+      "type": "bow",
+      "tier": 4,
+      "series": "Infusion Series",
+      "sources": [
+        "Forging"
+      ],
+      "secondary_type": "Physical DMG Bonus",
+      "secondary_stat": 69.0,
+      "passive_name": "Infusion Arrow",
+      "passive": "Normal Attack and Charged Attack hits increase ATK by 4-8% and Normal ATK SPD by 1.2-2.4% for 6s. Max 4 stacks. Can only occur once every 0.3s.",
+      "base_atk": 454,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "fatui_insignia"
+    },
+    "frostbearer": {
+      "name": "Frostbearer",
+      "type": "catalyst",
+      "tier": 4,
+      "series": "Dragonspine Series",
+      "sources": [
+        "Forging"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 41.3,
+      "passive_name": "Frost Burial",
+      "passive": "Hitting an opponent with Normal and Charged Attacks has a 60-100% chance of forming and dropping an Everfrost Icicle above them, dealing 80-140% AoE ATK DMG. Opponents affected by Cryo are dealt 200-360% ATK DMG instead by the icicle. Can only occur once every 10s.",
+      "base_atk": 510,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "nectar"
+    },
+    "royal_spear": {
+      "name": "Royal Spear",
+      "type": "polearm",
+      "tier": 4,
+      "series": "Royal Series",
+      "sources": [
+        "Paimon's Bargains"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 27.6,
+      "passive_name": "Focus",
+      "passive": "Upon dealing damage to an opponent, increases CRIT Rate by 8-16%. Max 5 stacks. A CRIT hit removes all existing stacks.",
+      "base_atk": 565,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "fatui_insignia"
+    },
+    "royal_bow": {
+      "name": "Royal Bow",
+      "type": "bow",
+      "tier": 4,
+      "series": "Royal Series",
+      "sources": [
+        "Paimon's Bargains"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 41.3,
+      "passive_name": "Focus",
+      "passive": "Upon dealing damage to an opponent, increases CRIT Rate by 8-16%. Max 5 stacks. A CRIT hit removes all existing stacks.",
+      "base_atk": 510,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "slime"
+    },
+    "favonius_sword": {
+      "name": "Favonius Sword",
+      "type": "sword",
+      "tier": 4,
+      "series": "Favonius Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 61.3,
+      "passive_name": "Windfall",
+      "passive": "CRIT hits have a 60-100% chance to generate 1 Elemental Orb, which will regenerate 6 Energy for the character. Can only occur once every 12-6s.",
+      "base_atk": 454,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "arrowhead"
+    },
+    "rust": {
+      "name": "Rust",
+      "type": "bow",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 41.3,
+      "passive_name": "Rapid Firing",
+      "passive": "Increases Normal Attack DMG by 40-80% but decreases Charged Attack DMG by 10%.",
+      "base_atk": 510,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "mask"
+    },
+    "the_stringless": {
+      "name": "The Stringless",
+      "type": "bow",
+      "tier": 4,
+      "series": "Wanderer's Troupe Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Elemental Mastery",
+      "secondary_stat": 165.0,
+      "passive_name": "Arrowless Song",
+      "passive": "Increases Elemental Skill and Elemental Burst DMG by 24-48%.",
+      "base_atk": 510,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "arrowhead"
+    },
+    "sacrificial_greatsword": {
+      "name": "Sacrificial Greatsword",
+      "type": "claymore",
+      "tier": 4,
+      "series": "Sacrificial Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 30.6,
+      "passive_name": "Composed",
+      "passive": "After dealing damage to an opponent with an Elemental Skill, the skill has a 40-80% chance to end its own CD. Can only occur once every 30-16s.",
+      "base_atk": 565,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "arrowhead"
+    },
+    "sword_of_descension": {
+      "name": "Sword of Descension",
+      "type": "sword",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Event Exclusive"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 35.2,
+      "passive_name": "Descension",
+      "passive": "Hitting enemies with Normal or Charged Attacks grants a 50% chance to deal 200% ATK as DMG in a small AoE. This effect can only occur once every 10s. Additionally, if the Traveler equips the Sword of Descension, their ATK is increased by 66.",
+      "base_atk": 440,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "hoarder_insignia"
+    },
+    "favonius_lance": {
+      "name": "Favonius Lance",
+      "type": "polearm",
+      "tier": 4,
+      "series": "Favonius Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 30.6,
+      "passive_name": "Windfall",
+      "passive": "CRIT hits have a 60-100% chance to generate a small amount of <a href=\"/wiki/Elemental_Particle\" class=\"mw-redirect\" title=\"Elemental Particle\">Elemental Particles</a>, which will regenerate 6 <a href=\"/wiki/Energy\" title=\"Energy\">Energy</a> for the character. Can only occur once every 12-6s.",
+      "base_atk": 565,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "slime"
+    },
+    "blackcliff_longsword": {
+      "name": "Blackcliff Longsword",
+      "type": "sword",
+      "tier": 4,
+      "series": "Blackcliff Series",
+      "sources": [
+        "Paimon's Bargains"
+      ],
+      "secondary_type": "CRIT DMG",
+      "secondary_stat": 36.8,
+      "passive_name": "Press the Advantage",
+      "passive": "After defeating an opponent, ATK is increased by 12-24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+      "base_atk": 565,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "arrowhead"
+    },
+    "iron_sting": {
+      "name": "Iron Sting",
+      "type": "sword",
+      "tier": 4,
+      "series": "Infusion Series",
+      "sources": [
+        "Forging"
+      ],
+      "secondary_type": "Elemental Mastery",
+      "secondary_stat": 165.0,
+      "passive_name": "Infusion Stinger",
+      "passive": "Dealing Elemental DMG increases all DMG by 6-12% for 6s. Max 2 stacks. Can only occur once every 1s.",
+      "base_atk": 510,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "nectar"
+    },
+    "dragon_bane": {
+      "name": "Dragon's Bane",
+      "type": "polearm",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Elemental Mastery",
+      "secondary_stat": 221.0,
+      "passive_name": "Bane of Flame and Water",
+      "passive": "Increases DMG against opponents affected by Hydro or Pyro by 20-36%.",
+      "base_atk": 454,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "scroll"
+    },
+    "the_bell": {
+      "name": "The Bell",
+      "type": "claymore",
+      "tier": 4,
+      "series": "Wanderer's Troupe Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "HP",
+      "secondary_stat": 41.3,
+      "passive_name": "Rebellious Guardian",
+      "passive": "Taking DMG generates a shield which absorbs DMG up to 20-32% of max HP. This shield lasts for 10s or until broken, and can only be triggered once every 45s. While protected by the shield, the character gains 12-24% increased DMG.",
+      "base_atk": 510,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "nectar"
+    },
+    "blackcliff_agate": {
+      "name": "Blackcliff Agate",
+      "type": "catalyst",
+      "tier": 4,
+      "series": "Blackcliff Series",
+      "sources": [
+        "Paimon's Bargains"
+      ],
+      "secondary_type": "CRIT DMG",
+      "secondary_stat": 55.1,
+      "passive_name": "Press the Advantage",
+      "passive": "After defeating an opponent, ATK is increased by 12-24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+      "base_atk": 510,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "scroll"
+    },
+    "favonius_codex": {
+      "name": "Favonius Codex",
+      "type": "catalyst",
+      "tier": 4,
+      "series": "Favonius Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 45.9,
+      "passive_name": "Windfall",
+      "passive": "CRIT hits have a 60-100% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every 12-6s.",
+      "base_atk": 510,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "scroll"
+    },
+    "mappa_mare": {
+      "name": "Mappa Mare",
+      "type": "catalyst",
+      "tier": 4,
+      "series": "Infusion Series",
+      "sources": [
+        "Forging"
+      ],
+      "secondary_type": "Elemental Mastery",
+      "secondary_stat": 110.0,
+      "passive_name": "Infusion Scroll",
+      "passive": "Triggering an Elemental reaction grants a 8-16% Elemental DMG Bonus for 10s. Max 2 stacks.",
+      "base_atk": 565,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "slime"
+    },
+    "prototype_amber": {
+      "name": "Prototype Amber",
+      "type": "catalyst",
+      "tier": 4,
+      "series": "Prototype Series",
+      "sources": [
+        "Forging"
+      ],
+      "secondary_type": "HP",
+      "secondary_stat": 41.3,
+      "passive_name": "Gilding",
+      "passive": "Using an Elemental Burst regenerates 4-6 Energy every 2s for 6s. All party members will regenerate 4-6% HP every 2s for this duration.",
+      "base_atk": 510,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "arrowhead"
+    },
+    "royal_grimoire": {
+      "name": "Royal Grimoire",
+      "type": "catalyst",
+      "tier": 4,
+      "series": "Royal Series",
+      "sources": [
+        "Paimon's Bargains"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 27.6,
+      "passive_name": "Focus",
+      "passive": "Upon dealing damage to an opponent, increases CRIT Rate by 8-16%. Max 5 stacks. A CRIT hit removes all existing stacks.",
+      "base_atk": 565,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "fatui_insignia"
+    },
+    "sacrificial_fragments": {
+      "name": "Sacrificial Fragments",
+      "type": "catalyst",
+      "tier": 4,
+      "series": "Sacrificial Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Elemental Mastery",
+      "secondary_stat": 221.0,
+      "passive_name": "Composed",
+      "passive": "After dealing damage to an opponent with an Elemental Skill, the skill has a 40-80% chance to end its own CD. Can only occur once every 30-16s.",
+      "base_atk": 454,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "hoarder_insignia"
+    },
+    "solar_pearl": {
+      "name": "Solar Pearl",
+      "type": "catalyst",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Battle Pass"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 27.6,
+      "passive_name": "Solar Shine",
+      "passive": "Normal Attack hits increase Elemental Skill and Elemental Burst DMG by 20-40% for 6s. Likewise, Elemental Skill or Elemental Burst hits increase Normal Attack DMG by 20-40% for 6s.",
+      "base_atk": 510,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "nectar"
+    },
+    "the_widsith": {
+      "name": "The Widsith",
+      "type": "catalyst",
+      "tier": 4,
+      "series": "Wanderer's Troupe Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "CRIT DMG",
+      "secondary_stat": 55.1,
+      "passive_name": "Debut",
+      "passive": "When a character takes the field, they will gain a random theme song for 10s. This can only occur once every 30s.<br/><i>Recitative:</i> ATK is increased by 60-120%.<br/><i>Aria:</i> Increases all Elemental DMG by 48-96%.<br/><i>Interlude:</i> Elemental Mastery is increased by 240-480.",
+      "base_atk": 510,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "mask"
+    },
+    "blackcliff_pole": {
+      "name": "Blackcliff Pole",
+      "type": "polearm",
+      "tier": 4,
+      "series": "Blackcliff Series",
+      "sources": [
+        "Paimon's Bargains"
+      ],
+      "secondary_type": "CRIT DMG",
+      "secondary_stat": 55.1,
+      "passive_name": "Press the Advantage",
+      "passive": "After defeating an opponent, ATK is increased by 12-24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+      "base_atk": 510,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "fatui_insignia"
+    },
+    "prototype_archaic": {
+      "name": "Prototype Archaic",
+      "type": "claymore",
+      "tier": 4,
+      "series": "Prototype Series",
+      "sources": [
+        "Forging"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 27.6,
+      "passive_name": "Crush",
+      "passive": "On hit, Normal or Charged Attacks have a 50% chance to deal an additional 240-480% ATK DMG to opponents within a small AoE. Can only occur once every 15s.",
+      "base_atk": 565,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "mask"
+    },
+    "rainslasher": {
+      "name": "Rainslasher",
+      "type": "claymore",
+      "tier": 4,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Elemental Mastery",
+      "secondary_stat": 165.0,
+      "passive_name": "Bane of Storm and Tide",
+      "passive": "Increases DMG against opponents affected by Hydro or Electro by 20-36%.",
+      "base_atk": 510,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "scroll"
+    },
+    "royal_greatsword": {
+      "name": "Royal Greatsword",
+      "type": "claymore",
+      "tier": 4,
+      "series": "Royal Series",
+      "sources": [
+        "Paimon's Bargains"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 27.6,
+      "passive_name": "Focus",
+      "passive": "Upon dealing damage to an opponent, increases CRIT Rate by 8-16%. Max 5 stacks. A CRIT hit removes all existing stacks.",
+      "base_atk": 565,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "slime"
+    },
+    "favonius_greatsword": {
+      "name": "Favonius Greatsword",
+      "type": "claymore",
+      "tier": 4,
+      "series": "Favonius Series",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 61.3,
+      "passive_name": "Windfall",
+      "passive": "CRIT hits have a 60-100% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every 12-6s.",
+      "base_atk": 454,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "fatui_insignia"
+    },
+    "crescent_pike": {
+      "name": "Crescent Pike",
+      "type": "polearm",
+      "tier": 4,
+      "series": "Infusion Series",
+      "sources": [
+        "Forging"
+      ],
+      "secondary_type": "Physical DMG Bonus",
+      "secondary_stat": 34.5,
+      "passive_name": "Infusion Needle",
+      "passive": "After picking up an Elemental Orb/Particle, Normal and Charged Attacks deal an additional 20-40% ATK as DMG for 5s.",
+      "base_atk": 565,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "hoarder_insignia"
+    },
+    "whiteblind": {
+      "name": "Whiteblind",
+      "type": "claymore",
+      "tier": 4,
+      "series": "Infusion Series",
+      "sources": [
+        "Forging"
+      ],
+      "secondary_type": "DEF",
+      "secondary_stat": 51.7,
+      "passive_name": "Infusion Blade",
+      "passive": "On hit, Normal or Charged Attacks increase ATK and DEF by 6-12% for 6s. Max 4 stacks (24-48%  total). Can only occur once every 0.5s.",
+      "base_atk": 510,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "hoarder_insignia"
+    },
+    "bloodtainted_greatsword": {
+      "name": "Bloodtainted Greatsword",
+      "type": "claymore",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Elemental Mastery",
+      "secondary_stat": 187.0,
+      "passive_name": "Bane of Fire and Thunder",
+      "passive": "Increases DMG against opponents affected by Pyro or Electro by 12-24%.",
+      "base_atk": 354,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "arrowhead"
+    },
+    "black_tassel": {
+      "name": "Black Tassel",
+      "type": "polearm",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha",
+        "Orban"
+      ],
+      "secondary_type": "HP",
+      "secondary_stat": 46.9,
+      "passive_name": "Bane of the Soft",
+      "passive": "Increases DMG against slimes by 40-80%.",
+      "base_atk": 354,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "arrowhead"
+    },
+    "cool_steel": {
+      "name": "Cool Steel",
+      "type": "sword",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chests",
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 35.2,
+      "passive_name": "Bane of Water and Ice",
+      "passive": "Increases DMG against opponents affected by Hydro or Cryo by 12-24%.",
+      "base_atk": 401,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "arrowhead"
+    },
+    "dark_iron_sword": {
+      "name": "Dark Iron Sword",
+      "type": "sword",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chen the Sharp"
+      ],
+      "secondary_type": "Elemental Mastery",
+      "secondary_stat": 141.0,
+      "passive_name": "Overloaded",
+      "passive": "Upon causing an Overloaded, Superconduct, Electro-Charged, or an Electro-infused Swirl reaction, ATK is increased by 20-40% for 12s.",
+      "base_atk": 401,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "mask"
+    },
+    "harbinger_of_dawn": {
+      "name": "Harbinger of Dawn",
+      "type": "sword",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha",
+        "Kaeya's Gain"
+      ],
+      "secondary_type": "CRIT DMG",
+      "secondary_stat": 46.9,
+      "passive_name": "Vigorous",
+      "passive": "When HP is above 90%, increases CRIT Rate by 14-28%.",
+      "base_atk": 401,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "slime"
+    },
+    "emerald_orb": {
+      "name": "Emerald Orb",
+      "type": "catalyst",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Elemental Mastery",
+      "secondary_stat": 94.0,
+      "passive_name": "Rapids",
+      "passive": "Upon causing a Vaporize, Electro-Charged, Frozen, or a Hydro-infused Swirl reaction, increases ATK by 20-40% for 12s.",
+      "base_atk": 448,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "hoarder_insignia"
+    },
+    "magic_guide": {
+      "name": "Magic Guide",
+      "type": "catalyst",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Elemental Mastery",
+      "secondary_stat": 187.0,
+      "passive_name": "Bane of Storm and Tide",
+      "passive": "Increases DMG against opponents affected by Hydro or Electro by 12-24%.",
+      "base_atk": 354,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "slime"
+    },
+    "thrilling_tales_of_dragon_slayers": {
+      "name": "Thrilling Tales of Dragon Slayers",
+      "type": "catalyst",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "HP",
+      "secondary_stat": 35.2,
+      "passive_name": "Legacy",
+      "passive": "When switching characters, the new character taking the field has their ATK increased by 24-48% for 10s. This effect can only occur once every 20s.",
+      "base_atk": 401,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "scroll"
+    },
+    "halberd": {
+      "name": "Halberd",
+      "type": "polearm",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chests"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 22.1,
+      "passive_name": "Heavy",
+      "passive": "Normal Attacks deal an additional 160-320% DMG. Can only occur once every 10s.",
+      "base_atk": 448,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "nectar"
+    },
+    "otherworldly_story": {
+      "name": "Otherworldly Story",
+      "type": "catalyst",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chests"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 39.0,
+      "passive_name": "Energy Shower",
+      "passive": "Each Elemental Orb or Particle collected restores 1-2% HP.",
+      "base_atk": 401,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "mask"
+    },
+    "white_tassel": {
+      "name": "White Tassel",
+      "type": "polearm",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chests"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 22.1,
+      "passive_name": "Sharp",
+      "passive": "Increases Normal Attack DMG by 24-48%.",
+      "base_atk": 401,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "fatui_insignia"
+    },
+    "white_iron_greatsword": {
+      "name": "White Iron Greatsword",
+      "type": "claymore",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chests"
+      ],
+      "secondary_type": "DEF",
+      "secondary_stat": 43.9,
+      "passive_name": "Cull the Weak",
+      "passive": "Defeating an opponent restores 8-16% HP.",
+      "base_atk": 401,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "slime"
+    },
+    "debate_club": {
+      "name": "Debate Club",
+      "type": "claymore",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 35.2,
+      "passive_name": "Blunt Conclusion",
+      "passive": "After using an Elemental Skill, Normal or Charged Attacks, on hit, deal an additional 60-120% ATK DMG in a small area. Effect lasts 15s. DMG can only occur once every 3s.",
+      "base_atk": 401,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "mask"
+    },
+    "traveler_handy_sword": {
+      "name": "Traveler's Handy Sword",
+      "type": "sword",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chests"
+      ],
+      "secondary_type": "DEF",
+      "secondary_stat": 27.5,
+      "passive_name": "Journey",
+      "passive": "Each Elemental Orb or Particle collected restores 1-2% HP.",
+      "base_atk": 448,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "scroll"
+    },
+    "skyrider_sword": {
+      "name": "Skyrider Sword",
+      "type": "sword",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha",
+        "Pan Guan'er"
+      ],
+      "secondary_type": "Energy Recharge",
+      "secondary_stat": 51.7,
+      "passive_name": "Determination",
+      "passive": "Using an Elemental Burst grants a 12-24% increase in ATK and Movement SPD for 15s.",
+      "base_atk": 354,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "fatui_insignia"
+    },
+    "messenger": {
+      "name": "Messenger",
+      "type": "bow",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chests"
+      ],
+      "secondary_type": "CRIT DMG",
+      "secondary_stat": 31.2,
+      "passive_name": "Archer's Message",
+      "passive": "Charged Attack hits on weak spots deal an additional 100-200% ATK DMG as CRIT DMG. Can only occur once every 10s.",
+      "base_atk": 448,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "hoarder_insignia"
+    },
+    "raven_bow": {
+      "name": "Raven Bow",
+      "type": "bow",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "Elemental Mastery",
+      "secondary_stat": 94.0,
+      "passive_name": "Bane of Flame and Water",
+      "passive": "Increases DMG against opponents affected by Hydro or Pyro by 12-24%.",
+      "base_atk": 448,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "arrowhead"
+    },
+    "recurve_bow": {
+      "name": "Recurve Bow",
+      "type": "bow",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chests"
+      ],
+      "secondary_type": "HP",
+      "secondary_stat": 46.9,
+      "passive_name": "Cull the Weak",
+      "passive": "Defeating an opponent restores 8-16% HP.",
+      "base_atk": 354,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "scroll"
+    },
+    "twin_nephrite": {
+      "name": "Twin Nephrite",
+      "type": "catalyst",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chests"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 15.6,
+      "passive_name": "Guerilla Tactic",
+      "passive": "Defeating an opponent increases Movement SPD and ATK by 12-20% for 15s.",
+      "base_atk": 448,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "fatui_insignia"
+    },
+    "ferrous_shadow": {
+      "name": "Ferrous Shadow",
+      "type": "claymore",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "HP",
+      "secondary_stat": 35.2,
+      "passive_name": "Unbending",
+      "passive": "When HP falls below 70-90%, increases Charged Attack DMG by 30-50%, and Charged Attacks become much harder to interrupt.",
+      "base_atk": 401,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "nectar"
+    },
+    "fillet_blade": {
+      "name": "Fillet Blade",
+      "type": "sword",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chests"
+      ],
+      "secondary_type": "ATK",
+      "secondary_stat": 35.2,
+      "passive_name": "Gash",
+      "passive": "On hit, has 50% chance to deal 240-400% ATK DMG to a single enemy. Can only occur once every 15-11s.",
+      "base_atk": 401,
+      "ascension": "elixir",
+      "material_1": "mist_grass",
+      "material_2": "hoarder_insignia"
+    },
+    "slingshot": {
+      "name": "Slingshot",
+      "type": "bow",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "CRIT Rate",
+      "secondary_stat": 31.2,
+      "passive_name": "Slingshot",
+      "passive": "If a Normal or Charged Attack hits a target within 0.3s of being fired, increases DMG by 36-60%. Otherwise, decreases DMG by 10%.",
+      "base_atk": 354,
+      "ascension": "guyun",
+      "material_1": "sacrificial_knife",
+      "material_2": "mask"
+    },
+    "sharpshooter_oath": {
+      "name": "Sharpshooter's Oath",
+      "type": "bow",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Gacha"
+      ],
+      "secondary_type": "CRIT DMG",
+      "secondary_stat": 46.9,
+      "passive_name": "Precise",
+      "passive": "Increases DMG against weak spots by 24-48%.",
+      "base_atk": 401,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "slime"
+    },
+    "skyrider_greatsword": {
+      "name": "Skyrider Greatsword",
+      "type": "claymore",
+      "tier": 3,
+      "series": "Independent",
+      "sources": [
+        "Chests",
+        "Stuck inside a stone in Guyun Stone Forest"
+      ],
+      "secondary_type": "Physical DMG Bonus",
+      "secondary_stat": 43.9,
+      "passive_name": "Courage",
+      "passive": "On hit, Normal or Charged Attacks increase ATK by 6-10% for 6s. Max 4 stacks. Can only occur once every 0.5s.",
+      "base_atk": 401,
+      "ascension": "aerosiderite",
+      "material_1": "bone_shard",
+      "material_2": "hoarder_insignia"
+    },
+    "pocket_grimoire": {
+      "name": "Pocket Grimoire",
+      "type": "catalyst",
+      "tier": 2,
+      "series": "2-Star Series",
+      "sources": [
+        "Chests"
+      ],
+      "base_atk": 243,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "mask"
+    },
+    "iron_point": {
+      "name": "Iron Point",
+      "type": "polearm",
+      "tier": 2,
+      "series": "2-Star Series",
+      "sources": [
+        "Chests"
+      ],
+      "base_atk": 243,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "scroll"
+    },
+    "silver_sword": {
+      "name": "Silver Sword",
+      "type": "sword",
+      "tier": 2,
+      "series": "2-Star Series",
+      "sources": [
+        "Chests"
+      ],
+      "base_atk": 243,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "arrowhead"
+    },
+    "old_merc_pal": {
+      "name": "Old Merc's Pal",
+      "type": "claymore",
+      "tier": 2,
+      "series": "2-Star Series",
+      "sources": [
+        "Chests"
+      ],
+      "base_atk": 243,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "slime"
+    },
+    "seasoned_hunter_bow": {
+      "name": "Seasoned Hunter's Bow",
+      "type": "bow",
+      "tier": 2,
+      "series": "2-Star Series",
+      "sources": [
+        "Chests"
+      ],
+      "base_atk": 243,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "hoarder_insignia"
+    },
+    "beginner_protector": {
+      "name": "Beginner's Protector",
+      "type": "polearm",
+      "tier": 1,
+      "series": "1-Star Series",
+      "sources": [
+        "Chests",
+        "Gacha"
+      ],
+      "base_atk": 185,
+      "ascension": "dandelion",
+      "material_1": "chaos",
+      "material_2": "scroll"
+    },
+    "hunter_bow": {
+      "name": "Hunter's Bow",
+      "type": "bow",
+      "tier": 1,
+      "series": "1-Star Series",
+      "sources": [
+        "Chests"
+      ],
+      "base_atk": 185,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "hoarder_insignia"
     },
     "apprentice_notes": {
       "name": "Apprentice's Notes",
-      "tier": 1,
       "type": "catalyst",
-      "atk": 185,
-      "secondary_stat": "none",
-      "passive_name": "none",
-      "weapon_material": "decarabian",
-      "common_material_1": "horn",
-      "common_material_2": "mask"
+      "tier": 1,
+      "series": "1-Star Series",
+      "sources": [
+        "Chests"
+      ],
+      "base_atk": 185,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "mask"
+    },
+    "dull_blade": {
+      "name": "Dull Blade",
+      "type": "sword",
+      "tier": 1,
+      "series": "1-Star Series",
+      "sources": [
+        "Chests"
+      ],
+      "base_atk": 185,
+      "ascension": "decarabian",
+      "material_1": "horn",
+      "material_2": "arrowhead"
+    },
+    "waster_greatsword": {
+      "name": "Waster Greatsword",
+      "type": "claymore",
+      "tier": 1,
+      "series": "1-Star Series",
+      "sources": [
+        "Chests"
+      ],
+      "base_atk": 185,
+      "ascension": "boreal",
+      "material_1": "ley_line",
+      "material_2": "slime"
     }
   },
   "elements": {
@@ -2394,6 +4340,30 @@
     "slime": {
       "category_name": "Slime Condensate/Secretions/Concentrate",
       "tiers": ["Slime Condensate", "Slime Secretions", "Slime Concentrate"]
+    },
+    "horn": {
+      "category_name": "Heavy/Black Bronze/Black Crystal Horn",
+      "tiers": ["Heavy Horn", "Black Bronze Horn", "Black Crystal Horn"]
+    },
+    "ley_line": {
+      "category_name": "(Dead) Ley Line Branch/Leaves/Sprouts",
+      "tiers": ["Dead Ley Line Branch", "Dead Ley Line Leaves", "Ley Line Sprouts"]
+    },
+    "bone_shard": {
+      "category_name": "Fragile/Sturdy/Fossilized Bone Shard",
+      "tiers": ["Fragile Bone Shard", "Sturdy Bone Shard", "Fossilized Bone Shard"]
+    },
+    "mist_grass": {
+      "category_name": "Mist Grass (Pollen/Wick)",
+      "tiers": ["Mist Grass Pollen", "Mist Grass", "Mist Grass Wick"]
+    },
+    "chaos": {
+      "category_name": "Chaos Device/Circuit/Core",
+      "tiers": ["Chaos Device", "Chaos Circuit", "Chaos Core"]
+    },
+    "sacrificial_knife": {
+      "category_name": "Hunter/Agent/Inspector's Sacrificial Knife",
+      "tiers": ["Hunter's Sacrificial Knife", "Agent's Sacrificial Knife", "Inspector's Sacrificial Knife"]
     }
   },
   "regional_specialties": {
@@ -2460,6 +4430,411 @@
     "windwheel_aster": {
       "name": "Windwheel Aster",
       "region": "mondstadt"
+    }
+  },
+  "artifacts": {
+    "adventurer": {
+      "set_name": "Adventurer",
+      "names": {
+        "flower": "Adventurer's Flower",
+        "feather": "Adventurer's Tail Feather",
+        "timepiece": "Adventurer's Pocket Watch",
+        "goblet": "Adventurer's Golden Goblet",
+        "hat": "Adventurer's Bandana"
+      },
+      "min_tier": 1,
+      "max_tier": 3,
+      "set": ["", "", "+1000 MHP", "", "Heal 30% MHP over 5 seconds (6% MHP/s) after opening a chest"]
+    },
+    "lucky_dog": {
+      "set_name": "Lucky Dog",
+      "names": {
+        "flower": "Lucky Dog's Clover",
+        "feather": "Lucky Dog's Eagle Feather",
+        "timepiece": "Lucky Dog's Hourglass",
+        "goblet": "Lucky Dog's Goblet",
+        "hat": "Lucky Dog's Silver Circlet"
+      },
+      "min_tier": 1,
+      "max_tier": 3,
+      "set": ["", "", "+100 DEF", "", "Heal 300 HP after picking up Mora"]
+    },
+    "traveling_doctor": {
+      "set_name": "Traveling Doctor",
+      "names": {
+        "flower": "Traveling Doctor's Silver Lotus",
+        "feather": "Traveling Doctor's Owl Feather",
+        "timepiece": "Traveling Doctor's Pocket Watch",
+        "goblet": "Traveling Doctor's Medicine Pot",
+        "hat": "Traveling Doctor's Handkerchief"
+      },
+      "min_tier": 1,
+      "max_tier": 3,
+      "set": ["", "", "+20% incoming healing", "", "Heal 20% MHP after using elemental burst"]
+    },
+    "instructor": {
+      "set_name": "Instructor",
+      "names": {
+        "flower": "Instructor's Brooch",
+        "feather": "Instructor's Feather Accessory",
+        "timepiece": "Instructor's Pocket Watch",
+        "goblet": "Instructor's Tea Cup",
+        "hat": "Instructor's Cap"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "", "+80 EM", "", "+120 EM to all party members after triggering an elemental reaction"]
+    },
+    "berserker": {
+      "set_name": "Berserker",
+      "names": {
+        "flower": "Berserker's Rose",
+        "feather": "Berserker's Indigo Feather",
+        "timepiece": "Berserker's Timepiece",
+        "goblet": "Berserker's Bone Goblet",
+        "hat": "Berserker's Battle Mask"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "", "+12% crit rate", "", "+24% crit rate (additional) when HP is below 70%"]
+    },
+    "the_exile": {
+      "set_name": "The Exile",
+      "names": {
+        "flower": "Exile's Flower",
+        "feather": "Exile's Feather",
+        "timepiece": "Exile's Pocket Watch",
+        "goblet": "Exile's Goblet",
+        "hat": "Exile's Circlet"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "", "+20% ER", "", "+2 energy every 2 seconds for 6 seconds to all other party members after using elemental burst (cannot stack)"]
+    },
+    "brave_heart": {
+      "set_name": "Brave Heart",
+      "names": {
+        "flower": "Medal of the Brave",
+        "feather": "Prospect of the Brave",
+        "timepiece": "Fortitude of the Brave",
+        "goblet": "Outset of the Brave",
+        "hat": "Crown of the Brave"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "", "+18% ATK", "", "+30% damage against opponents with more than 50% HP"]
+    },
+    "resolution_of_sojourner": {
+      "set_name": "Resolution of Sojourner",
+      "names": {
+        "flower": "Heart of Comradeship",
+        "feather": "Feather of Homecoming",
+        "timepiece": "Sundial of the Sojourner",
+        "goblet": "Goblet of the Sojourner",
+        "hat": "Crown of Parting"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "", "+18% ATK", "", "+30% crit rate on charged attacks"]
+    },
+    "martial_artist": {
+      "set_name": "Martial Artist",
+      "names": {
+        "flower": "Martial Artist's Red Flower",
+        "feather": "Martial Artist's Feather Accessory",
+        "timepiece": "Martial Artist's Water Hourglass",
+        "goblet": "Martial Artist's Wine Cup",
+        "hat": "Martial Artist's Bandana"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "", "+15% damage on normal and charged attacks", "", "+25% damage on normal and charged attacks (additional) after using elemental skill"]
+    },
+    "gambler": {
+      "set_name": "Gambler",
+      "names": {
+        "flower": "Gambler's Brooch",
+        "feather": "Gambler's Feather Accessory",
+        "timepiece": "Gambler's Pocket Watch",
+        "goblet": "Gambler's Dice Cup",
+        "hat": "Gambler's Earrings"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "", "+20% elemental skill damage", "", "Remove elemental skill CD after defeating an opponent (15 second cooldown)"]
+    },
+    "defender_will": {
+      "set_name": "Defender's Will",
+      "names": {
+        "flower": "Guardian's Flower",
+        "feather": "Guardian's Sigil",
+        "timepiece": "Guardian's Clock",
+        "goblet": "Guardian's Vessel",
+        "hat": "Guardian's Band"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "", "+30% DEF", "", "+30% RES to each unique element present in your party"]
+    },
+    "scholar": {
+      "set_name": "Scholar",
+      "names": {
+        "flower": "Scholar's Bookmark",
+        "feather": "Scholar's Quill Pen",
+        "timepiece": "Scholar's Clock",
+        "goblet": "Scholar's Ink Cup",
+        "hat": "Scholar's Lens"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "", "+20% ER", "", "+3 energy to all party members with a bow or catalyst equipped after gaining an elemental particle (3 second cooldown)"]
+    },
+    "tiny_miracle": {
+      "set_name": "Tiny Miracle",
+      "names": {
+        "flower": "Tiny Miracle's Flower",
+        "feather": "Tiny Miracle's Feather",
+        "timepiece": "Tiny Miracle's Hourglass",
+        "goblet": "Tiny Miracle's Goblet",
+        "hat": "Tiny Miracle's Earrings"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "", "+20% RES to all elements", "", "+30% RES to the corresponding element for 10 seconds when taking elemental damage (10 second cooldown)"]
+    },
+    "gladiator_finale": {
+      "set_name": "Gladiator's Finale",
+      "names": {
+        "flower": "Gladiator's Nostalgia",
+        "feather": "Gladiator's Destiny",
+        "timepiece": "Gladiator's Longing",
+        "goblet": "Gladiator's Intoxication",
+        "hat": "Gladiator's Triumphus"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+18% ATK", "", "+35% normal attack damage (sword, claymore, and polearm users only)"]
+    },
+    "wanderer_troupe": {
+      "set_name": "Wanderer's Troupe",
+      "names": {
+        "flower": "Troupe's Dawnlight",
+        "feather": "Bard's Arrow Feather",
+        "timepiece": "Concert's Final Hour",
+        "goblet": "Wanderer's String Kettle",
+        "hat": "Conductor's Top Hat"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+80 EM", "", "+35% charged attack damage (catalyst and bow users only)"]
+    },
+    "noblesse_oblige": {
+      "set_name": "Noblesse Oblige",
+      "names": {
+        "flower": "Royal Flora",
+        "feather": "Royal Plume",
+        "timepiece": "Royal Pocket Watch",
+        "goblet": "Royal Silver Urn",
+        "hat": "Royal Masque"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+20% elemental burst damage", "", "+20% ATK for all party members for 12 seconds after using elemental burst (cannot stack)"]
+    },
+    "maiden_beloved": {
+      "set_name": "Maiden Beloved",
+      "names": {
+        "flower": "Maiden's Distant Love",
+        "feather": "Maiden's Heart-stricken Infatuation",
+        "timepiece": "Maiden's Passing Youth",
+        "goblet": "Maiden's Fleeting Leisure",
+        "hat": "Maiden's Fading Beauty"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+15% outgoing healing", "", "+20% incoming healing for all party members for 10 seconds after using elemental skill or burst"]
+    },
+    "retracing_bolide": {
+      "set_name": "Retracing Bolide",
+      "names": {
+        "flower": "Summer Night's Bloom",
+        "feather": "Summer Night's Finale",
+        "timepiece": "Summer Night's Moment",
+        "goblet": "Summer Night's Waterballoon",
+        "hat": "Summer Night's Mask"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+35% shield strength", "", "+40% normal and charged attack damage while shielded"]
+    },
+    "crimson_witch_of_flames": {
+      "set_name": "Crimson Witch of Flames",
+      "names": {
+        "flower": "Witch's Flower of Blaze",
+        "feather": "Witch's Ever-Burning Plume",
+        "timepiece": "Witch's End Time",
+        "goblet": "Witch's Heart Flames",
+        "hat": "Witch's Scorching Hat"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+15% pyro damage bonus", "", "+40% overloaded and burning damage, +15% vaporize and melt damage, +7.5% pyro damage bonus for 10 seconds after using an elemental skill (3 stacks)"]
+    },
+    "lavawalker": {
+      "set_name": "Lavawalker",
+      "names": {
+        "flower": "Lavawalker's Resolution",
+        "feather": "Lavawalker's Salvation",
+        "timepiece": "Lavawalker's Torment",
+        "goblet": "Lavawalker's Epiphany",
+        "hat": "Lavawalker's Wisdom"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+40% pyro RES", "", "+35% damage against opponents affected by pyro"]
+    },
+    "heart_of_depth": {
+      "set_name": "Heart of Depth",
+      "names": {
+        "flower": "Gilded Corsage",
+        "feather": "Gust of Nostalgia",
+        "timepiece": "Copper Compass",
+        "goblet": "Goblet of Thundering Deep",
+        "hat": "Wine-Stained Tricorne"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+15% hydro damage bonus", "", "+30% normal and charged attack damage for 15 seconds after using an elemental skill"]
+    },
+    "thundering_fury": {
+      "set_name": "Thundering Fury",
+      "names": {
+        "flower": "Thunderbird's Mercy",
+        "feather": "Survivor of Catastrophe",
+        "timepiece": "Hourglass of Thunder",
+        "goblet": "Omen of Thunderstorm",
+        "hat": "Thunder Summoner's Crown"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+15% electro damage bonus", "", "+40% overloaded, electro-charged, and superconduct damage, triggering one of these reactions decreases elemental skill cooldown by 1 second (0.8 second cooldown)"]
+    },
+    "thundersoother": {
+      "set_name": "Thundersoother",
+      "names": {
+        "flower": "Thundersoother's Heart",
+        "feather": "Thundersoother's Plume",
+        "timepiece": "Hour of Soothing Thunder",
+        "goblet": "Thundersoother's Goblet",
+        "hat": "Thundersoother's Diadem"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+40% electro RES", "", "+35% damage against opponents affected by electro"]
+    },
+    "viridescent_venerer": {
+      "set_name": "Viridescent Venerer",
+      "names": {
+        "flower": "In Remembrance of Viridescent Fields",
+        "feather": "Viridescent Arrow Feather",
+        "timepiece": "Viridescent Venerer's Determination",
+        "goblet": "Viridescent Venerer's Vessel",
+        "hat": "Viridescent Venerer's Diadem"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+15% anemo damage bonus", "", "+60% swirl damage, -40% RES to the infused element for 10 seconds to opponents upon triggering swirl"]
+    },
+    "blizzard_strayer": {
+      "set_name": "Blizzard Strayer",
+      "names": {
+        "flower": "Snowswept Memory",
+        "feather": "Icebreaker's Resolve",
+        "timepiece": "Frozen Homeland's Demise",
+        "goblet": "Frost-Weaved Dignity",
+        "hat": "Broken Rime's Echo"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+15% cryo damage bonus", "", "+20% crit rate for all party members against opponents affected by cryo, +20% (additional) against frozen enemies"]
+    },
+    "archaic_petra": {
+      "set_name": "+15% geo damage bonus",
+      "names": {
+        "flower": "Flower of Creviced Cliff",
+        "feather": "Feather of Jagged Peaks",
+        "timepiece": "Sundial of Enduring Jade",
+        "goblet": "Goblet of Chiseled Crag",
+        "hat": "Mask of Solitude Basalt"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+15% geo damage bonus", "", "+35% damage bonus to all party members for the corresponding element for 10 seconds after obtaining a shard created through a crystallize reaction (only one such effect may be gained at once)"]
+    },
+    "bloodstained_chivalry": {
+      "set_name": "Bloodstained Chivalry",
+      "names": {
+        "flower": "Bloodstained Flower of Iron",
+        "feather": "Bloodstained Black Plume",
+        "timepiece": "Bloodstained Final Hour",
+        "goblet": "Bloodstained Chevalier's Goblet",
+        "hat": "Bloodstained Iron Mask"
+      },
+      "min_tier": 4,
+      "max_tier": 5,
+      "set": ["", "", "+25% physical damage bonus", "", "+50% charged attack damage and -100% charged attack stamina cost for 10 seconds after defeating an opponent (including wild animals)"]
+    },
+    "prayers_for_illumination": {
+      "set_name": "Prayers for Illumination",
+      "names": {
+        "flower": "",
+        "feather": "",
+        "timepiece": "",
+        "goblet": "",
+        "hat": "Tiara of Flame"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "-40% pyro status duration against self", "", "", ""]
+    },
+    "prayers_for_destiny": {
+      "set_name": "Prayers for Destiny",
+      "names": {
+        "flower": "",
+        "feather": "",
+        "timepiece": "",
+        "goblet": "",
+        "hat": "Tiara of Torrents"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "-40% hydro status duration against self", "", "", ""]
+    },
+    "prayers_for_wisdom": {
+      "set_name": "Prayers for Wisdom",
+      "names": {
+        "flower": "",
+        "feather": "",
+        "timepiece": "",
+        "goblet": "",
+        "hat": "Tiara of Thunder"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "-40% electro status duration against self", "", "", ""]
+    },
+    "prayers_to_springtime": {
+      "set_name": "Prayers to Springtime",
+      "names": {
+        "flower": "",
+        "feather": "",
+        "timepiece": "",
+        "goblet": "",
+        "hat": "Tiara of Frost"
+      },
+      "min_tier": 3,
+      "max_tier": 4,
+      "set": ["", "-40% cryo status duration against self", "", "", ""]
     }
   }
 }

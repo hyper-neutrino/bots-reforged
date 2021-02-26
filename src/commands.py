@@ -684,11 +684,12 @@ async def command_lol_item(command, message):
 
 stats_length = 24
 
-async def stats(channel):
+async def stats(channel, vis = None):
   counts = {}
   async for message in channel.history(limit = None):
-    uinfo = f"{truncate(message.author.name, stats_length - 5)}#{message.author.discriminator}"
-    counts[uinfo] = counts.get(uinfo, 0) + 1
+    if not vis or message.author.id in vis:
+      uinfo = f"{truncate(message.author.name, stats_length - 5)}#{message.author.discriminator}"
+      counts[uinfo] = counts.get(uinfo, 0) + 1
   return sorted(counts.items(), key = lambda a: (-a[1], a[0]))
 
 def truncate(string, length):
@@ -698,18 +699,20 @@ def truncate(string, length):
 
 @client.command("Server Statistics Commands", [("channel", "server"), "stats"], "<channel | server> stats", "output the number of messages sent in each channel by each user")
 async def command_channel_stats(command, message):
+  v = set(m.id for m in message.channel.members)
   async with message.channel.typing():
     if command[1] == "channel":
-      s = await stats(message.channel)
+      s = await stats(message.channel, v)
       total = sum(b for _, b in s)
       mc = len(str(max(b for _, b in s)))
       l = max(len(a) for a, _ in s)
       await send(message, embed = discord.Embed(
         title = f"Channel Stats for #{message.channel.name}",
-        description = "```\n" + "\n".join(f"{uinfo.ljust(l)}  {str(count).ljust(mc)} ({count / total:.2f}%)" for uinfo, count in await stats(message.channel)) + "\n```",
+        description = "```\n" + "\n".join(f"{uinfo.ljust(l)}  {str(count).ljust(mc)} ({count / total:.2f}%)" for uinfo, count in await s) + "\n```",
         color = client.color
       ))
     else:
+      vis = set(message.channel.members)
       counts = {}
       ccount = {}
       cname = {}
@@ -718,11 +721,12 @@ async def command_channel_stats(command, message):
       for channel in message.guild.channels:
         try:
           if isinstance(channel, discord.TextChannel):
-            cname[channel.id] = channel.name
-            for uinfo, count in await stats(channel):
-              counts[uinfo] = counts.get(uinfo, 0) + count
-              ccount[channel.id] = ccount.get(channel.id, 0) + count
-              total += count
+            if set(channel.members) >= vis:
+              cname[channel.id] = channel.name
+              for uinfo, count in await stats(channel, v):
+                counts[uinfo] = counts.get(uinfo, 0) + count
+                ccount[channel.id] = ccount.get(channel.id, 0) + count
+                total += count
         except:
           failed += 1
       mc = len(str(max(max(counts.values()), max(ccount.values()))))
@@ -819,6 +823,43 @@ async def command_genshin_info(command, message):
   item = " ".join(command[3:]).lower()
   await client.genshin_info(item, message.channel)
   await message.add_reaction("✅")
+
+async def resin_set(user, amt):
+  await set_data("genshin", "resin_info", user.id, time.time() - 8 * 60 * amt)
+
+@client.command("Genshin Commands", ["genshin", "resin", "set", "?"], "genshin resin set <amount>", "tell me how much resin you currently have")
+async def command_genshin_resin_set(command, message):
+  await resin_set(message.author, int(command[4]))
+  await send(message, "Set your resin! Remember to update your resin if it ever changes for any reason other than the passage of time.")
+
+@client.command("Genshin Commands", ["genshin", "resin", "now"], "genshin resin now", "check how much resin you currently have")
+async def command_genshin_resin_now(command, message):
+  amt = await resin_amount(message.author.id)
+  if amt == -1:
+    await send(message, "You haven't told me how much resin you have yet!", reaction = "x")
+  else:
+    await send(message, f"You currently have {amt} resin!")
+
+@client.command("Genshin Commands", ["genshin", "resin", "reminder"], "genshin resin reminder [[amount] <desired = 160>]", "set a reminder for when you reach a specific amount of resin; your current amount is optional if you've already set your resin amount")
+@client.command("", ["genshin", "resin", "reminder", "?"], "", "")
+@client.command("", ["genshin", "resin", "reminder", "?", "?"], "", "")
+async def command_genshin_resin_reminder(command, message):
+  if len(command) <= 5:
+    if not await has_data("genshin", "resin_info", user.id):
+      raise BotError("You need to tell me how much resin you have with `genshin resin set` or specify the amount you currently have!")
+    des = int(command[4]) if len(command) == 5 else 160
+  else:
+    await resin_set(message.author, int(command[4]))
+    des = int(command[5])
+  if des > 160:
+    raise BotError("You cannot have more than 160 resin without using Fragile Resin to exceed that cap manually!")
+  key = (message.author.id, message.channel.id)
+  if await has_data("genshin", "resin_reminder", key):
+    cur = await get_data("genshin", "resin_reminder", key)
+    await send(message, f"You previously had a reminder in this channel for when you reached {cur} resin; I will instead remind you when you reach {des}!")
+  else:
+    await send(message, f"I will remind you when you reach {des} resin!")
+  await set_data("genshin", "resin_reminder", key, des)
 
 @client.command("", [("nhentai", "fnhentai"), "?"], "", "")
 async def command_nhentai(command, message):
