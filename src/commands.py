@@ -708,7 +708,7 @@ async def command_channel_stats(command, message):
       l = max(len(a) for a, _ in s)
       await send(message, embed = discord.Embed(
         title = f"Channel Stats for #{message.channel.name}",
-        description = "```\n" + "\n".join(f"{uinfo.ljust(l)}  {str(count).ljust(mc)} ({count / total:.2f}%)" for uinfo, count in await s) + "\n```",
+        description = "```\n" + "\n".join(f"{uinfo.ljust(l)}  {str(count).ljust(mc)} ({count / total * 100:.2f}%)" for uinfo, count in s) + "\n```",
         color = client.color
       ))
     else:
@@ -737,7 +737,7 @@ async def command_channel_stats(command, message):
       ccount = sorted(ccount.items(), key = lambda a: (-a[1], a[0]))
       await send(message, embed = discord.Embed(
         title = f"Server Stats for {message.guild.name}",
-        description = "```\n" + "\n".join(f"{uinfo.ljust(l)}  {str(count).ljust(mc)} ({count / total:.2f}%)" for uinfo, count in counts) +
+        description = "```\n" + "\n".join(f"{uinfo.ljust(l)}  {str(count).ljust(mc)} ({count / total * 100:.2f}%)" for uinfo, count in counts) +
                       "\n\n" + "\n".join(f"#{truncate(cname[cid].ljust(l - 1), stats_length - 1)}  {str(count).ljust(mc)} ({count / total:.2f}%)" for cid, count in ccount) + "\n```",
         color = client.color
       ))
@@ -785,39 +785,6 @@ async def nhentai(nhid, force = False):
   else:
     return await get_data("nhentai", nhid)
 
-@client.command("Genshin Commands", ["genshin", ("remind", "reminder"), "..."], "genshin remind/reminder <item>", "set a reminder for a weekly boss, talent book, or weapon ascension material")
-@client.command("Genshin Commands", ["genshin", ("unremind", "unreminder"), "..."], "genshin unremind/unreminder <item>", "remove a reminder for a weekly boss, talent book, or weapon ascension material")
-async def command_genshin_remind(command, message):
-  async def edit(name):
-    if command[2] in ["remind", "reminder"]:
-      await mod_data("genshin", "remind", name, lambda x: x | {message.author.id}, default = set())
-    else:
-      await mod_data("genshin", "remind", name, lambda x: x - {message.author.id}, default = set())
-  item = " ".join(command[3:]).lower()
-  if item in ["dvalin", "stormterror", "dragon"]:
-    await edit("dvalin")
-  elif item in ["andrius", "wolf", "boreas", "lupus", "lupus boreas"]:
-    await edit("andrius")
-  elif item in ["tartaglia", "childe", "golden house"]:
-    await edit("childe")
-  elif item in ["freedom", "resistance", "ballad", "prosperity", "diligence", "gold"]:
-    await edit(item)
-  elif item in ["decarabian", "tile", "debris", "fragment", "tile of decarabian's tower", "debris of decarabian's city", "fragment of decarabian's epic", "scattered piece of decarabian's dream"]:
-    await edit("decarabian")
-  elif item in ["boreal", "tooth", "fang", "boreal wolf's milk tooth", "boreal wolf's cracked tooth", "boreal wolf's broken fang", "boreal wolf's nostalgia"]:
-    await edit("boreal")
-  elif item in ["dandelion", "dandelion gladiator", "fetters", "chains", "shackles", "fetters of the dandelion gladiator", "chains of the dandelion gladiator", "shackles of the dandelion gladiator", "dream of the dandelion gladiator"]:
-    await edit("dandelion")
-  elif item in ["guyun", "sands", "stone", "relic", "divine body", "luminous sands of guyun", "lustrous stone from guyun", "relic from guyun", "divine body from guyun"]:
-    await edit("guyun")
-  elif item in ["elixir", "mist", "mist veiled", "mist veiled elixir", "mist veiled lead elixir", "mist veiled mercury elixir", "mist veiled gold elixir", "mist veiled primo elixir"]:
-    await edit("elixir")
-  elif item in ["aerosiderite", "grain", "bit", "chunk", "grain of aerosiderite", "piece of aerosiderite", "bit of aerosiderite", "chunk of aerosiderite"]:
-    await edit("aerosiderite")
-  else:
-    raise BotError("I don't recognize that! You can only set reminders for weekly bosses, talent books, and weapon ascension materials.")
-  await message.add_reaction("✅")
-
 @client.command("Genshin Commands", ["genshin", "info", "..."], "genshin info <item>", "get info on an item (must enter the internal ID; ask a developer if unsure but it's not too counterintuitive)")
 async def command_genshin_info(command, message):
   item = " ".join(command[3:]).lower()
@@ -827,39 +794,68 @@ async def command_genshin_info(command, message):
 async def resin_set(user, amt):
   await set_data("genshin", "resin_info", user.id, time.time() - 8 * 60 * amt)
 
+async def resin_rmd(user):
+  return await get_data("genshin", "resin_reminder", user.id, default = -1)
+
+async def resin_amount(uid):
+  if await has_data("genshin", "resin_info", uid):
+    return min(160, (time.time() - await get_data("genshin", "resin_info", uid)) / 8 / 60)
+  else:
+    return -1
+
+def hm(s):
+  h, m = divmod(int(s // 60), 60)
+  return str(h) + "h" + str(m).zfill(2) if h else str(m) + "m"
+
 @client.command("Genshin Commands", ["genshin", "resin", "set", "?"], "genshin resin set <amount>", "tell me how much resin you currently have")
 async def command_genshin_resin_set(command, message):
-  await resin_set(message.author, int(command[4]))
-  await send(message, "Set your resin! Remember to update your resin if it ever changes for any reason other than the passage of time.")
+  amt = int(command[4])
+  await resin_set(message.author, amt)
+  cur = await resin_rmd(message.author)
+  msg = await send(message, "Set your resin!" + ("" if cur == -1 else f" Your existing reminder, set for {cur} resin, will occur in {hm(8 * 60 * (cur - amt))}."))
+  if message.guild:
+    await message.delete(delay = 5)
+    await msg.delete(delay = 5)
 
 @client.command("Genshin Commands", ["genshin", "resin", "now"], "genshin resin now", "check how much resin you currently have")
 async def command_genshin_resin_now(command, message):
   amt = await resin_amount(message.author.id)
+  cur = await resin_rmd(message.author)
   if amt == -1:
     await send(message, "You haven't told me how much resin you have yet!", reaction = "x")
   else:
-    await send(message, f"You currently have {amt} resin!")
+    await send(message, f"You currently have {int(amt)} resin!" + ("" if cur == -1 else f" Your reminder, set for {cur} resin, will occur in {hm(8 * 60 * (cur - amt))}."))
 
-@client.command("Genshin Commands", ["genshin", "resin", "reminder"], "genshin resin reminder [[amount] <desired = 160>]", "set a reminder for when you reach a specific amount of resin; your current amount is optional if you've already set your resin amount")
+@client.command("Genshin Commands", ["genshin", "resin", "reminder"], "genshin resin reminder [[amount] <desired = 160>] / stop", "set / stop a reminder for when you reach a specific amount of resin; your current amount is optional if you've already set your resin amount")
 @client.command("", ["genshin", "resin", "reminder", "?"], "", "")
 @client.command("", ["genshin", "resin", "reminder", "?", "?"], "", "")
 async def command_genshin_resin_reminder(command, message):
-  if len(command) <= 5:
-    if not await has_data("genshin", "resin_info", user.id):
-      raise BotError("You need to tell me how much resin you have with `genshin resin set` or specify the amount you currently have!")
-    des = int(command[4]) if len(command) == 5 else 160
-  else:
-    await resin_set(message.author, int(command[4]))
-    des = int(command[5])
-  if des > 160:
-    raise BotError("You cannot have more than 160 resin without using Fragile Resin to exceed that cap manually!")
-  key = (message.author.id, message.channel.id)
-  if await has_data("genshin", "resin_reminder", key):
-    cur = await get_data("genshin", "resin_reminder", key)
-    await send(message, f"You previously had a reminder in this channel for when you reached {cur} resin; I will instead remind you when you reach {des}!")
-  else:
-    await send(message, f"I will remind you when you reach {des} resin!")
-  await set_data("genshin", "resin_reminder", key, des)
+  if len(command) == 5 and command[4] == "stop":
+    msg = await send(message, "I will no longer remind you about your resin!")
+    await del_data("genshin", "resin_reminder", message.author.id)
+  else:  
+    if len(command) <= 5:
+      if not await has_data("genshin", "resin_info", message.author.id):
+        raise BotError("You need to tell me how much resin you have with `genshin resin set` or specify the amount you currently have!")
+      des = int(command[4]) if len(command) == 5 else 160
+      amt = await resin_amount(message.author.id)
+    else:
+      amt = int(command[4])
+      await resin_set(message.author, amt)
+      des = int(command[5])
+    if des > 160:
+      raise BotError("You cannot have more than 160 resin without using Fragile Resin to exceed that cap manually!")
+    if des <= amt:
+      raise BotError("You already have that much resin!")
+    cur = await resin_rmd(message.author)
+    if cur == -1:
+      msg = await send(message, f"I will remind you when you reach {des} resin (in {hm(8 * 60 * (des - amt))})!")
+    else:
+      msg = await send(message, f"You previously had a reminder for when you reached {cur} resin; I will instead remind you when you reach {des} (in {hm(8 * 60 * (des - amt))})!")
+    await set_data("genshin", "resin_reminder", message.author.id, des)
+  if message.guild:
+    await message.delete(delay = 5)
+    await msg.delete(delay = 5)
 
 @client.command("", [("nhentai", "fnhentai"), "?"], "", "")
 async def command_nhentai(command, message):
@@ -1030,6 +1026,27 @@ async def command_summarize(command, message):
     await send(message, (f"**{data['sm_api_title'].strip() or '(no title)'}**\n\n{data['sm_api_content'].strip() or '(no content)'}")[:2000])
     if "sm_api_keyword_array" in data:
       await message.channel.send(f"**Keywords**: {', '.join(data['sm_api_keyword_array'])}")
+
+@client.command("", ["tsr", "?"], "", "")
+async def command_toggle_suppress_reacts(command, message):
+  member = await get_member(message.guild, command[2], message.author)
+  await mod_data("tsr", lambda x: x ^ {member.id}, default = set())
+  await message.add_reaction("✅")
+
+@client.command("", ["react", "..."], "", "")
+async def command_react(command, message):
+  if not message.reference or not message.reference.resolved:
+    raise BotError("You need to refer to a message via reply!")
+  fails = []
+  for x in command[2:]:
+    try:
+      await message.reference.resolved.add_reaction(emoji(x))
+    except:
+      fails.append(x)
+  if fails:
+    await send(message, "The following emojis do not exist / could not have been added: " + ", ".join(fails))
+  else:
+    await message.delete()
 
 @client.command("", re.compile(r"\b[hH]?[eE][hH][eE]\b").search, "", "")
 async def command_ehe_te_nandayo(command, message):

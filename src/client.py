@@ -69,12 +69,6 @@ def query(category, day, region):
       return (key, value)
   return ("null", {})
 
-async def resin_amount(uid):
-  if await has_data("genshin", "resin_info", uid):
-    return min(160, (time.time() - await get_data("genshin", "resin_info", uid)) / 8 / 60)
-  else:
-    return -1
-
 rome_numerals = {
   "M": 1000,
   "CM": 900,
@@ -117,6 +111,9 @@ class DiscordClient(discord.Client):
       return lambda func: self.commands.append((section, match, syntax, description, func)) or func
 
   async def on_reaction_add(self, reaction, user):
+    if user.id in await get_data("tsr"):
+      await reaction.remove(user)
+      return
     if user.id == self.user.id: return
     if reaction.emoji == "🗑️" and reaction.message.author == self.user:
       await reaction.message.delete()
@@ -566,6 +563,11 @@ class DiscordClient(discord.Client):
       await set_data("nhentai_embed", reaction.message.id, (nhid, page))
   
   async def on_message(self, message):
+    if message.content == "👍":
+      await message.add_reaction("😩")
+      await message.add_reaction("👌")
+    if message.content == "😩👌":
+      await message.add_reaction("👍")
     if message.author == self.user and message.embeds:
       await message.add_reaction("🗑️")
     if message.guild:
@@ -609,10 +611,7 @@ class DiscordClient(discord.Client):
           except discord.errors.Forbidden:
             await send(message, "This bot does not have sufficient permissions to execute this command!", reaction = "x")
           except:
-            if message.content.startswith("pls"):
-              await send(message, "An uncaught exception occurred! Prefix with `please` to debug, or contact a developer.", reaction = "x")
-            elif message.content.startswith("please"):
-              await send(message, "```\n" + traceback.format_exc()[:1990] + "\n```", reaction = "x")
+            await send(message, "```\n" + traceback.format_exc()[:1990] + "\n```", reaction = "x")
       except:
         pass # some messages have single quotes and unavoidably will error, so we can just ignore all errors that arose from parsing since real errors are caught
 

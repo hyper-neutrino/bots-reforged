@@ -98,11 +98,11 @@ async def genshin_reminder():
   await asyncio.sleep(5)
   while True:
     d = {**await get_data("genshin", "resin_reminder", default = {})}
-    for (uid, cid) in d:
-      amt = await get_data("genshin", "resin_reminder", (uid, cid))
+    for uid in d:
+      amt = await get_data("genshin", "resin_reminder", uid)
       if await resin_amount(uid) >= amt:
-        await del_data("genshin", "resin_reminder", (uid, cid))
-        await client.get_channel(cid).send(f"<@!{uid}> you have reached {amt} resin!" + (" (why???)" * (amt == 0)) + (" (nice)" * (amt == 69)) + (" (well, no you haven't but...)" * (amt > 160)))
+        await del_data("genshin", "resin_reminder", uid)
+        await dm(client.get_user(uid), f"You have reached {amt} resin!" + (" (why???)" * (amt == 0)) + (" (nice)" * (amt == 69)))
     await asyncio.sleep(5)
 
 loop = asyncio.get_event_loop()
