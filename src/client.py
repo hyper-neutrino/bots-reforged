@@ -46,6 +46,8 @@ def name_item(item, type):
   elif type == "artifacts":
     data = genshin_data["artifacts"][item]
     return data["set_name"] + f" (Artifact Set)"
+  elif type == "talent_boss":
+    return genshin_data["talent_boss"][item]["name"]
   else:
     return item + " [" + type + "]"
 
@@ -59,6 +61,8 @@ def emoji_item(item, type):
   elif type == "regional_specialties":
     return item
   elif type == "artifacts":
+    return item
+  elif type == "talent_boss":
     return item
   else:
     return "[??]"
@@ -115,7 +119,7 @@ class DiscordClient(discord.Client):
       await reaction.remove(user)
       return
     if user.id == self.user.id: return
-    if reaction.emoji == "🗑️" and reaction.message.author == self.user:
+    if reaction.emoji == "🗑️" and not user.bot and reaction.message.author.bot:
       await reaction.message.delete()
     await self.nhentai_process(reaction)
     if type(reaction.emoji) != str:
@@ -165,6 +169,7 @@ class DiscordClient(discord.Client):
     if name == "today":
       n = datetime.datetime.now()
       await self.genshin_daily(channel, (n.weekday() - (n.hour < 4)) % 7)
+    return
     for key, value in genshin_data["talent_books"].items():
       if re.match(key + "\\d?$", name):
         chars = [k for k in genshin_data["characters"] if genshin_data["characters"][k].get("talent_book") == key]
@@ -460,6 +465,17 @@ class DiscordClient(discord.Client):
         for drop in drops:
           await msg.add_reaction(emoji(emoji_item(drop["id"], drop["type"])))
         return
+    for key, value in genshin_data["talent_boss"].items():
+      if key == name:
+        characters = charfilter("weekly", key)
+        msg = await channel.send(embed = discord.Embed(
+          title = name_item(key, "talent_boss"),
+          description = genshin_data["enemies"][genshin_data["talent_boss"][key]["boss"]]["name"]
+        ).add_field(
+          **charfield(characters)
+        ).set_thumbnail(url = emoji(key).url))
+        await msg.add_reaction(emoji(genshin_data["talent_boss"][key]["boss"]))
+        await add_char_reacts(msg, characters)
     for key, value in genshin_data["artifacts"].items():
       if key == name:
         # TODO domain emojis
@@ -561,15 +577,31 @@ class DiscordClient(discord.Client):
         return
       await reaction.message.edit(embed = discord.Embed(title = title + " " + subtitle, url = f"https://nhentai.net/g/{nhid}", description = f"Page {page + 1} / {len(urls)}").set_image(url = urls[page]))
       await set_data("nhentai_embed", reaction.message.id, (nhid, page))
+      
+#   async def on_message_delete(self, message):
+#     mentions = []
+#     for u in message.mentions:
+#       mentions.append(u.mention)
+#     for r in message.role_mentions:
+#       mentions.append(r.mention)
+#     if message.mention_everyone:
+#       mentions.append("@everyone/@here")
+#     if mentions:
+#       await message.channel.send(embed = discord.Embed(description = "A message was deleted that mentioned " + english_list(mentions)))
   
   async def on_message(self, message):
+    if self.user in message.mentions:
+      await message.add_reaction(emoji("ping"))
     if message.content == "👍":
       await message.add_reaction("😩")
       await message.add_reaction("👌")
     if message.content == "😩👌":
       await message.add_reaction("👍")
-    if message.author == self.user and message.embeds:
-      await message.add_reaction("🗑️")
+    if message.author.bot and message.embeds:
+      if message.author.id == 432610292342587392:
+        await message.add_reaction("💖")
+      elif message.author == self.user:
+        await message.add_reaction("🗑️")
     if message.guild:
       print(f"[{message.guild.name} #{message.channel.name}] {message.author.name}#{message.author.discriminator}: {message.content}")
       if await get_data("silence", message.guild.id, message.author.id, default = False):
@@ -657,15 +689,6 @@ emoji_shorthand = {
 
 next_slot = 0
 
-def fuck_with(m):
-  r = ""
-  for c in m:
-    if c == "b" and random.random() < 0.02:
-      r += "🅱️"
-    else:
-      r += c
-  return r
-
 async def send(message, *args, **kwargs):
   global next_slot
   if next_slot > time.time():
@@ -676,7 +699,7 @@ async def send(message, *args, **kwargs):
     next_slot = time.time() + 1
   if "embed" in kwargs:
     kwargs["embed"].set_footer(text = f"Requested by {message.author.display_name}")
-  reply = await message.channel.send(*map(fuck_with, args), **{a: kwargs[a] for a in kwargs if a != "reaction"})
+  reply = await message.channel.send(*args, **{a: kwargs[a] for a in kwargs if a != "reaction"})
   if "reaction" in kwargs:
     if type(kwargs["reaction"]) == list:
       reaction_list = kwargs["reaction"]

@@ -268,26 +268,26 @@ async def command_silence(command, message):
       await set_data("silence", message.guild.id, member.id, not command[1].startswith("un"))
       await send(message, f"No longer silencing {member.mention}!" if command[1].startswith("un") else f"{'https://i.redd.it/l5jmlb1ltqj51.jpg' * (command[1] == 'shut')}Now silencing {member.mention}!", allowed_mentions = discord.AllowedMentions.none())
 
-@client.command("Role Commands", ["gib", "?", "..."], "gib <name> [roles...]", "alias for `role give`")
-@client.command("Role Commands", ["role", "give", "?", "..."], "role give <name> [roles...]", "give a list of roles to a user")
-async def command_role_give(command, message):
-  user, *names = command[2 if command[1] == "gib" else 3:]
-  member = await get_member(message.guild, user, message.author)
-  roles = [get_role(message.guild, string) for string in names]
-  if any(role.id == 741731868692709416 for role in roles) and member.id != 251082987360223233:
-    await send(message, f"<@&741731868692709416> is exclusive to <@!251082987360223233>!", allowed_mentions = discord.AllowedMentions.none())
-  else:
-    await member.add_roles(*roles)
-    await send(message, f"Granted {english_list(quote(role.mention for role in roles))} to {member.mention}!", allowed_mentions = discord.AllowedMentions(roles = False))
+# @client.command("Role Commands", ["gib", "?", "..."], "gib <name> [roles...]", "alias for `role give`")
+# @client.command("Role Commands", ["role", "give", "?", "..."], "role give <name> [roles...]", "give a list of roles to a user")
+# async def command_role_give(command, message):
+#   user, *names = command[2 if command[1] == "gib" else 3:]
+#   member = await get_member(message.guild, user, message.author)
+#   roles = [get_role(message.guild, string) for string in names]
+#   if any(role.id == 741731868692709416 for role in roles) and member.id != 251082987360223233:
+#     await send(message, f"<@&741731868692709416> is exclusive to <@!251082987360223233>!", allowed_mentions = discord.AllowedMentions.none())
+#   else:
+#     await member.add_roles(*roles)
+#     await send(message, f"Granted {english_list(quote(role.mention for role in roles))} to {member.mention}!", allowed_mentions = discord.AllowedMentions(roles = False))
 
-@client.command("Role Commands", ["gibnt", "?", "..."], "gibnt <name> [roles...]", "alias for `role remove`")
-@client.command("Role Commands", ["role", "remove", "?", "..."], "role remove <name> [roles...]", "remove a list of roles from a user")
-async def command_role_remove(command, message):
-  user, *names = command[2 if command[1] == "gibnt" else 3:]
-  member = await get_member(message.guild, user, message.author)
-  roles = [get_role(message.guild, string) for string in names]
-  await member.remove_roles(*roles)
-  await send(message, f"Removed {english_list(quote(role.mention for role in roles))} from {member.mention}!", allowed_mentions = discord.AllowedMentions(roles = False))
+# @client.command("Role Commands", ["gibnt", "?", "..."], "gibnt <name> [roles...]", "alias for `role remove`")
+# @client.command("Role Commands", ["role", "remove", "?", "..."], "role remove <name> [roles...]", "remove a list of roles from a user")
+# async def command_role_remove(command, message):
+#   user, *names = command[2 if command[1] == "gibnt" else 3:]
+#   member = await get_member(message.guild, user, message.author)
+#   roles = [get_role(message.guild, string) for string in names]
+#   await member.remove_roles(*roles)
+#   await send(message, f"Removed {english_list(quote(role.mention for role in roles))} from {member.mention}!", allowed_mentions = discord.AllowedMentions(roles = False))
 
 @client.command("", ["role", "colour", "?"], "", "")
 @client.command("", ["role", "color", "?"], "", "")
@@ -990,11 +990,12 @@ async def command_identify(command, message):
 @client.command("", ["emoji", "?"], "emoji <lookup> [-]", "post an emoji by lookup ID")
 async def command_emoji(command, message):
   try:
-    await send(message, emoji(command[2]))
+    await send(message, str(emoji(command[2])))
     if len(command) == 4:
       await message.delete()
   except:
     await send(message, "That resulted in an error.", reaction = "x")
+    raise
 
 @client.command("", [("summary", "summarize"), "?"], "", "")
 @client.command("", [("summary", "summarize"), "?", "?"], "", "")
@@ -1048,13 +1049,13 @@ async def command_react(command, message):
   else:
     await message.delete()
 
-@client.command("", re.compile(r"\b[hH]?[eE][hH][eE]\b").search, "", "")
+# @client.command("", re.compile(r"\b[hH]?[eE][hH][eE]\b").search, "", "")
 async def command_ehe_te_nandayo(command, message):
   if message.author != client.user and time.time() - await get_data("ehe", message.author.id, default = 0) > (await get_data("ehecd", default = 30)):
     await send(message, "**ehe te nandayo!?**", reaction = "?")
     await set_data("ehe", message.author.id, time.time())
 
-@client.command("", re.compile(r"\[\w+\]").search, "", "")
+# @client.command("", re.compile(r"\[\w+\]").search, "", "")
 async def command_emoji_react(command, message):
   for c in re.findall(r"\[(\w+)\]", message.content):
     try:
@@ -1062,6 +1063,17 @@ async def command_emoji_react(command, message):
     except:
       pass
 
-@client.command("", re.compile(r"\b[Aa][Oo][Cc]\b").search, "", "")
+# @client.command("", re.compile(r"\b[Aa][Oo][Cc]\b").search, "", "")
 async def command_aoc(command, message):
   await message.channel.send("Alexandria Ocasio-Cortez")
+
+# @client.command("", ["toggle69"], "", "")
+async def command_toggle69(command, message):
+  await set_data("disable_69", not await get_data("disable_69", default = False))
+  await message.add_reaction("✅")
+
+# @client.command("", re.compile(r"\b69\b").search, "", "")
+async def command_69(command, message):
+  if await get_data("disable_69", default = False):
+    return
+  await message.reply("nice", mention_author = False)

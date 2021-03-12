@@ -1,4 +1,4 @@
-import datetime, discord, edit_distance, requests, traceback
+import datetime, discord, edit_distance, json, requests, traceback
 
 from riotwatcher import LolWatcher, ApiError
 
@@ -119,7 +119,8 @@ def find_item(name):
 
 # QUEUES
 
-q = requests.get("http://static.developer.riotgames.com/docs/lol/queues.json").json()
+with open("data/league-queues.json", "r") as f:
+  q = json.load(f)
 
 queues = {}
 

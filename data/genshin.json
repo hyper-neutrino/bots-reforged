@@ -2415,7 +2415,7 @@
       "region": "mondstadt",
       "birthmonth": 6,
       "birthdate": 16,
-      "constellation": "Carmen_Dei",
+      "constellation": "Carmen Dei",
       "talent_book": "ballad",
       "talent_common": "slime",
       "weekly": "tail_of_boreas",
@@ -4310,6 +4310,44 @@
     "lightning_prism": {
       "name": "Lightning Prism",
       "boss": "Electro Hypostasis (Aleph)"
+    }
+  },
+  "talent_boss": {
+    "dvalins_plume": {
+      "name": "Dvalin's Plume",
+      "boss": "dvalin"
+    },
+    "dvalins_claw": {
+      "name": "Dvalin's Claw",
+      "boss": "dvalin"
+    },
+    "dvalins_sigh": {
+      "name": "Dvalin's Sigh",
+      "boss": "dvalin"
+    },
+    "tail_of_boreas": {
+      "name": "Tail of Boreas",
+      "boss": "andrius"
+    },
+    "ring_of_boreas": {
+      "name": "Ring of Boreas",
+      "boss": "andrius"
+    },
+    "spirit_locket_of_boreas": {
+      "name": "Spirit Locket of Boreas",
+      "boss": "andrius"
+    },
+    "tusk_of_monoceros_caeli": {
+      "name": "Tusk of Monoceros Caeli",
+      "boss": "childe"
+    },
+    "shard_of_a_foul_legacy": {
+      "name": "Shard of a Foul Legacy",
+      "boss": "childe"
+    },
+    "shadow_of_the_warrior": {
+      "name": "Shadow of the Warrior",
+      "boss": "childe"
     }
   },
   "general_ascension": {
